@@ -27,6 +27,22 @@ class TwitterClient: BDBOAuth1SessionManager {
         return Static.instance
     }
     
+    func homeTimeline(params: NSDictionary?,completion: (tweets: [Tweet]?, error: NSError?) -> ()) {
+        GET("1.1/statuses/home_timeline.json", parameters: params, success:
+            { (operation: NSURLSessionDataTask, response: AnyObject?) -> Void in
+            
+            var tweets = Tweet.tweetsWithArray(response as! [NSDictionary])
+            //                for tweet in tweets {
+            //                    print("text: \(tweet.text); created: \(tweet.createAt)")
+            //                }
+            
+            completion(tweets: tweets, error: nil)
+        }, failure: { (task: NSURLSessionDataTask?, error: NSError) -> Void in
+            print("home_timeline error")
+            completion(tweets: nil, error: error)
+        })
+    }
+    
     func loginWithCompletion(completion: (user: User?, error: NSError?) -> ()) {
         loginCompletion = completion
         
@@ -50,18 +66,6 @@ class TwitterClient: BDBOAuth1SessionManager {
                 self.loginCompletion?(user: user, error: nil)
                 }, failure: { (task: NSURLSessionDataTask?, error: NSError) -> Void in
                     print("verify_credentials error")
-                    self.loginCompletion?(user: nil, error: error)
-            })
-            
-            TwitterClient.sharedInstance.GET("1.1/statuses/home_timeline.json", parameters: nil, success: { (operation: NSURLSessionDataTask, response: AnyObject?) -> Void in
-                
-                var tweets = Tweet.tweetsWithArray(response as! [NSDictionary])
-//                for tweet in tweets {
-//                    print("text: \(tweet.text); created: \(tweet.createAt)")
-//                }
-                
-                }, failure: { (task: NSURLSessionDataTask?, error: NSError) -> Void in
-                    print("home_timeline error")
                     self.loginCompletion?(user: nil, error: error)
             })
             
