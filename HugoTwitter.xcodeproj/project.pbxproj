@@ -12,6 +12,9 @@
 		0B1508381C745A630096A640 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B1508361C745A630096A640 /* Main.storyboard */; };
 		0B15083A1C745A630096A640 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0B1508391C745A630096A640 /* Assets.xcassets */; };
 		0B15083D1C745A630096A640 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B15083B1C745A630096A640 /* LaunchScreen.storyboard */; };
+		0BCA7D681C74688400E82FED /* TwitterClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCA7D671C74688400E82FED /* TwitterClient.swift */; };
+		0BCA7D6A1C7468C500E82FED /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCA7D691C7468C500E82FED /* User.swift */; };
+		0BCA7D6C1C7468D000E82FED /* Tweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCA7D6B1C7468D000E82FED /* Tweet.swift */; };
 		C332A8FAECE661CFFBFB4B01 /* Pods_HugoTwitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12B6BFF481AB3C8C604C36B1 /* Pods_HugoTwitter.framework */; };
 /* End PBXBuildFile section */
 
@@ -23,6 +26,10 @@
 		0B1508391C745A630096A640 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0B15083C1C745A630096A640 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0B15083E1C745A630096A640 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0BCA7D621C74681C00E82FED /* HugoTwitter-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HugoTwitter-Bridging-Header.h"; sourceTree = "<group>"; };
+		0BCA7D671C74688400E82FED /* TwitterClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterClient.swift; sourceTree = "<group>"; };
+		0BCA7D691C7468C500E82FED /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		0BCA7D6B1C7468D000E82FED /* Tweet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tweet.swift; sourceTree = "<group>"; };
 		12B6BFF481AB3C8C604C36B1 /* Pods_HugoTwitter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HugoTwitter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A2E666C9F6480B96BBB813B /* Pods-HugoTwitter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HugoTwitter.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HugoTwitter/Pods-HugoTwitter.debug.xcconfig"; sourceTree = "<group>"; };
 		83A2D03B661622B7834AEE28 /* Pods-HugoTwitter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HugoTwitter.release.xcconfig"; path = "Pods/Target Support Files/Pods-HugoTwitter/Pods-HugoTwitter.release.xcconfig"; sourceTree = "<group>"; };
@@ -70,14 +77,34 @@
 		0B1508311C745A630096A640 /* HugoTwitter */ = {
 			isa = PBXGroup;
 			children = (
+				0BCA7D661C74685E00E82FED /* Models */,
+				0BCA7D651C74685800E82FED /* API */,
 				0B1508321C745A630096A640 /* AppDelegate.swift */,
 				0B1508341C745A630096A640 /* ViewController.swift */,
 				0B1508361C745A630096A640 /* Main.storyboard */,
 				0B1508391C745A630096A640 /* Assets.xcassets */,
 				0B15083B1C745A630096A640 /* LaunchScreen.storyboard */,
 				0B15083E1C745A630096A640 /* Info.plist */,
+				0BCA7D621C74681C00E82FED /* HugoTwitter-Bridging-Header.h */,
 			);
 			path = HugoTwitter;
+			sourceTree = "<group>";
+		};
+		0BCA7D651C74685800E82FED /* API */ = {
+			isa = PBXGroup;
+			children = (
+				0BCA7D671C74688400E82FED /* TwitterClient.swift */,
+			);
+			name = API;
+			sourceTree = "<group>";
+		};
+		0BCA7D661C74685E00E82FED /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				0BCA7D691C7468C500E82FED /* User.swift */,
+				0BCA7D6B1C7468D000E82FED /* Tweet.swift */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 		E796EDECBDBF56B6F471D1A2 /* Frameworks */ = {
@@ -211,7 +238,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0BCA7D6A1C7468C500E82FED /* User.swift in Sources */,
+				0BCA7D6C1C7468D000E82FED /* Tweet.swift in Sources */,
 				0B1508351C745A630096A640 /* ViewController.swift in Sources */,
+				0BCA7D681C74688400E82FED /* TwitterClient.swift in Sources */,
 				0B1508331C745A630096A640 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -326,10 +356,13 @@
 			baseConfigurationReference = 7A2E666C9F6480B96BBB813B /* Pods-HugoTwitter.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = HugoTwitter/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.codepath.HugoTwitter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "HugoTwitter/HugoTwitter-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -338,10 +371,12 @@
 			baseConfigurationReference = 83A2D03B661622B7834AEE28 /* Pods-HugoTwitter.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = HugoTwitter/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.codepath.HugoTwitter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "HugoTwitter/HugoTwitter-Bridging-Header.h";
 			};
 			name = Release;
 		};
