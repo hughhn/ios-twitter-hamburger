@@ -14,18 +14,35 @@ let userDidLoginNotification = "userDidLoginNotification"
 let userDidLogoutNotification = "userDidLogoutNotification"
 
 class User: NSObject {
-    var dictionary: NSDictionary
-    var name: String?
-    var screenname: String?
-    var profileImageUrl: String?
-    var tagline: String?
+    let dictionary: NSDictionary
+    let name: String?
+    let screenname: String?
+    let profileImageUrl: String?
+    let tagline: String?
     
     init(dictionary: NSDictionary) {
         self.dictionary = dictionary
-        name = dictionary["name"] as? String
-        screenname = dictionary["screen_name"] as? String
-        profileImageUrl = dictionary["profile_image_url"] as? String
-        tagline = dictionary["description"] as? String
+        var name = ""
+        var screenname = ""
+        var profileImageUrl = ""
+        var tagline = ""
+        if let nameStr = dictionary["name"] as? String {
+            name = nameStr
+        }
+        if let screennameStr = dictionary["screen_name"] as? String {
+            screenname = screennameStr
+        }
+        if let profileImageUrlStr = dictionary["profile_image_url"] as? String {
+            profileImageUrl = profileImageUrlStr
+        }
+        if let taglineStr = dictionary["description"] as? String {
+            tagline = taglineStr
+        }
+        
+        self.name = name
+        self.screenname = screenname
+        self.profileImageUrl = profileImageUrl
+        self.tagline = tagline
     }
     
     func logout() {
