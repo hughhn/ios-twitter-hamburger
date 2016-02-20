@@ -153,9 +153,13 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="displayNameLabel" destination="XKF-P6-jyd" id="N9S-ao-C7G"/>
+                                            <outlet property="favIcon" destination="8tq-Ae-cG5" id="Xmi-AF-yqe"/>
                                             <outlet property="profileImageTopMargin" destination="2Qp-w4-ccq" id="Xix-bR-AwZ"/>
                                             <outlet property="profileImageView" destination="gWh-oa-rX2" id="laZ-OG-vjc"/>
+                                            <outlet property="replyIcon" destination="zUo-Os-HVh" id="ZXH-7f-ohp"/>
+                                            <outlet property="retweetIcon" destination="CcW-B3-M8K" id="xmE-bx-cWi"/>
                                             <outlet property="retweetLabel" destination="YRB-Jn-BwQ" id="N39-4a-wVZ"/>
+                                            <outlet property="retweetedIcon" destination="tb3-4x-Mg1" id="mJl-r6-FVN"/>
                                             <outlet property="timestampLabel" destination="oef-E5-JLd" id="49C-yZ-pSa"/>
                                             <outlet property="tweetLabel" destination="13u-g6-c0M" id="tPv-vy-yR5"/>
                                             <outlet property="usernameLabel" destination="Nmp-z8-csg" id="iF0-a1-fEY"/>
