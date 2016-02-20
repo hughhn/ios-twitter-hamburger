@@ -21,7 +21,7 @@ class TweetCell: UITableViewCell {
         didSet {
             profileImageView.setImageWithURL(NSURL(string: tweet.user!.profileImageUrl!)!)
             displayNameLabel.text = tweet.user!.name
-            usernameLabel.text = tweet.user!.screenname
+            usernameLabel.text = "@\(tweet.user!.screenname!)"
             timestampLabel.text = "4h"
             tweetLabel.text = tweet.text
         }
@@ -30,6 +30,7 @@ class TweetCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        profileImageView.layer.cornerRadius = 5
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
