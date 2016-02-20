@@ -22,6 +22,7 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         tableView.dataSource = self
         tableView.estimatedRowHeight = 100
         tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.separatorInset = UIEdgeInsetsZero
         
         // Initialize a UIRefreshControl
         let refreshControl = UIRefreshControl()

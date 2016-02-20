@@ -105,7 +105,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="@TheMichaelMoran" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nmp-z8-csg">
-                                                    <rect key="frame" x="154" y="28" width="112.5" height="14.5"/>
+                                                    <rect key="frame" x="152.5" y="28" width="112.5" height="14.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" red="0.67165464743589742" green="0.67165464743589742" blue="0.67165464743589742" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -141,7 +141,7 @@
                                                 <constraint firstItem="CcW-B3-M8K" firstAttribute="top" secondItem="13u-g6-c0M" secondAttribute="bottom" constant="10" id="hVn-UN-ass"/>
                                                 <constraint firstAttribute="trailing" secondItem="oef-E5-JLd" secondAttribute="trailing" constant="12" id="iHd-gS-eqD"/>
                                                 <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="gWh-oa-rX2" secondAttribute="bottom" constant="12" id="mvh-MZ-qRL"/>
-                                                <constraint firstItem="Nmp-z8-csg" firstAttribute="leading" secondItem="XKF-P6-jyd" secondAttribute="trailing" constant="6" id="o3d-0j-sGc"/>
+                                                <constraint firstItem="Nmp-z8-csg" firstAttribute="leading" secondItem="XKF-P6-jyd" secondAttribute="trailing" constant="4" id="o3d-0j-sGc"/>
                                                 <constraint firstAttribute="trailing" secondItem="13u-g6-c0M" secondAttribute="trailing" constant="12" id="rmQ-jE-Oh0"/>
                                                 <constraint firstItem="XKF-P6-jyd" firstAttribute="leading" secondItem="YRB-Jn-BwQ" secondAttribute="leading" id="uDP-0f-r2H"/>
                                                 <constraint firstItem="8tq-Ae-cG5" firstAttribute="top" secondItem="13u-g6-c0M" secondAttribute="bottom" constant="10" id="wA0-pv-KOC"/>
