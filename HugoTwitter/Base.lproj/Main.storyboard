@@ -72,15 +72,15 @@
                                                         <constraint firstAttribute="height" constant="40" id="yrw-Lb-Rbf"/>
                                                     </constraints>
                                                 </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_reply" translatesAutoresizingMaskIntoConstraints="NO" id="zUo-Os-HVh">
-                                                    <rect key="frame" x="62" y="74" width="12" height="15"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="icon_reply" translatesAutoresizingMaskIntoConstraints="NO" id="zUo-Os-HVh">
+                                                    <rect key="frame" x="60" y="74" width="12" height="15"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="12" id="SOd-we-BPn"/>
                                                         <constraint firstAttribute="height" constant="15" id="w5f-HW-ufc"/>
                                                     </constraints>
                                                 </imageView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_retweet" translatesAutoresizingMaskIntoConstraints="NO" id="CcW-B3-M8K">
-                                                    <rect key="frame" x="106" y="74" width="15" height="15"/>
+                                                    <rect key="frame" x="112" y="72.5" width="15" height="15"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="15" id="02e-Hy-TkD"/>
                                                         <constraint firstAttribute="width" constant="15" id="UTq-xb-dpo"/>
@@ -93,31 +93,31 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Michael Moran" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XKF-P6-jyd">
-                                                    <rect key="frame" x="60" y="24" width="88.5" height="14.5"/>
+                                                    <rect key="frame" x="60" y="22" width="88.5" height="14.5"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="4h" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oef-E5-JLd">
-                                                    <rect key="frame" x="293" y="24" width="15" height="14.5"/>
+                                                    <rect key="frame" x="293" y="22" width="15" height="14.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" red="0.52125400641025643" green="0.52125400641025643" blue="0.52125400641025643" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="@TheMichaelMoran" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nmp-z8-csg">
-                                                    <rect key="frame" x="154.5" y="24" width="112.5" height="14.5"/>
+                                                    <rect key="frame" x="154" y="22" width="112.5" height="14.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" red="0.52125400641025643" green="0.52125400641025643" blue="0.52125400641025643" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I have seen the future of newspaper http://t.co/GSLhglaglaga" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="13u-g6-c0M">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="I have seen the future of newspaper http://t.co/GSLhglaglaga" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="13u-g6-c0M">
                                                     <rect key="frame" x="60" y="40" width="248" height="29"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_star_empty" translatesAutoresizingMaskIntoConstraints="NO" id="8tq-Ae-cG5">
-                                                    <rect key="frame" x="153" y="74" width="15" height="15"/>
+                                                    <rect key="frame" x="167" y="72.5" width="15" height="15"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="15" id="cnJ-if-6HH"/>
                                                         <constraint firstAttribute="height" constant="15" id="iYb-0P-eDD"/>
@@ -131,24 +131,24 @@
                                                 <constraint firstItem="tb3-4x-Mg1" firstAttribute="leading" secondItem="F2V-wI-Lyo" secondAttribute="leading" constant="38" id="6sC-px-QGh"/>
                                                 <constraint firstItem="YRB-Jn-BwQ" firstAttribute="top" secondItem="F2V-wI-Lyo" secondAttribute="top" constant="4" id="8XW-bB-xNs"/>
                                                 <constraint firstItem="XKF-P6-jyd" firstAttribute="leading" secondItem="gWh-oa-rX2" secondAttribute="trailing" constant="8" id="AjZ-VM-j8a"/>
-                                                <constraint firstItem="XKF-P6-jyd" firstAttribute="top" secondItem="gWh-oa-rX2" secondAttribute="top" id="Csm-Oo-cqP"/>
+                                                <constraint firstItem="XKF-P6-jyd" firstAttribute="top" secondItem="gWh-oa-rX2" secondAttribute="top" constant="-2" id="Csm-Oo-cqP"/>
+                                                <constraint firstItem="oef-E5-JLd" firstAttribute="top" secondItem="XKF-P6-jyd" secondAttribute="top" id="Me8-m8-61w"/>
                                                 <constraint firstItem="gWh-oa-rX2" firstAttribute="leading" secondItem="F2V-wI-Lyo" secondAttribute="leading" constant="12" id="WWn-dQ-dXl"/>
                                                 <constraint firstItem="13u-g6-c0M" firstAttribute="leading" secondItem="gWh-oa-rX2" secondAttribute="trailing" constant="8" id="Z5N-SM-gRP"/>
                                                 <constraint firstItem="zUo-Os-HVh" firstAttribute="top" secondItem="13u-g6-c0M" secondAttribute="bottom" constant="5" id="ZXA-0d-zis"/>
                                                 <constraint firstItem="tb3-4x-Mg1" firstAttribute="top" secondItem="F2V-wI-Lyo" secondAttribute="top" constant="4" id="bNR-Sn-RL4"/>
                                                 <constraint firstItem="13u-g6-c0M" firstAttribute="top" secondItem="Nmp-z8-csg" secondAttribute="bottom" constant="2" id="fea-V6-7uk"/>
-                                                <constraint firstItem="Nmp-z8-csg" firstAttribute="top" secondItem="gWh-oa-rX2" secondAttribute="top" id="gxM-9U-U9C"/>
                                                 <constraint firstItem="CcW-B3-M8K" firstAttribute="top" secondItem="13u-g6-c0M" secondAttribute="bottom" constant="5" id="hVn-UN-ass"/>
                                                 <constraint firstAttribute="trailing" secondItem="oef-E5-JLd" secondAttribute="trailing" constant="12" id="iHd-gS-eqD"/>
-                                                <constraint firstItem="oef-E5-JLd" firstAttribute="top" secondItem="gWh-oa-rX2" secondAttribute="top" id="kov-fb-7mS"/>
                                                 <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="gWh-oa-rX2" secondAttribute="bottom" constant="8" id="mvh-MZ-qRL"/>
                                                 <constraint firstItem="Nmp-z8-csg" firstAttribute="leading" secondItem="XKF-P6-jyd" secondAttribute="trailing" constant="6" id="o3d-0j-sGc"/>
                                                 <constraint firstAttribute="trailing" secondItem="13u-g6-c0M" secondAttribute="trailing" constant="12" id="rmQ-jE-Oh0"/>
                                                 <constraint firstItem="XKF-P6-jyd" firstAttribute="leading" secondItem="YRB-Jn-BwQ" secondAttribute="leading" id="uDP-0f-r2H"/>
                                                 <constraint firstItem="8tq-Ae-cG5" firstAttribute="top" secondItem="13u-g6-c0M" secondAttribute="bottom" constant="5" id="wA0-pv-KOC"/>
-                                                <constraint firstItem="zUo-Os-HVh" firstAttribute="leading" secondItem="XKF-P6-jyd" secondAttribute="leading" constant="2" id="wak-NV-73b"/>
-                                                <constraint firstItem="CcW-B3-M8K" firstAttribute="leading" secondItem="zUo-Os-HVh" secondAttribute="trailing" constant="32" id="x70-D8-oXt"/>
-                                                <constraint firstItem="8tq-Ae-cG5" firstAttribute="leading" secondItem="CcW-B3-M8K" secondAttribute="trailing" constant="32" id="xnH-ui-CeK"/>
+                                                <constraint firstItem="zUo-Os-HVh" firstAttribute="leading" secondItem="XKF-P6-jyd" secondAttribute="leading" id="wak-NV-73b"/>
+                                                <constraint firstItem="CcW-B3-M8K" firstAttribute="leading" secondItem="zUo-Os-HVh" secondAttribute="trailing" constant="40" id="x70-D8-oXt"/>
+                                                <constraint firstItem="8tq-Ae-cG5" firstAttribute="leading" secondItem="CcW-B3-M8K" secondAttribute="trailing" constant="40" id="xnH-ui-CeK"/>
+                                                <constraint firstItem="Nmp-z8-csg" firstAttribute="top" secondItem="XKF-P6-jyd" secondAttribute="top" id="xxJ-he-keL"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
