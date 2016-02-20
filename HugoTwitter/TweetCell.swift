@@ -8,7 +8,7 @@
 
 import UIKit
 
-let customGrayColor = UIColor(red: 133.0/255.0, green: 133.0/255.0, blue: 133.0/255.0, alpha: 1.0)
+let customGrayColor = UIColor(red: 171.0/255.0, green: 171.0/255.0, blue: 171.0/255.0, alpha: 1.0)
 var _dateFormatter = NSDateFormatter()
 
 class TweetCell: UITableViewCell {
@@ -38,7 +38,7 @@ class TweetCell: UITableViewCell {
             } else {
                 retweetLabel.hidden = true
                 retweetedIcon.hidden = true
-                profileImageTopMargin.constant = 8
+                profileImageTopMargin.constant = 12
             }
         }
     }
