@@ -9,6 +9,8 @@
 import UIKit
 
 let customGrayColor = UIColor(red: 133.0/255.0, green: 133.0/255.0, blue: 133.0/255.0, alpha: 1.0)
+var _dateFormatter = NSDateFormatter()
+
 class TweetCell: UITableViewCell {
 
     @IBOutlet weak var retweetLabel: UILabel!
@@ -29,7 +31,7 @@ class TweetCell: UITableViewCell {
             profileImageView.setImageWithURL(NSURL(string: tweet.user!.profileImageUrl!)!)
             displayNameLabel.text = tweet.user!.name
             usernameLabel.text = "@\(tweet.user!.screenname!)"
-            timestampLabel.text = "4h"
+            timestampLabel.text = DateManager.getFriendlyTime(tweet.createdAt!)
             tweetLabel.text = tweet.text
             if (tweet.isRetweet) {
                 retweetLabel.text = "\(tweet.retweetName!) retweeted"

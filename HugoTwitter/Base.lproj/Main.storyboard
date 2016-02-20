@@ -28,14 +28,14 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <segue destination="3IA-4M-2sx" kind="modal" identifier="loginSegue" id="frp-wg-38r"/>
+                        <segue destination="Nt1-Pd-BaF" kind="modal" identifier="loginSegue" id="frp-wg-38r"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="124.26666666666667" y="330.86000000000001"/>
         </scene>
-        <!--Tweets View Controller-->
+        <!--Home-->
         <scene sceneID="o9T-WB-IIB">
             <objects>
                 <viewController storyboardIdentifier="TweetsViewController" id="3IA-4M-2sx" customClass="TweetsViewController" customModule="HugoTwitter" customModuleProvider="target" sceneMemberID="viewController">
@@ -47,12 +47,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="101" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6Dy-Zj-t4a">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="101" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6Dy-Zj-t4a">
                                 <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TweetCell" rowHeight="101" id="M4D-GU-3oH" customClass="TweetCell" customModule="HugoTwitter" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="320" height="101"/>
+                                        <rect key="frame" x="0.0" y="92" width="320" height="101"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="M4D-GU-3oH" id="F2V-wI-Lyo">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="100.5"/>
@@ -176,11 +176,30 @@
                             <constraint firstItem="O90-ck-wi3" firstAttribute="top" secondItem="6Dy-Zj-t4a" secondAttribute="bottom" id="fYv-Hi-iKc"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Home" id="sJj-SU-zhD"/>
                     <connections>
                         <outlet property="tableView" destination="6Dy-Zj-t4a" id="PKx-Ng-JaI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KeN-GK-adN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1018" y="330"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="HXj-WP-4vf">
+            <objects>
+                <navigationController storyboardIdentifier="TweetsViewNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="Nt1-Pd-BaF" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Lca-wh-iEq">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="3IA-4M-2sx" kind="relationship" relationship="rootViewController" id="9HR-fP-auI"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kxe-uR-P3a" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="486" y="330"/>
         </scene>
