@@ -72,15 +72,15 @@
                                                         <constraint firstAttribute="height" constant="40" id="yrw-Lb-Rbf"/>
                                                     </constraints>
                                                 </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="icon_reply" translatesAutoresizingMaskIntoConstraints="NO" id="zUo-Os-HVh">
-                                                    <rect key="frame" x="60" y="74" width="12" height="15"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_reply" translatesAutoresizingMaskIntoConstraints="NO" id="zUo-Os-HVh">
+                                                    <rect key="frame" x="60" y="72.5" width="12" height="15"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="12" id="SOd-we-BPn"/>
                                                         <constraint firstAttribute="height" constant="15" id="w5f-HW-ufc"/>
                                                     </constraints>
                                                 </imageView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_retweet" translatesAutoresizingMaskIntoConstraints="NO" id="CcW-B3-M8K">
-                                                    <rect key="frame" x="112" y="72.5" width="15" height="15"/>
+                                                    <rect key="frame" x="112" y="72" width="15" height="15"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="15" id="02e-Hy-TkD"/>
                                                         <constraint firstAttribute="width" constant="15" id="UTq-xb-dpo"/>
@@ -110,14 +110,14 @@
                                                     <color key="textColor" red="0.52125400641025643" green="0.52125400641025643" blue="0.52125400641025643" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="I have seen the future of newspaper http://t.co/GSLhglaglaga" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="13u-g6-c0M">
-                                                    <rect key="frame" x="60" y="40" width="248" height="29"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I have seen the future of newspaper http://t.co/GSLhglaglaga" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="13u-g6-c0M">
+                                                    <rect key="frame" x="60" y="38" width="248" height="29"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_star_empty" translatesAutoresizingMaskIntoConstraints="NO" id="8tq-Ae-cG5">
-                                                    <rect key="frame" x="167" y="72.5" width="15" height="15"/>
+                                                    <rect key="frame" x="167" y="72" width="15" height="15"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="15" id="cnJ-if-6HH"/>
                                                         <constraint firstAttribute="height" constant="15" id="iYb-0P-eDD"/>
@@ -153,6 +153,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="displayNameLabel" destination="XKF-P6-jyd" id="N9S-ao-C7G"/>
+                                            <outlet property="profileImageTopMargin" destination="2Qp-w4-ccq" id="Xix-bR-AwZ"/>
                                             <outlet property="profileImageView" destination="gWh-oa-rX2" id="laZ-OG-vjc"/>
                                             <outlet property="retweetLabel" destination="YRB-Jn-BwQ" id="N39-4a-wVZ"/>
                                             <outlet property="timestampLabel" destination="oef-E5-JLd" id="49C-yZ-pSa"/>

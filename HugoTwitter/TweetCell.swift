@@ -17,6 +17,8 @@ class TweetCell: UITableViewCell {
     @IBOutlet weak var tweetLabel: UILabel!
     @IBOutlet weak var profileImageView: UIImageView!
     
+    @IBOutlet weak var profileImageTopMargin: NSLayoutConstraint!
+    
     var tweet: Tweet! {
         didSet {
             profileImageView.setImageWithURL(NSURL(string: tweet.user!.profileImageUrl!)!)
