@@ -10,11 +10,20 @@ import UIKit
 
 
 class DateManager {
-    class var detailedFormatter: NSDateFormatter {
+    class var defaultFormatter: NSDateFormatter {
         struct Static {
             static let instance: NSDateFormatter = NSDateFormatter()
         }
         Static.instance.dateFormat = "EEE MMM d HH:mm:ss Z y"
+        
+        return Static.instance
+    }
+    
+    class var detailedFormatter: NSDateFormatter {
+        struct Static {
+            static let instance: NSDateFormatter = NSDateFormatter()
+        }
+        Static.instance.dateFormat = "MM/dd/yy, hh:mm a"
         
         return Static.instance
     }

@@ -89,8 +89,8 @@
 		0B1508311C745A630096A640 /* HugoTwitter */ = {
 			isa = PBXGroup;
 			children = (
-				0BCA7D741C77009100E82FED /* ViewControllers */,
 				0BCA7D6F1C77004C00E82FED /* Views */,
+				0BCA7D741C77009100E82FED /* ViewControllers */,
 				0BCA7D661C74685E00E82FED /* Models */,
 				0BCA7D651C74685800E82FED /* API */,
 				0B1508321C745A630096A640 /* AppDelegate.swift */,

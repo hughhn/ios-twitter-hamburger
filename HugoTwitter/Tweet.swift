@@ -35,7 +35,7 @@ class Tweet: NSObject {
         }
         if let createdAtStr = dictionary["created_at"] as? String {
             createdAtString = createdAtStr
-            createdAt = DateManager.detailedFormatter.dateFromString(createdAtString)
+            createdAt = DateManager.defaultFormatter.dateFromString(createdAtString)
         }
         
         if let retweetedStatus = dictionary["retweeted_status"] as? NSDictionary {

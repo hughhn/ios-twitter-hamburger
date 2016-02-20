@@ -56,7 +56,7 @@ class TweetDetailedViewController: UIViewController {
         profileImageView.setImageWithURL(NSURL(string: tweet.user!.profileImageUrl!)!)
         nameLabel.text = tweet.user!.name
         usernameLabel.text = "@\(tweet.user!.screenname!)"
-        timeLabel.text = DateManager.getFriendlyTime(tweet.createdAt!)
+        timeLabel.text = DateManager.detailedFormatter.stringFromDate(tweet.createdAt!)
         tweetLabel.text = tweet.text
         if (tweet.isRetweet) {
             repostLabel.text = "\(tweet.retweetName!) retweeted"
