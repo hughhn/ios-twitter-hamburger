@@ -58,7 +58,7 @@ class TweetDetailedViewController: UIViewController {
         usernameLabel.text = "@\(tweet.user!.screenname!)"
         timeLabel.text = DateManager.detailedFormatter.stringFromDate(tweet.createdAt!)
         tweetLabel.text = tweet.text
-        if (tweet.isRetweet) {
+        if tweet.retweetName != nil {
             repostLabel.text = "\(tweet.retweetName!) retweeted"
         } else {
             repostIcon.hidden = true

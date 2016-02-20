@@ -30,7 +30,7 @@ class TweetCell: UITableViewCell {
             usernameLabel.text = "@\(tweet.user!.screenname!)"
             timestampLabel.text = DateManager.getFriendlyTime(tweet.createdAt!)
             tweetLabel.text = tweet.text
-            if (tweet.isRetweet) {
+            if tweet.retweetName != nil {
                 retweetLabel.text = "\(tweet.retweetName!) retweeted"
             } else {
                 retweetLabel.hidden = true

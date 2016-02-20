@@ -14,8 +14,12 @@ class Tweet: NSObject {
     let text: String?
     let createdAtString: String?
     let createdAt: NSDate?
-    let isRetweet: Bool
     let retweetName: String?
+    let replyName: String?
+    let favorited: Bool
+    let retweetCount: Int
+    let favCount: Int
+    
     
     init(dictionary: NSDictionary) {
         self.dictionary = dictionary
@@ -24,8 +28,11 @@ class Tweet: NSObject {
         var text = ""
         var createdAtString = ""
         var createdAt: NSDate? = nil
-        var isRetweet = false
-        var retweetName = ""
+        var retweetName: String? = nil
+        var replyName: String? = nil
+        var favorited = false
+        var retweetCount = 0
+        var favCount = 0
         
         if let userDict = dictionary["user"] as? NSDictionary {
             user = User(dictionary: userDict)
@@ -43,7 +50,6 @@ class Tweet: NSObject {
                 let retweetUser = User(dictionary: retweetUserDict)
                 retweetName = user!.name!
                 user = retweetUser
-                isRetweet = true
             }
             if let textStr = retweetedStatus["text"] as? String{
                 text = textStr
@@ -54,8 +60,11 @@ class Tweet: NSObject {
         self.text = text
         self.createdAtString = createdAtString
         self.createdAt = createdAt
-        self.isRetweet = isRetweet
         self.retweetName = retweetName
+        self.replyName = replyName
+        self.favorited = favorited
+        self.retweetCount = retweetCount
+        self.favCount = favCount
     }
     
     class func tweetsWithArray(array: [NSDictionary]) -> [Tweet] {
