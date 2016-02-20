@@ -11,6 +11,7 @@ import UIKit
 class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var tableView: UITableView!
+    
     var tweets = [Tweet]()
     
     override func viewDidLoad() {
@@ -26,6 +27,7 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
             self.tweets = tweets!
             
             // reload view
+            self.tableView.reloadData()
         }
     }
     
@@ -34,7 +36,9 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        <#code#>
+        let cell = tableView.dequeueReusableCellWithIdentifier("TweetCell", forIndexPath: indexPath) as! TweetCell
+        cell.tweet = tweets[indexPath.row]
+        return cell
     }
 
     override func didReceiveMemoryWarning() {

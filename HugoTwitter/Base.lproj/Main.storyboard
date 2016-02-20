@@ -51,7 +51,7 @@
                                 <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="85" id="M4D-GU-3oH">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TweetCell" rowHeight="85" id="M4D-GU-3oH" customClass="TweetCell" customModule="HugoTwitter" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="320" height="85"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="M4D-GU-3oH" id="F2V-wI-Lyo">
@@ -143,6 +143,14 @@
                                                 <constraint firstItem="8tq-Ae-cG5" firstAttribute="leading" secondItem="CcW-B3-M8K" secondAttribute="trailing" constant="32" id="xnH-ui-CeK"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="displayNameLabel" destination="XKF-P6-jyd" id="N9S-ao-C7G"/>
+                                            <outlet property="profileImageView" destination="gWh-oa-rX2" id="laZ-OG-vjc"/>
+                                            <outlet property="retweetLabel" destination="YRB-Jn-BwQ" id="N39-4a-wVZ"/>
+                                            <outlet property="timestampLabel" destination="oef-E5-JLd" id="49C-yZ-pSa"/>
+                                            <outlet property="tweetLabel" destination="13u-g6-c0M" id="tPv-vy-yR5"/>
+                                            <outlet property="usernameLabel" destination="Nmp-z8-csg" id="iF0-a1-fEY"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
