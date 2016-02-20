@@ -47,8 +47,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="101" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6Dy-Zj-t4a">
-                                <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="101" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6Dy-Zj-t4a">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TweetCell" rowHeight="101" id="M4D-GU-3oH" customClass="TweetCell" customModule="HugoTwitter" customModuleProvider="target">
@@ -73,7 +73,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_reply" translatesAutoresizingMaskIntoConstraints="NO" id="zUo-Os-HVh">
-                                                    <rect key="frame" x="60" y="72.5" width="12" height="15"/>
+                                                    <rect key="frame" x="60" y="72" width="12" height="15"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="12" id="SOd-we-BPn"/>
                                                         <constraint firstAttribute="height" constant="15" id="w5f-HW-ufc"/>
@@ -171,9 +171,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="6Dy-Zj-t4a" firstAttribute="leading" secondItem="DPC-M7-TU9" secondAttribute="leading" id="WOE-aT-E6W"/>
-                            <constraint firstItem="6Dy-Zj-t4a" firstAttribute="top" secondItem="2yN-YH-ioO" secondAttribute="bottom" id="YkR-IH-WbC"/>
                             <constraint firstAttribute="trailing" secondItem="6Dy-Zj-t4a" secondAttribute="trailing" id="Znx-xp-O9x"/>
-                            <constraint firstItem="O90-ck-wi3" firstAttribute="top" secondItem="6Dy-Zj-t4a" secondAttribute="bottom" id="fYv-Hi-iKc"/>
+                            <constraint firstItem="6Dy-Zj-t4a" firstAttribute="top" secondItem="DPC-M7-TU9" secondAttribute="top" id="pdJ-jA-yMz"/>
+                            <constraint firstAttribute="bottom" secondItem="6Dy-Zj-t4a" secondAttribute="bottom" id="wvp-ZB-89T"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Home" id="sJj-SU-zhD"/>
