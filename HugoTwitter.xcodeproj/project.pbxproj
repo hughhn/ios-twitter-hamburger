@@ -79,16 +79,16 @@
 		0B1508311C745A630096A640 /* HugoTwitter */ = {
 			isa = PBXGroup;
 			children = (
+				0BCA7D741C77009100E82FED /* ViewControllers */,
+				0BCA7D6F1C77004C00E82FED /* Views */,
 				0BCA7D661C74685E00E82FED /* Models */,
 				0BCA7D651C74685800E82FED /* API */,
 				0B1508321C745A630096A640 /* AppDelegate.swift */,
-				0B1508341C745A630096A640 /* ViewController.swift */,
 				0B1508361C745A630096A640 /* Main.storyboard */,
 				0B1508391C745A630096A640 /* Assets.xcassets */,
 				0B15083B1C745A630096A640 /* LaunchScreen.storyboard */,
 				0B15083E1C745A630096A640 /* Info.plist */,
 				0BCA7D621C74681C00E82FED /* HugoTwitter-Bridging-Header.h */,
-				0BCA7D6D1C74774900E82FED /* TweetsViewController.swift */,
 			);
 			path = HugoTwitter;
 			sourceTree = "<group>";
@@ -108,6 +108,22 @@
 				0BCA7D6B1C7468D000E82FED /* Tweet.swift */,
 			);
 			name = Models;
+			sourceTree = "<group>";
+		};
+		0BCA7D6F1C77004C00E82FED /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		0BCA7D741C77009100E82FED /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				0B1508341C745A630096A640 /* ViewController.swift */,
+				0BCA7D6D1C74774900E82FED /* TweetsViewController.swift */,
+			);
+			name = ViewControllers;
 			sourceTree = "<group>";
 		};
 		E796EDECBDBF56B6F471D1A2 /* Frameworks */ = {

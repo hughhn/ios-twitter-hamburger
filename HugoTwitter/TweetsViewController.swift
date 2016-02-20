@@ -8,19 +8,33 @@
 
 import UIKit
 
-class TweetsViewController: UIViewController {
+class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
-    var tweets: [Tweet]?
+    @IBOutlet weak var tableView: UITableView!
+    var tweets = [Tweet]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.estimatedRowHeight = 100
+        tableView.rowHeight = UITableViewAutomaticDimension
 
         // Do any additional setup after loading the view.
         TwitterClient.sharedInstance.homeTimeline(nil) { (tweets, error) -> () in
-            self.tweets = tweets
+            self.tweets = tweets!
             
             // reload view
         }
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return tweets.count
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        <#code#>
     }
 
     override func didReceiveMemoryWarning() {
