@@ -58,6 +58,10 @@ class TweetDetailedViewController: UIViewController {
         usernameLabel.text = "@\(tweet.user!.screenname!)"
         timeLabel.text = DateManager.detailedFormatter.stringFromDate(tweet.createdAt!)
         tweetLabel.text = tweet.text
+        
+        retweetCountLabel.text = "\(tweet.retweetCount)"
+        likeCountLabel.text = "\(tweet.favCount)"
+        
         if tweet.retweetName != nil {
             repostLabel.text = "\(tweet.retweetName!) retweeted"
         } else {

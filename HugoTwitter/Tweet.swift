@@ -56,6 +56,21 @@ class Tweet: NSObject {
             }
         }
         
+        if let repliedTo = dictionary["in_reply_to_screen_name"] as? String {
+            replyName = repliedTo
+        }
+        
+        if let favoritedData = dictionary["favorited"] as? Bool {
+            favorited = favoritedData
+        }
+        
+        if let retweetCountData = dictionary["retweet_count"] as? Int {
+            retweetCount = retweetCountData
+        }
+        if let favCountData = dictionary["favorite_count"] as? Int {
+            favCount = favCountData
+        }
+        
         self.user = user
         self.text = text
         self.createdAtString = createdAtString
