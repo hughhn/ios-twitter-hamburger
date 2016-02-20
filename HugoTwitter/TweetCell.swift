@@ -8,6 +8,7 @@
 
 import UIKit
 
+let customGrayColor = UIColor(red: 133.0/255.0, green: 133.0/255.0, blue: 133.0/255.0, alpha: 1.0)
 class TweetCell: UITableViewCell {
 
     @IBOutlet weak var retweetLabel: UILabel!
@@ -39,16 +40,16 @@ class TweetCell: UITableViewCell {
         profileImageView.layer.cornerRadius = 5
         
         retweetedIcon.image = retweetedIcon.image!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
-        retweetedIcon.tintColor = UIColor.grayColor()
+        retweetedIcon.tintColor = customGrayColor
         
         replyIcon.image = replyIcon.image!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
-        replyIcon.tintColor = UIColor.grayColor()
+        replyIcon.tintColor = customGrayColor
         
         retweetIcon.image = retweetIcon.image!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
-        retweetIcon.tintColor = UIColor.grayColor()
+        retweetIcon.tintColor = customGrayColor
         
         favIcon.image = favIcon.image!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
-        favIcon.tintColor = UIColor.grayColor()
+        favIcon.tintColor = customGrayColor
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
