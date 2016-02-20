@@ -121,8 +121,8 @@
                                         <constraint firstAttribute="height" constant="1" id="IDe-Xx-kPc"/>
                                     </constraints>
                                 </view>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="@michael_nielsen" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rc3-fb-lVk">
-                                    <rect key="frame" x="66" y="48" width="100.5" height="14.5"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@michael_nielsen" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rc3-fb-lVk">
+                                    <rect key="frame" x="66" y="49" width="100.5" height="14.5"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                     <color key="textColor" red="0.6705882352941176" green="0.6705882352941176" blue="0.6705882352941176" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
@@ -146,7 +146,7 @@
                                 <constraint firstItem="swH-Fn-rzU" firstAttribute="leading" secondItem="kpd-6x-btp" secondAttribute="trailing" constant="8" id="1iB-HX-03p"/>
                                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="swH-Fn-rzU" secondAttribute="trailing" constant="8" id="2QF-wx-SzQ"/>
                                 <constraint firstAttribute="trailing" secondItem="YtP-9p-pZK" secondAttribute="trailing" constant="8" id="2hL-k0-Red"/>
-                                <constraint firstItem="rc3-fb-lVk" firstAttribute="top" secondItem="swH-Fn-rzU" secondAttribute="bottom" constant="4" id="4Mj-oH-R3F"/>
+                                <constraint firstItem="rc3-fb-lVk" firstAttribute="top" secondItem="swH-Fn-rzU" secondAttribute="bottom" constant="2" id="4Mj-oH-R3F"/>
                                 <constraint firstItem="YtP-9p-pZK" firstAttribute="top" secondItem="81L-rY-vLb" secondAttribute="bottom" constant="24" id="6B7-k7-6YZ"/>
                                 <constraint firstItem="Mqp-TN-Snx" firstAttribute="leading" secondItem="NXo-pg-fAX" secondAttribute="leading" constant="8" id="6Bn-Dr-VQu"/>
                                 <constraint firstItem="Mqp-TN-Snx" firstAttribute="top" secondItem="YtP-9p-pZK" secondAttribute="bottom" constant="8" id="6di-dl-9SA"/>
