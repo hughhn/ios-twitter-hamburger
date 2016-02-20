@@ -9,11 +9,13 @@
 import UIKit
 
 class Tweet: NSObject {
-    var dictionary: NSDictionary
-    var user: User?
-    var text: String?
-    var createdAtString: String?
-    var createdAt: NSDate?
+    let dictionary: NSDictionary
+    let user: User?
+    let text: String?
+    let createdAtString: String?
+    let createdAt: NSDate?
+    let isRetweet: Bool
+    let retweetName: String?
     
     init(dictionary: NSDictionary) {
         self.dictionary = dictionary
@@ -22,6 +24,8 @@ class Tweet: NSObject {
         var text = ""
         var createdAtString = ""
         var createdAt: NSDate? = nil
+        var isRetweet = false
+        var retweetName = ""
         
         if let userDict = dictionary["user"] as? NSDictionary {
             user = User(dictionary: userDict)
@@ -36,10 +40,24 @@ class Tweet: NSObject {
             createdAt = dateFormatter.dateFromString(createdAtString)
         }
         
+        if let retweetedStatus = dictionary["retweeted_status"] as? NSDictionary {
+            if let retweetUserDict = retweetedStatus["user"] as? NSDictionary {
+                let retweetUser = User(dictionary: retweetUserDict)
+                retweetName = user!.name!
+                user = retweetUser
+                isRetweet = true
+            }
+            if let textStr = retweetedStatus["text"] as? String{
+                text = textStr
+            }
+        }
+        
         self.user = user
         self.text = text
         self.createdAtString = createdAtString
         self.createdAt = createdAt
+        self.isRetweet = isRetweet
+        self.retweetName = retweetName
     }
     
     class func tweetsWithArray(array: [NSDictionary]) -> [Tweet] {

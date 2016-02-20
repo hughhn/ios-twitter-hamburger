@@ -31,6 +31,13 @@ class TweetCell: UITableViewCell {
             usernameLabel.text = "@\(tweet.user!.screenname!)"
             timestampLabel.text = "4h"
             tweetLabel.text = tweet.text
+            if (tweet.isRetweet) {
+                retweetLabel.text = "\(tweet.retweetName!) retweeted"
+            } else {
+                retweetLabel.hidden = true
+                retweetedIcon.hidden = true
+                profileImageTopMargin.constant = 8
+            }
         }
     }
     

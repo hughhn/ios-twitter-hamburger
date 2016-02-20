@@ -13,6 +13,7 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     @IBOutlet weak var tableView: UITableView!
     
     var tweets = [Tweet]()
+    var homeParams: NSDictionary = ["include_rts": "1"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,11 +29,13 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         tableView.insertSubview(refreshControl, atIndex: 0)
 
         // Do any additional setup after loading the view.
-        TwitterClient.sharedInstance.homeTimeline(nil) { (tweets, error) -> () in
-            self.tweets = tweets!
-            
-            // reload view
-            self.tableView.reloadData()
+        TwitterClient.sharedInstance.homeTimeline(homeParams) { (tweets, error) -> () in
+            if let tweets = tweets {
+                self.tweets = tweets
+                // reload view
+                self.tableView.reloadData()
+
+            }
         }
     }
     
@@ -40,7 +43,7 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     // Updates the tableView with the new data
     // Hides the RefreshControl
     func refreshControlAction(refreshControl: UIRefreshControl) {
-        TwitterClient.sharedInstance.homeTimeline(nil) { (tweets, error) -> () in
+        TwitterClient.sharedInstance.homeTimeline(homeParams) { (tweets, error) -> () in
             refreshControl.endRefreshing()
             
             self.tweets = tweets!
