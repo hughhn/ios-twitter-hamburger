@@ -8,9 +8,6 @@
 
 import UIKit
 
-let customGrayColor = UIColor(red: 171.0/255.0, green: 171.0/255.0, blue: 171.0/255.0, alpha: 1.0)
-var _dateFormatter = NSDateFormatter()
-
 class TweetCell: UITableViewCell {
 
     @IBOutlet weak var retweetLabel: UILabel!
@@ -51,6 +48,7 @@ class TweetCell: UITableViewCell {
         self.preservesSuperviewLayoutMargins = false
         
         profileImageView.layer.cornerRadius = 5
+        profileImageView.clipsToBounds = true
         
         retweetedIcon.image = retweetedIcon.image!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
         retweetedIcon.tintColor = customGrayColor

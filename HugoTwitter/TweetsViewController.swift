@@ -60,6 +60,11 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        
+        let tweetDetailedVC = TweetDetailedViewController()
+        let tweet = tweets[indexPath.row]
+        tweetDetailedVC.tweet = tweet
+        navigationController?.pushViewController(tweetDetailedVC, animated: true)
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
