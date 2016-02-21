@@ -24,6 +24,18 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         titleView.addSubview(titleImageView)
         navigationItem.titleView = titleView
         
+        let leftBtn = UIButton(type: .System)
+        leftBtn.frame = CGRectMake(0, 0, 30, 30);
+        let logoutImage = UIImage(named: "icon_logout")
+        leftBtn.setImage(logoutImage!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate), forState: UIControlState.Normal)
+        leftBtn.tintColor = twitterColor
+        leftBtn.addTarget(self, action: "onLogout", forControlEvents: UIControlEvents.TouchUpInside)
+        
+        let negativeSpacer = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FixedSpace, target: nil, action: nil)
+        negativeSpacer.width = -10
+        let leftBarBtn = UIBarButtonItem(customView: leftBtn)
+        navigationItem.leftBarButtonItems = [negativeSpacer, leftBarBtn]
+        
         let rightBtn = UIButton(type: .System)
         rightBtn.frame = CGRectMake(0, 0, 30, 30);
         let composeImage = UIImage(named: "icon_compose")
@@ -96,7 +108,11 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func onLogoutClicked(sender: AnyObject) {
+    func onCompose() {
+    
+    }
+    
+    func onLogout() {
         User.currentUser?.logout()
     }
 
