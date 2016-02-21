@@ -20,12 +20,14 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         let titleView = UIView(frame: CGRectMake(0, 0, 30, 30))
         let titleImageView = UIImageView(image: UIImage(named: "icon_twitter"))
+        titleImageView.image = titleImageView.image!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+        titleImageView.tintColor = twitterColor
         titleImageView.frame = CGRectMake(0, 0, titleView.frame.width, titleView.frame.height)
         titleView.addSubview(titleImageView)
         navigationItem.titleView = titleView
         
         let leftBtn = UIButton(type: .System)
-        leftBtn.frame = CGRectMake(0, 0, 30, 30);
+        leftBtn.frame = CGRectMake(0, 0, 25, 23);
         let logoutImage = UIImage(named: "icon_logout")
         leftBtn.setImage(logoutImage!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate), forState: UIControlState.Normal)
         leftBtn.tintColor = twitterColor
