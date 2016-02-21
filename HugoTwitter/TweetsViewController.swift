@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ComposeViewControllerDelegate {
+class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ComposeViewControllerDelegate, TweetDetailedViewControllerDelegate {
 
     @IBOutlet weak var tableView: UITableView!
     
@@ -59,10 +59,8 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         rightBtn.tintColor = twitterColor
         rightBtn.addTarget(self, action: "onCompose", forControlEvents: UIControlEvents.TouchUpInside)
         
-        let negativeSpacer2 = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FixedSpace, target: nil, action: nil)
-        negativeSpacer2.width = -10
         let rightBarBtn = UIBarButtonItem(customView: rightBtn)
-        navigationItem.rightBarButtonItems = [negativeSpacer2, rightBarBtn]
+        navigationItem.rightBarButtonItems = [negativeSpacer, rightBarBtn]
     }
     
     func setupTableView() {
@@ -103,6 +101,10 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let tweetDetailedVC = TweetDetailedViewController()
         let tweet = tweets[indexPath.row]
         tweetDetailedVC.tweet = tweet
+        tweetDetailedVC.delegate = self
+        
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.Plain, target: nil, action: nil)
+        
         navigationController?.pushViewController(tweetDetailedVC, animated: true)
     }
     
@@ -115,6 +117,10 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func composeClicked(tweetDetailedViewController: TweetDetailedViewController) {
+        onCompose()
     }
     
     func onCompose() {

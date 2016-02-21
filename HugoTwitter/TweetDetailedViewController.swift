@@ -8,8 +8,14 @@
 
 import UIKit
 
+@objc protocol TweetDetailedViewControllerDelegate {
+    optional func composeClicked(tweetDetailedViewController: TweetDetailedViewController)
+}
+
 class TweetDetailedViewController: UIViewController {
 
+    weak var delegate: TweetDetailedViewControllerDelegate?
+    
     @IBOutlet weak var repostIcon: UIImageView!
     @IBOutlet weak var repostLabel: UILabel!
     @IBOutlet weak var profileImageView: UIImageView!
@@ -33,6 +39,21 @@ class TweetDetailedViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         navigationController?.navigationBar.translucent = false;
+        navigationItem.title = "Tweet"
+        
+        let negativeSpacer = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FixedSpace, target: nil, action: nil)
+        negativeSpacer.width = -10
+        
+        let rightBtn = UIButton(type: .System)
+        rightBtn.frame = CGRectMake(0, 0, 30, 30);
+        let composeImage = UIImage(named: "icon_compose")
+        rightBtn.setImage(composeImage!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate), forState: UIControlState.Normal)
+        rightBtn.tintColor = twitterColor
+        rightBtn.addTarget(self, action: "onCompose", forControlEvents: UIControlEvents.TouchUpInside)
+        
+        let rightBarBtn = UIBarButtonItem(customView: rightBtn)
+        navigationItem.rightBarButtonItems = [negativeSpacer, rightBarBtn]
+        
         
         profileImageView.layer.cornerRadius = 5
         profileImageView.clipsToBounds = true
@@ -80,6 +101,9 @@ class TweetDetailedViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func onCompose() {
+        delegate?.composeClicked?(self)
+    }
 
     /*
     // MARK: - Navigation
