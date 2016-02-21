@@ -73,14 +73,14 @@
                                                     </constraints>
                                                 </imageView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_reply" translatesAutoresizingMaskIntoConstraints="NO" id="zUo-Os-HVh">
-                                                    <rect key="frame" x="70" y="83" width="12" height="15"/>
+                                                    <rect key="frame" x="70" y="82" width="12" height="15"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="12" id="SOd-we-BPn"/>
                                                         <constraint firstAttribute="height" constant="15" id="w5f-HW-ufc"/>
                                                     </constraints>
                                                 </imageView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_retweet" translatesAutoresizingMaskIntoConstraints="NO" id="CcW-B3-M8K">
-                                                    <rect key="frame" x="142" y="83" width="15" height="15"/>
+                                                    <rect key="frame" x="142" y="82" width="15" height="15"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="15" id="02e-Hy-TkD"/>
                                                         <constraint firstAttribute="width" constant="15" id="UTq-xb-dpo"/>
@@ -105,19 +105,19 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="@TheMichaelMoran" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nmp-z8-csg">
-                                                    <rect key="frame" x="162.5" y="28" width="112.5" height="14.5"/>
+                                                    <rect key="frame" x="162" y="28" width="112.5" height="14.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" red="0.67165464743589742" green="0.67165464743589742" blue="0.67165464743589742" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I have seen the future of newspaper http://t.co/GSLhglaglaga" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="13u-g6-c0M">
-                                                    <rect key="frame" x="70" y="44" width="238" height="29"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <rect key="frame" x="70" y="44" width="238" height="28"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_fav" translatesAutoresizingMaskIntoConstraints="NO" id="8tq-Ae-cG5">
-                                                    <rect key="frame" x="217" y="83" width="15" height="15"/>
+                                                    <rect key="frame" x="217" y="82" width="15" height="15"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="15" id="cnJ-if-6HH"/>
                                                         <constraint firstAttribute="height" constant="15" id="iYb-0P-eDD"/>
