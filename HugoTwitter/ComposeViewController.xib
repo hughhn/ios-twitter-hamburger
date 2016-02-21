@@ -8,12 +8,15 @@
         <mutableArray key="GothamBook.ttf">
             <string>GothamBook-Regular</string>
             <string>GothamBook-Regular</string>
+            <string>GothamBook-Regular</string>
         </mutableArray>
     </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ComposeViewController" customModule="HugoTwitter" customModuleProvider="target">
             <connections>
                 <outlet property="closeBtn" destination="lPJ-hX-Eap" id="5zC-rY-VPI"/>
+                <outlet property="inReplyToIcon" destination="fvy-4v-du5" id="L9v-YP-OUG"/>
+                <outlet property="inReplyToLabel" destination="es5-nx-UyG" id="etF-In-pgz"/>
                 <outlet property="placeHolderLabel" destination="NZS-mF-ZCh" id="Etk-OH-LoB"/>
                 <outlet property="profileImageView" destination="iKq-p3-QHf" id="cUh-3Z-vWP"/>
                 <outlet property="tweetTextView" destination="EAP-aD-Afr" id="CGh-z6-Fgx"/>
@@ -65,17 +68,36 @@
                     <color key="textColor" red="0.6705882352941176" green="0.6705882352941176" blue="0.6705882352941176" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_down_arrow" translatesAutoresizingMaskIntoConstraints="NO" id="fvy-4v-du5">
+                    <rect key="frame" x="8" y="81" width="15" height="15"/>
+                    <color key="tintColor" red="0.6705882352941176" green="0.6705882352941176" blue="0.6705882352941176" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="15" id="Etw-a2-5V3"/>
+                        <constraint firstAttribute="height" constant="15" id="mck-rq-aTh"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="es5-nx-UyG">
+                    <rect key="frame" x="24" y="80.5" width="33" height="14.5"/>
+                    <fontDescription key="fontDescription" name="GothamBook-Regular" family="Gotham Book" pointSize="12"/>
+                    <color key="textColor" red="0.6705882352941176" green="0.6705882352941176" blue="0.6705882352941176" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstItem="es5-nx-UyG" firstAttribute="leading" secondItem="fvy-4v-du5" secondAttribute="trailing" constant="1" id="3cz-Pa-7fI"/>
+                <constraint firstItem="fvy-4v-du5" firstAttribute="top" secondItem="Oqk-fH-2ox" secondAttribute="bottom" constant="8" id="6js-Ke-Yxu"/>
                 <constraint firstAttribute="trailing" secondItem="EAP-aD-Afr" secondAttribute="trailing" constant="8" id="897-FI-9oO"/>
                 <constraint firstItem="NZS-mF-ZCh" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="12" id="AtE-SI-bJk"/>
                 <constraint firstAttribute="trailing" secondItem="Oqk-fH-2ox" secondAttribute="trailing" id="HoT-HE-zfj"/>
                 <constraint firstItem="NZS-mF-ZCh" firstAttribute="top" secondItem="Oqk-fH-2ox" secondAttribute="bottom" constant="38" id="KHQ-6l-0my"/>
+                <constraint firstItem="es5-nx-UyG" firstAttribute="centerY" secondItem="fvy-4v-du5" secondAttribute="centerY" constant="-1" id="MEy-J4-uMV"/>
                 <constraint firstItem="EAP-aD-Afr" firstAttribute="top" secondItem="Oqk-fH-2ox" secondAttribute="bottom" constant="30" id="Nst-uV-7Db"/>
                 <constraint firstItem="iKq-p3-QHf" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="24" id="SmK-ro-RGp"/>
+                <constraint firstItem="fvy-4v-du5" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="a6S-vz-qEk"/>
                 <constraint firstItem="Oqk-fH-2ox" firstAttribute="top" secondItem="iKq-p3-QHf" secondAttribute="bottom" constant="8" id="cu4-fK-4wQ"/>
                 <constraint firstItem="Oqk-fH-2ox" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="dkb-4q-XMq"/>
+                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="es5-nx-UyG" secondAttribute="trailing" constant="8" id="fx5-Ev-nGV"/>
                 <constraint firstAttribute="trailing" secondItem="lPJ-hX-Eap" secondAttribute="trailing" constant="8" id="rPD-bR-Bgq"/>
                 <constraint firstItem="lPJ-hX-Eap" firstAttribute="centerY" secondItem="iKq-p3-QHf" secondAttribute="centerY" id="seD-D1-cP1"/>
                 <constraint firstItem="iKq-p3-QHf" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="wDY-nX-cnt"/>
@@ -87,5 +109,6 @@
     </objects>
     <resources>
         <image name="icon_close" width="43" height="43"/>
+        <image name="icon_down_arrow" width="43" height="43"/>
     </resources>
 </document>

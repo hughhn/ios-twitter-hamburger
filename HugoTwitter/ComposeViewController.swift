@@ -33,6 +33,9 @@ class ComposeViewController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var tweetTextView: UITextView!
     @IBOutlet weak var placeHolderLabel: UILabel!
     
+    @IBOutlet weak var inReplyToIcon: UIImageView!
+    @IBOutlet weak var inReplyToLabel: UILabel!
+    
     var counterLabel: UILabel!
     var tweetBtn: UIButton!
     var flexButton, counterBarBtn, tweetBarBtn, negativeSpacer: UIBarButtonItem!
@@ -53,12 +56,19 @@ class ComposeViewController: UIViewController, UITextViewDelegate {
         closeBtn.setImage(closeImage!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate), forState: UIControlState.Normal)
         closeBtn.tintColor = twitterColor
         
+        inReplyToIcon.image = inReplyToIcon.image!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+        inReplyToIcon.tintColor = customGrayColor
+        
         tweetTextView.delegate = self
         tweetTextView.becomeFirstResponder()
         
         if replyToTweet != nil && replyToTweet!.user != nil {
             placeHolderLabel.hidden = true
+            inReplyToLabel.text = "In reply to \(replyToTweet!.user!.name!)"
             tweetTextView.text = "@\(replyToTweet!.user!.screenname!) "
+        } else {
+            inReplyToIcon.hidden = true
+            inReplyToLabel.hidden = true
         }
         
         setupAccessoryToolbar()
