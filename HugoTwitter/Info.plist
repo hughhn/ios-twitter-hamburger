@@ -4,22 +4,10 @@
 <dict>
 	<key>UIAppFonts</key>
 	<array>
-		<string>Gotham Book Italic</string>
-		<string>Gotham Book</string>
-        <string>GOTHAM-BLACK</string>
-        <string>GOTHAM-BLACKITALIC</string>
-        <string>GOTHAM-BOLD</string>
-        <string>GOTHAM-BOLDITALIC</string>
-        <string>GOTHAM-LIGHT</string>
-        <string>GOTHAM-LIGHTITALIC</string>
-        <string>GOTHAM-MEDIUM</string>
-        <string>GOTHAM-MEDIUMITALIC</string>
-        <string>GOTHAM-THIN</string>
-        <string>GOTHAM-THINITALIC</string>
-        <string>GOTHAM-ULTRA</string>
-        <string>GOTHAM-ULTRAITALIC</string>
-        <string>GOTHAM-XLIGHT</string>
-        <string>GOTHAM-XLIGHTITALIC</string>
+		<string>GothamBold</string>
+		<string>GothamBook</string>
+        <string>GothamLight</string>
+        <string>GothamMedium</string>
 	</array>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
