@@ -137,10 +137,10 @@ class TweetDetailedViewController: UIViewController {
     @IBAction func onRetweet(sender: AnyObject) {
         // Fake fast response, then update later
         tweet.retweeted = !tweet.retweeted
-        tweet.retweetCount++
         self.refreshTweetData()
         
         if tweet.retweeted {
+            tweet.retweetCount++
             delegate?.retweetClicked?(self, retweetTweet: self.tweet, completion: { (tweet, error) -> () in
                 if tweet != nil {
                     print("toggle Retweet")
@@ -149,6 +149,7 @@ class TweetDetailedViewController: UIViewController {
                 }
             })
         } else {
+            tweet.retweetCount--
             // un-retweet
         }
     }
@@ -156,10 +157,10 @@ class TweetDetailedViewController: UIViewController {
     @IBAction func onFav(sender: AnyObject) {
         // Fake fast response, then update later
         tweet.favorited = !tweet.favorited
-        tweet.favCount++
         self.refreshTweetData()
         
         if tweet.favorited {
+            tweet.favCount++
             delegate?.favClicked?(self, favTweet: self.tweet, completion: { (tweet, error) -> () in
                 if tweet != nil {
                     print("toggle Fav")
@@ -168,6 +169,7 @@ class TweetDetailedViewController: UIViewController {
                 }
             })
         } else {
+            tweet.favCount--
             // un-fav
         }
     }
