@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ComposeViewControllerDelegate {
 
     @IBOutlet weak var tableView: UITableView!
     
@@ -111,7 +111,14 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func onCompose() {
+        let composeVC = ComposeViewController()
+        composeVC.delegate = self
+        composeVC.user = User.currentUser
+        navigationController?.presentViewController(composeVC, animated: true, completion: nil)
+    }
     
+    func onComposeViewClosed(composeViewController: ComposeViewController) {
+        dismissViewControllerAnimated(true, completion: nil)
     }
     
     func onLogout() {
