@@ -60,7 +60,7 @@
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                 </textView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What's happening?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NZS-mF-ZCh">
-                    <rect key="frame" x="8" y="103" width="229.5" height="29"/>
+                    <rect key="frame" x="12" y="111" width="229.5" height="29"/>
                     <fontDescription key="fontDescription" name="GothamBook-Regular" family="Gotham Book" pointSize="24"/>
                     <color key="textColor" red="0.6705882352941176" green="0.6705882352941176" blue="0.6705882352941176" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
@@ -69,9 +69,9 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="EAP-aD-Afr" secondAttribute="trailing" constant="8" id="897-FI-9oO"/>
-                <constraint firstItem="NZS-mF-ZCh" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="AtE-SI-bJk"/>
+                <constraint firstItem="NZS-mF-ZCh" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="12" id="AtE-SI-bJk"/>
                 <constraint firstAttribute="trailing" secondItem="Oqk-fH-2ox" secondAttribute="trailing" id="HoT-HE-zfj"/>
-                <constraint firstItem="NZS-mF-ZCh" firstAttribute="top" secondItem="Oqk-fH-2ox" secondAttribute="bottom" constant="30" id="KHQ-6l-0my"/>
+                <constraint firstItem="NZS-mF-ZCh" firstAttribute="top" secondItem="Oqk-fH-2ox" secondAttribute="bottom" constant="38" id="KHQ-6l-0my"/>
                 <constraint firstItem="EAP-aD-Afr" firstAttribute="top" secondItem="Oqk-fH-2ox" secondAttribute="bottom" constant="30" id="Nst-uV-7Db"/>
                 <constraint firstItem="iKq-p3-QHf" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="24" id="SmK-ro-RGp"/>
                 <constraint firstItem="Oqk-fH-2ox" firstAttribute="top" secondItem="iKq-p3-QHf" secondAttribute="bottom" constant="8" id="cu4-fK-4wQ"/>

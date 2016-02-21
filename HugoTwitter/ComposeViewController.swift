@@ -93,11 +93,13 @@ class ComposeViewController: UIViewController, UITextViewDelegate {
         delegate?.onComposeViewClosed?(self, tweet: tweetTextView.text)
     }
     
-    func textViewDidBeginEditing(textView: UITextView) {
-        placeHolderLabel.hidden = true
-    }
-    
     func textViewDidChange(textView: UITextView) {
+        if textView.text == "" {
+            placeHolderLabel.hidden = false
+        } else {
+            placeHolderLabel.hidden = true
+        }
+        
         let counter = MAX_CHARS - textView.text.length
         counterLabel.text = "\(counter)"
         if counter < 0 {
@@ -108,12 +110,6 @@ class ComposeViewController: UIViewController, UITextViewDelegate {
             counterLabel.textColor = UIColor.lightGrayColor()
             tweetBtn.backgroundColor = twitterColor
             tweetBtn.enabled = true
-        }
-    }
-    
-    func textViewDidEndEditing(textView: UITextView) {
-        if textView.text == "" {
-            placeHolderLabel.hidden = false
         }
     }
 
