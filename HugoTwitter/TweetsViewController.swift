@@ -131,6 +131,8 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func onTweetSend(composeViewController: ComposeViewController, tweet: String!) {
+        dismissViewControllerAnimated(true, completion: nil)
+        
         // post Tweet API
         print(tweet)
     }
