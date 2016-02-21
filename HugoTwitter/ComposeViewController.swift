@@ -9,7 +9,8 @@
 import UIKit
 
 @objc protocol ComposeViewControllerDelegate {
-    optional func onComposeViewClosed(composeViewController: ComposeViewController)
+    optional func onTweetSend(composeViewController: ComposeViewController, tweet: String!)
+    optional func onComposeViewClosed(composeViewController: ComposeViewController, tweet: String!)
 }
 
 extension String {
@@ -83,7 +84,8 @@ class ComposeViewController: UIViewController, UITextViewDelegate {
     }
     
     func onTweet() {
-        print("\(tweetTextView.text)")
+        delegate?.onTweetSend?(self, tweet: tweetTextView.text)
+        delegate?.onComposeViewClosed?(self, tweet: tweetTextView.text)
     }
     
     func textViewDidBeginEditing(textView: UITextView) {
@@ -112,7 +114,7 @@ class ComposeViewController: UIViewController, UITextViewDelegate {
     }
     
     @IBAction func onClose(sender: AnyObject) {
-        delegate?.onComposeViewClosed?(self)
+        delegate?.onComposeViewClosed?(self, tweet: tweetTextView.text)
     }
 
     /*

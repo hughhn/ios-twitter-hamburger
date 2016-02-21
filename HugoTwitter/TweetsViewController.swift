@@ -117,8 +117,15 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         navigationController?.presentViewController(composeVC, animated: true, completion: nil)
     }
     
-    func onComposeViewClosed(composeViewController: ComposeViewController) {
+    func onTweetSend(composeViewController: ComposeViewController, tweet: String!) {
+        // post Tweet API
+        print(tweet)
+    }
+    
+    func onComposeViewClosed(composeViewController: ComposeViewController, tweet: String!) {
         dismissViewControllerAnimated(true, completion: nil)
+        
+        // save in progress Tweet
     }
     
     func onLogout() {
