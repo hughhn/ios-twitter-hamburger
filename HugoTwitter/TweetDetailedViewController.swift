@@ -102,7 +102,7 @@ class TweetDetailedViewController: UIViewController {
         
         if tweet.retweeted {
             retweetBtn.setImage(retweetImage, forState: UIControlState.Normal)
-            retweetBtn.tintColor = UIColor.blueColor()
+            retweetBtn.tintColor = UIColor.greenColor()
         } else {
             retweetBtn.setImage(retweetImage, forState: UIControlState.Normal)
             retweetBtn.tintColor = customGrayColor

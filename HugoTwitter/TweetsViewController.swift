@@ -139,9 +139,7 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
             return
         }
         
-        let params: NSDictionary = ["id": favTweet!.id!]
-        print("fav tweet ID = \(favTweet!.id!)")
-        TwitterClient.sharedInstance.fav(params) { (tweet, error) -> () in
+        TwitterClient.sharedInstance.fav(favTweet!.id!, params: nil) { (tweet, error) -> () in
             if tweet != nil {
                 self.refreshControlAction(nil)
             }
@@ -156,9 +154,7 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
             return
         }
         
-        let params: NSDictionary = ["id": retweetTweet!.id!]
-        print("retweet tweet ID = \(retweetTweet!.id!)")
-        TwitterClient.sharedInstance.retweet(params) { (tweet, error) -> () in
+        TwitterClient.sharedInstance.retweet(retweetTweet!.id!, params: nil) { (tweet, error) -> () in
             if tweet != nil {
                 self.refreshControlAction(nil)
             }
