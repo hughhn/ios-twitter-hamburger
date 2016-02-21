@@ -28,7 +28,7 @@ class TwitterClient: BDBOAuth1SessionManager {
     }
     
     func fav(params: NSDictionary?, completion: (tweet: Tweet?, error: NSError?) -> ()) {
-        POST("1.1/statuses/favorites/create.json", parameters: params, success:
+        POST("1.1/favorites/create.json", parameters: params, success:
             { (operation: NSURLSessionDataTask, response: AnyObject?) -> Void in
                 
                 let tweet = Tweet(dictionary: response as! NSDictionary)
