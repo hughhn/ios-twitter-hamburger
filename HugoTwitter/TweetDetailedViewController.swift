@@ -9,8 +9,8 @@
 import UIKit
 
 @objc protocol TweetDetailedViewControllerDelegate {
-    optional func favClicked(tweetDetailedViewController: TweetDetailedViewController, favTweet: Tweet?)
-    optional func retweetClicked(tweetDetailedViewController: TweetDetailedViewController, retweetTweet: Tweet?)
+    optional func favClicked(tweetDetailedViewController: TweetDetailedViewController, favTweet: Tweet?, completion: ((tweet: Tweet?, error: NSError?) -> ())?)
+    optional func retweetClicked(tweetDetailedViewController: TweetDetailedViewController, retweetTweet: Tweet?, completion: ((tweet: Tweet?, error: NSError?) -> ())?)
     optional func composeClicked(tweetDetailedViewController: TweetDetailedViewController, replyToTweet: Tweet?)
 }
 
@@ -36,6 +36,8 @@ class TweetDetailedViewController: UIViewController {
     @IBOutlet weak var retweetBtn: UIButton!
     @IBOutlet weak var favBtn: UIButton!
     
+    let retweetImage = UIImage(named: "icon_retweet")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+
     let favImage = UIImage(named: "icon_fav")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
     let favedImage = UIImage(named: "icon_faved")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
     
@@ -72,14 +74,8 @@ class TweetDetailedViewController: UIViewController {
         replyBtn.setImage(replyImage, forState: UIControlState.Normal)
         replyBtn.tintColor = customGrayColor
         
-        let retweetImage = UIImage(named: "icon_retweet")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
-        retweetBtn.setImage(retweetImage, forState: UIControlState.Normal)
-        retweetBtn.tintColor = customGrayColor
-        
-        favBtn.setImage(favImage, forState: UIControlState.Normal)
-        favBtn.tintColor = customGrayColor
-        
         setupViews()
+        print("Views loaded for Tweet: \(tweet.id!)")
     }
     
     func setupViews() {
@@ -89,15 +85,35 @@ class TweetDetailedViewController: UIViewController {
         timeLabel.text = DateManager.detailedFormatter.stringFromDate(tweet.createdAt!)
         tweetLabel.text = tweet.text
         
-        retweetCountLabel.text = "\(tweet.retweetCount)"
-        likeCountLabel.text = "\(tweet.favCount)"
-        
         if tweet.retweetName != nil {
             repostLabel.text = "\(tweet.retweetName!) retweeted"
         } else {
             repostIcon.hidden = true
             repostLabel.hidden = true
             profileImageTopMargin.constant = 12
+        }
+        
+        refreshTweetData()
+    }
+    
+    func refreshTweetData() {
+        retweetCountLabel.text = "\(tweet.retweetCount)"
+        likeCountLabel.text = "\(tweet.favCount)"
+        
+        if tweet.retweeted {
+            retweetBtn.setImage(retweetImage, forState: UIControlState.Normal)
+            retweetBtn.tintColor = UIColor.blueColor()
+        } else {
+            retweetBtn.setImage(retweetImage, forState: UIControlState.Normal)
+            retweetBtn.tintColor = customGrayColor
+        }
+        
+        if tweet.favorited {
+            favBtn.setImage(favedImage, forState: UIControlState.Normal)
+            favBtn.tintColor = UIColor.redColor()
+        } else {
+            favBtn.setImage(favImage, forState: UIControlState.Normal)
+            favBtn.tintColor = customGrayColor
         }
     }
     
@@ -119,18 +135,39 @@ class TweetDetailedViewController: UIViewController {
     }
     
     @IBAction func onRetweet(sender: AnyObject) {
-        delegate?.retweetClicked?(self, retweetTweet: self.tweet)
+        // Fake fast response, then update later
+        tweet.retweeted = !tweet.retweeted
+        self.refreshTweetData()
+        
+        if tweet.retweeted {
+            delegate?.retweetClicked?(self, retweetTweet: self.tweet, completion: { (tweet, error) -> () in
+                if tweet != nil {
+                    print("toggle Retweet")
+                    self.tweet = tweet
+                    self.refreshTweetData()
+                }
+            })
+        } else {
+            // un-retweet
+        }
     }
     
     @IBAction func onFav(sender: AnyObject) {
-        if favBtn.tintColor == customGrayColor {
-            favBtn.setImage(favedImage, forState: UIControlState.Normal)
-            favBtn.tintColor = UIColor.redColor()
+        // Fake fast response, then update later
+        tweet.favorited = !tweet.favorited
+        self.refreshTweetData()
+        
+        if tweet.favorited {
+            delegate?.favClicked?(self, favTweet: self.tweet, completion: { (tweet, error) -> () in
+                if tweet != nil {
+                    print("toggle Fav")
+                    self.tweet = tweet
+                    self.refreshTweetData()
+                }
+            })
         } else {
-            favBtn.setImage(favImage, forState: UIControlState.Normal)
-            favBtn.tintColor = customGrayColor
+            // un-fav
         }
-        delegate?.favClicked?(self, favTweet: self.tweet)
     }
     
     

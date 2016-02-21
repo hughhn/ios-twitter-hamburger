@@ -17,9 +17,10 @@ class Tweet: NSObject {
     let createdAt: NSDate?
     let retweetName: String?
     let replyName: String?
-    let favorited: Bool
-    let retweetCount: Int
-    let favCount: Int
+    var favorited: Bool
+    var retweeted: Bool
+    var retweetCount: Int
+    var favCount: Int
     
     
     init(dictionary: NSDictionary) {
@@ -33,6 +34,7 @@ class Tweet: NSObject {
         var retweetName: String? = nil
         var replyName: String? = nil
         var favorited = false
+        var retweeted = false
         var retweetCount = 0
         var favCount = 0
         
@@ -69,6 +71,9 @@ class Tweet: NSObject {
         if let favoritedData = dictionary["favorited"] as? Bool {
             favorited = favoritedData
         }
+        if let retweetedData = dictionary["retweeted"] as? Bool {
+            retweeted = retweetedData
+        }
         
         if let retweetCountData = dictionary["retweet_count"] as? Int {
             retweetCount = retweetCountData
@@ -85,6 +90,7 @@ class Tweet: NSObject {
         self.retweetName = retweetName
         self.replyName = replyName
         self.favorited = favorited
+        self.retweeted = retweeted
         self.retweetCount = retweetCount
         self.favCount = favCount
     }

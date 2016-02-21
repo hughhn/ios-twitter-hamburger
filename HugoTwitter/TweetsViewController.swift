@@ -13,7 +13,7 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     @IBOutlet weak var tableView: UITableView!
     
     var tweets = [Tweet]()
-    var homeParams: NSDictionary = ["include_rts": "1"]
+    var homeParams: [String: String] = ["include_rts": "1"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,7 +21,7 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         setupNavigationItem()
         setupTableView()
 
-        TwitterClient.sharedInstance.homeTimeline(homeParams) { (tweets, error) -> () in
+        TwitterClient.sharedInstance.homeTimeline(homeParams as! NSDictionary) { (tweets, error) -> () in
             if let tweets = tweets {
                 self.tweets = tweets
                 // reload view
@@ -81,7 +81,7 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     // Updates the tableView with the new data
     // Hides the RefreshControl
     func refreshControlAction(refreshControl: UIRefreshControl?) {
-        TwitterClient.sharedInstance.homeTimeline(homeParams) { (tweets, error) -> () in
+        TwitterClient.sharedInstance.homeTimeline(homeParams as! NSDictionary) { (tweets, error) -> () in
             if refreshControl != nil {
                 refreshControl!.endRefreshing()
             }
@@ -121,12 +121,12 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         // Dispose of any resources that can be recreated.
     }
     
-    func favClicked(tweetDetailedViewController: TweetDetailedViewController, favTweet: Tweet?) {
-        onFav(favTweet)
+    func favClicked(tweetDetailedViewController: TweetDetailedViewController, favTweet: Tweet?, completion: ((tweet: Tweet?, error: NSError?) -> ())?) {
+        onFav(favTweet, completion: completion)
     }
     
-    func retweetClicked(tweetDetailedViewController: TweetDetailedViewController, retweetTweet: Tweet?) {
-        onRetweet(retweetTweet)
+    func retweetClicked(tweetDetailedViewController: TweetDetailedViewController, retweetTweet: Tweet?, completion: ((tweet: Tweet?, error: NSError?) -> ())?) {
+        onRetweet(retweetTweet, completion: completion)
     }
     
     func composeClicked(tweetDetailedViewController: TweetDetailedViewController, replyToTweet: Tweet?) {
@@ -134,30 +134,57 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     // reusable methods
-    func onFav(favTweet: Tweet?) {
+    func onFav(favTweet: Tweet?, completion: ((tweet: Tweet?, error: NSError?) -> ())?) {
         if favTweet == nil {
             return
         }
         
         let params: NSDictionary = ["id": favTweet!.id!]
+        print("fav tweet ID = \(favTweet!.id!)")
         TwitterClient.sharedInstance.fav(params) { (tweet, error) -> () in
+            if tweet != nil {
+                self.refreshControlAction(nil)
+            }
+            if completion != nil {
+                completion!(tweet: tweet, error: error)
+            }
+        }
+    }
+    
+    func onRetweet(retweetTweet: Tweet?, completion: ((tweet: Tweet?, error: NSError?) -> ())?) {
+        if retweetTweet == nil {
+            return
+        }
+        
+        let params: NSDictionary = ["id": retweetTweet!.id!]
+        print("retweet tweet ID = \(retweetTweet!.id!)")
+        TwitterClient.sharedInstance.retweet(params) { (tweet, error) -> () in
+            if tweet != nil {
+                self.refreshControlAction(nil)
+            }
+            if completion != nil {
+                completion!(tweet: tweet, error: error)
+            }
+        }
+    }
+    
+    func onTweetSend(composeViewController: ComposeViewController, tweetStatus: String!, replyToTweet: Tweet?) {
+        dismissViewControllerAnimated(true, completion: nil)
+        
+        var params = ["status": tweetStatus]
+        if replyToTweet != nil {
+            params["in_reply_to_status_id"] = replyToTweet!.id!
+        }
+        
+        TwitterClient.sharedInstance.updateStatus(params as! NSDictionary) { (tweet, error) -> () in
             if tweet != nil {
                 self.refreshControlAction(nil)
             }
         }
     }
     
-    func onRetweet(retweetTweet: Tweet?) {
-        if retweetTweet == nil {
-            return
-        }
-        
-        let params: NSDictionary = ["id": retweetTweet!.id!]
-        TwitterClient.sharedInstance.retweet(params) { (tweet, error) -> () in
-            if tweet != nil {
-                self.refreshControlAction(nil)
-            }
-        }
+    func onCompose() {
+        onCompose(nil)
     }
     
     func onCompose(replyToTweet: Tweet?) {
@@ -168,29 +195,10 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         navigationController?.presentViewController(composeVC, animated: true, completion: nil)
     }
     
-    func onTweetSend(composeViewController: ComposeViewController, tweet: String!, replyToTweet: Tweet?) {
-        dismissViewControllerAnimated(true, completion: nil)
-        
-        var params = ["status": tweet]
-        if replyToTweet != nil {
-            params["in_reply_to_status_id"] = replyToTweet!.id!
-        }
-        
-        TwitterClient.sharedInstance.updateStatus(params as! NSDictionary) { (tweetResult, error) -> () in
-            if tweetResult != nil {
-                self.refreshControlAction(nil)
-            }
-        }
-    }
-    
-    func onComposeViewClosed(composeViewController: ComposeViewController, tweet: String!) {
+    func onComposeViewClosed(composeViewController: ComposeViewController, tweetStatus: String!) {
         dismissViewControllerAnimated(true, completion: nil)
         
         // save in progress Tweet
-    }
-    
-    func onCompose() {
-        onCompose(nil)
     }
     
     func onLogout() {

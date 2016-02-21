@@ -35,7 +35,7 @@ class TwitterClient: BDBOAuth1SessionManager {
                 completion(tweet: tweet, error: nil)
                 
             }, failure: { (task: NSURLSessionDataTask?, error: NSError) -> Void in
-                print("update.json error")
+                print("favorite API error")
                 print(error.debugDescription)
                 completion(tweet: nil, error: error)
         })
@@ -49,7 +49,7 @@ class TwitterClient: BDBOAuth1SessionManager {
                 completion(tweet: tweet, error: nil)
                 
             }, failure: { (task: NSURLSessionDataTask?, error: NSError) -> Void in
-                print("update.json error")
+                print("retweet API error")
                 print(error.debugDescription)
                 completion(tweet: nil, error: error)
         })
