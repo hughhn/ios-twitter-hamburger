@@ -135,11 +135,29 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     // reusable methods
     func onFav(favTweet: Tweet?) {
+        if favTweet == nil {
+            return
+        }
         
+        let params: NSDictionary = ["id": favTweet!.id!]
+        TwitterClient.sharedInstance.fav(params) { (tweet, error) -> () in
+            if tweet != nil {
+                self.refreshControlAction(nil)
+            }
+        }
     }
     
     func onRetweet(retweetTweet: Tweet?) {
+        if retweetTweet == nil {
+            return
+        }
         
+        let params: NSDictionary = ["id": retweetTweet!.id!]
+        TwitterClient.sharedInstance.retweet(params) { (tweet, error) -> () in
+            if tweet != nil {
+                self.refreshControlAction(nil)
+            }
+        }
     }
     
     func onCompose(replyToTweet: Tweet?) {
@@ -165,6 +183,10 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         dismissViewControllerAnimated(true, completion: nil)
         
         // save in progress Tweet
+    }
+    
+    func onCompose() {
+        onCompose(nil)
     }
     
     func onLogout() {
