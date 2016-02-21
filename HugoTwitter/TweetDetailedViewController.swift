@@ -137,6 +137,7 @@ class TweetDetailedViewController: UIViewController {
     @IBAction func onRetweet(sender: AnyObject) {
         // Fake fast response, then update later
         tweet.retweeted = !tweet.retweeted
+        tweet.retweetCount++
         self.refreshTweetData()
         
         if tweet.retweeted {
@@ -155,6 +156,7 @@ class TweetDetailedViewController: UIViewController {
     @IBAction func onFav(sender: AnyObject) {
         // Fake fast response, then update later
         tweet.favorited = !tweet.favorited
+        tweet.favCount++
         self.refreshTweetData()
         
         if tweet.favorited {
