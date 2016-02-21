@@ -62,7 +62,7 @@ class ComposeViewController: UIViewController, UITextViewDelegate {
         toolbar.barStyle = UIBarStyle.Default
         
         counterLabel = UILabel(frame: CGRectMake(0.0 , 0, 30, 30))
-        counterLabel.font = UIFont(name: "Helvetica", size: 14)
+        counterLabel.font = UIFont(name: "GothamBook-Regular", size: 14)
         counterLabel.backgroundColor = UIColor.clearColor()
         counterLabel.textColor = UIColor.lightGrayColor()
         counterLabel.text = "\(140)"
@@ -72,7 +72,7 @@ class ComposeViewController: UIViewController, UITextViewDelegate {
         tweetBtn.frame = CGRectMake(0, 0, 60, 30);
         tweetBtn.backgroundColor = twitterColor
         tweetBtn.layer.cornerRadius = 5
-        tweetBtn.titleLabel?.font = UIFont(name: "Helvetica-Bold", size: 14)
+        tweetBtn.titleLabel?.font = UIFont(name: "GothamBold-Regular", size: 14)
         tweetBtn.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
         tweetBtn.setTitle("Tweet", forState: UIControlState.Normal)
         tweetBtn.addTarget(self, action: "onTweet", forControlEvents: UIControlEvents.TouchUpInside)
