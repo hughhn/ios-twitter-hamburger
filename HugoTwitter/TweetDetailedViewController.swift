@@ -74,7 +74,7 @@ class TweetDetailedViewController: UIViewController {
     }
     
     func setupViews() {
-        profileImageView.setImageWithURL(NSURL(string: tweet.user!.profileImageUrl!)!)
+        loadLowResThenHighResImg(profileImageView, smallImageUrl: tweet.user!.profileImageLowResUrl!, largeImageUrl: tweet.user!.profileImageUrl!, duration: 1.0)
         nameLabel.text = tweet.user!.name
         usernameLabel.text = "@\(tweet.user!.screenname!)"
         timeLabel.text = DateManager.detailedFormatter.stringFromDate(tweet.createdAt!)

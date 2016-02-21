@@ -45,7 +45,7 @@ class ComposeViewController: UIViewController, UITextViewDelegate {
         profileImageView.layer.cornerRadius = 5
         profileImageView.clipsToBounds = true
         if user != nil {
-            profileImageView.setImageWithURL(NSURL(string: user!.profileImageUrl!)!)
+            loadLowResThenHighResImg(profileImageView, smallImageUrl: user!.profileImageLowResUrl!, largeImageUrl: user!.profileImageUrl!, duration: 0)
         }
         
         let closeImage = UIImage(named: "icon_close")

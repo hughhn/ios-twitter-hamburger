@@ -17,6 +17,7 @@ class User: NSObject {
     let dictionary: NSDictionary
     let name: String?
     let screenname: String?
+    let profileImageLowResUrl: String?
     let profileImageUrl: String?
     let tagline: String?
     
@@ -24,6 +25,7 @@ class User: NSObject {
         self.dictionary = dictionary
         var name = ""
         var screenname = ""
+        var profileImageLowResUrl = ""
         var profileImageUrl = ""
         var tagline = ""
         if let nameStr = dictionary["name"] as? String {
@@ -33,7 +35,8 @@ class User: NSObject {
             screenname = screennameStr
         }
         if let profileImageUrlStr = dictionary["profile_image_url"] as? String {
-            profileImageUrl = profileImageUrlStr
+            profileImageLowResUrl = profileImageUrlStr
+            profileImageUrl = profileImageUrlStr.stringByReplacingOccurrencesOfString("_normal", withString: "")
         }
         if let taglineStr = dictionary["description"] as? String {
             tagline = taglineStr
@@ -41,6 +44,7 @@ class User: NSObject {
         
         self.name = name
         self.screenname = screenname
+        self.profileImageLowResUrl = profileImageLowResUrl
         self.profileImageUrl = profileImageUrl
         self.tagline = tagline
     }
