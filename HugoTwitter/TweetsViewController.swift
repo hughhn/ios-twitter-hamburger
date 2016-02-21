@@ -168,12 +168,16 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         navigationController?.presentViewController(composeVC, animated: true, completion: nil)
     }
     
-    func onTweetSend(composeViewController: ComposeViewController, status: String!) {
+    func onTweetSend(composeViewController: ComposeViewController, tweet: String!, replyToTweet: Tweet?) {
         dismissViewControllerAnimated(true, completion: nil)
         
-        let params: NSDictionary = ["status": status]
-        TwitterClient.sharedInstance.updateStatus(params) { (tweet, error) -> () in
-            if tweet != nil {
+        var params = ["status": tweet]
+        if replyToTweet != nil {
+            params["in_reply_to_status_id"] = replyToTweet!.id!
+        }
+        
+        TwitterClient.sharedInstance.updateStatus(params as! NSDictionary) { (tweetResult, error) -> () in
+            if tweetResult != nil {
                 self.refreshControlAction(nil)
             }
         }
