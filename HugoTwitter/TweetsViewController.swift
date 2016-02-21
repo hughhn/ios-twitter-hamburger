@@ -18,6 +18,24 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let titleView = UIView(frame: CGRectMake(0, 0, 30, 30))
+        let titleImageView = UIImageView(image: UIImage(named: "icon_twitter"))
+        titleImageView.frame = CGRectMake(0, 0, titleView.frame.width, titleView.frame.height)
+        titleView.addSubview(titleImageView)
+        navigationItem.titleView = titleView
+        
+        let rightBtn = UIButton(type: .System)
+        rightBtn.frame = CGRectMake(0, 0, 30, 30);
+        let composeImage = UIImage(named: "icon_compose")
+        rightBtn.setImage(composeImage!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate), forState: UIControlState.Normal)
+        rightBtn.tintColor = twitterColor
+        rightBtn.addTarget(self, action: "onCompose", forControlEvents: UIControlEvents.TouchUpInside)
+        
+        let negativeSpacer2 = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FixedSpace, target: nil, action: nil)
+        negativeSpacer2.width = -10
+        let rightBarBtn = UIBarButtonItem(customView: rightBtn)
+        navigationItem.rightBarButtonItems = [negativeSpacer2, rightBarBtn]
+        
         tableView.delegate = self
         tableView.dataSource = self
         tableView.estimatedRowHeight = 100

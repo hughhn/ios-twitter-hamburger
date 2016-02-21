@@ -35,7 +35,7 @@
             </objects>
             <point key="canvasLocation" x="124.26666666666667" y="330.86000000000001"/>
         </scene>
-        <!--Home-->
+        <!--Tweets View Controller-->
         <scene sceneID="o9T-WB-IIB">
             <objects>
                 <viewController storyboardIdentifier="TweetsViewController" id="3IA-4M-2sx" customClass="TweetsViewController" customModule="HugoTwitter" customModuleProvider="target" sceneMemberID="viewController">
@@ -176,7 +176,7 @@
                             <constraint firstAttribute="bottom" secondItem="6Dy-Zj-t4a" secondAttribute="bottom" id="wvp-ZB-89T"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Home" id="sJj-SU-zhD"/>
+                    <navigationItem key="navigationItem" id="sJj-SU-zhD"/>
                     <connections>
                         <outlet property="tableView" destination="6Dy-Zj-t4a" id="PKx-Ng-JaI"/>
                     </connections>
