@@ -33,6 +33,7 @@ class ComposeViewController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var placeHolderLabel: UILabel!
     
     var counterLabel: UILabel!
+    var tweetBtn: UIButton!
     var flexButton, counterBarBtn, tweetBarBtn, negativeSpacer: UIBarButtonItem!
     var toolbar = UIToolbar()
     
@@ -54,20 +55,24 @@ class ComposeViewController: UIViewController, UITextViewDelegate {
         tweetTextView.delegate = self
         tweetTextView.becomeFirstResponder()
         
+        setupAccessoryToolbar()
+    }
+    
+    func setupAccessoryToolbar() {
         toolbar.barStyle = UIBarStyle.Default
         
         counterLabel = UILabel(frame: CGRectMake(0.0 , 0, 30, 30))
-        counterLabel.font = UIFont(name: "Helvetica", size: 12)
+        counterLabel.font = UIFont(name: "Helvetica", size: 14)
         counterLabel.backgroundColor = UIColor.clearColor()
         counterLabel.textColor = UIColor.lightGrayColor()
         counterLabel.text = "\(140)"
         counterBarBtn = UIBarButtonItem(customView: counterLabel)
         
-        let tweetBtn = UIButton(type: .System)
+        tweetBtn = UIButton(type: .System)
         tweetBtn.frame = CGRectMake(0, 0, 60, 30);
         tweetBtn.backgroundColor = twitterColor
         tweetBtn.layer.cornerRadius = 5
-        tweetBtn.titleLabel?.font = UIFont(name: "Helvetica-Bold", size: 12)
+        tweetBtn.titleLabel?.font = UIFont(name: "Helvetica-Bold", size: 14)
         tweetBtn.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
         tweetBtn.setTitle("Tweet", forState: UIControlState.Normal)
         tweetBtn.addTarget(self, action: "onTweet", forControlEvents: UIControlEvents.TouchUpInside)
@@ -97,8 +102,12 @@ class ComposeViewController: UIViewController, UITextViewDelegate {
         counterLabel.text = "\(counter)"
         if counter < 0 {
             counterLabel.textColor = UIColor.redColor()
+            tweetBtn.backgroundColor = UIColor.lightGrayColor()
+            tweetBtn.enabled = false
         } else {
             counterLabel.textColor = UIColor.lightGrayColor()
+            tweetBtn.backgroundColor = twitterColor
+            tweetBtn.enabled = true
         }
     }
     

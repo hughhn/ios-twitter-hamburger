@@ -18,6 +18,20 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupNavigationItem()
+        setupTableView()
+
+        TwitterClient.sharedInstance.homeTimeline(homeParams) { (tweets, error) -> () in
+            if let tweets = tweets {
+                self.tweets = tweets
+                // reload view
+                self.tableView.reloadData()
+
+            }
+        }
+    }
+    
+    func setupNavigationItem() {
         let titleView = UIView(frame: CGRectMake(0, 0, 30, 30))
         let titleImageView = UIImageView(image: UIImage(named: "icon_twitter"))
         titleImageView.image = titleImageView.image!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
@@ -49,7 +63,9 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         negativeSpacer2.width = -10
         let rightBarBtn = UIBarButtonItem(customView: rightBtn)
         navigationItem.rightBarButtonItems = [negativeSpacer2, rightBarBtn]
-        
+    }
+    
+    func setupTableView() {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.estimatedRowHeight = 100
@@ -60,17 +76,8 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: "refreshControlAction:", forControlEvents: UIControlEvents.ValueChanged)
         tableView.insertSubview(refreshControl, atIndex: 0)
-
-        // Do any additional setup after loading the view.
-        TwitterClient.sharedInstance.homeTimeline(homeParams) { (tweets, error) -> () in
-            if let tweets = tweets {
-                self.tweets = tweets
-                // reload view
-                self.tableView.reloadData()
-
-            }
-        }
     }
+    
     
     // Makes a network request to get updated data
     // Updates the tableView with the new data
