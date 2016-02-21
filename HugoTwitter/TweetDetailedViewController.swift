@@ -9,7 +9,9 @@
 import UIKit
 
 @objc protocol TweetDetailedViewControllerDelegate {
-    optional func composeClicked(tweetDetailedViewController: TweetDetailedViewController)
+    optional func favClicked(tweetDetailedViewController: TweetDetailedViewController, favTweet: Tweet?)
+    optional func retweetClicked(tweetDetailedViewController: TweetDetailedViewController, retweetTweet: Tweet?)
+    optional func composeClicked(tweetDetailedViewController: TweetDetailedViewController, replyToTweet: Tweet?)
 }
 
 class TweetDetailedViewController: UIViewController {
@@ -27,10 +29,15 @@ class TweetDetailedViewController: UIViewController {
     @IBOutlet weak var retweetCountSuffixLabel: UILabel!
     @IBOutlet weak var likeCountLabel: UILabel!
     @IBOutlet weak var likeCountSuffixLabel: UILabel!
-    @IBOutlet weak var replyIcon: UIImageView!
-    @IBOutlet weak var retweetIcon: UIImageView!
-    @IBOutlet weak var likeIcon: UIImageView!
+    
     @IBOutlet weak var profileImageTopMargin: NSLayoutConstraint!
+    
+    @IBOutlet weak var replyBtn: UIButton!
+    @IBOutlet weak var retweetBtn: UIButton!
+    @IBOutlet weak var favBtn: UIButton!
+    
+    let favImage = UIImage(named: "icon_fav")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+    let favedImage = UIImage(named: "icon_faved")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
     
     var tweet: Tweet!
     
@@ -61,14 +68,16 @@ class TweetDetailedViewController: UIViewController {
         repostIcon.image = repostIcon.image!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
         repostIcon.tintColor = customGrayColor
         
-        replyIcon.image = replyIcon.image!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
-        replyIcon.tintColor = customGrayColor
+        let replyImage = UIImage(named: "icon_reply")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+        replyBtn.setImage(replyImage, forState: UIControlState.Normal)
+        replyBtn.tintColor = customGrayColor
         
-        retweetIcon.image = retweetIcon.image!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
-        retweetIcon.tintColor = customGrayColor
+        let retweetImage = UIImage(named: "icon_retweet")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+        retweetBtn.setImage(retweetImage, forState: UIControlState.Normal)
+        retweetBtn.tintColor = customGrayColor
         
-        likeIcon.image = likeIcon.image!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
-        likeIcon.tintColor = customGrayColor
+        favBtn.setImage(favImage, forState: UIControlState.Normal)
+        favBtn.tintColor = customGrayColor
         
         setupViews()
     }
@@ -102,9 +111,29 @@ class TweetDetailedViewController: UIViewController {
     }
     
     func onCompose() {
-        delegate?.composeClicked?(self)
+        delegate?.composeClicked?(self, replyToTweet: nil)
     }
 
+    @IBAction func onReply(sender: AnyObject) {
+        delegate?.composeClicked?(self, replyToTweet: self.tweet)
+    }
+    
+    @IBAction func onRetweet(sender: AnyObject) {
+        delegate?.retweetClicked?(self, retweetTweet: self.tweet)
+    }
+    
+    @IBAction func onFav(sender: AnyObject) {
+        if favBtn.tintColor == customGrayColor {
+            favBtn.setImage(favedImage, forState: UIControlState.Normal)
+            favBtn.tintColor = UIColor.redColor()
+        } else {
+            favBtn.setImage(favImage, forState: UIControlState.Normal)
+            favBtn.tintColor = customGrayColor
+        }
+        delegate?.favClicked?(self, favTweet: self.tweet)
+    }
+    
+    
     /*
     // MARK: - Navigation
 

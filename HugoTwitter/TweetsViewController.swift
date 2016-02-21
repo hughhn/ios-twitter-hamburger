@@ -121,14 +121,32 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         // Dispose of any resources that can be recreated.
     }
     
-    func composeClicked(tweetDetailedViewController: TweetDetailedViewController) {
-        onCompose()
+    func favClicked(tweetDetailedViewController: TweetDetailedViewController, favTweet: Tweet?) {
+        onFav(favTweet)
     }
     
-    func onCompose() {
+    func retweetClicked(tweetDetailedViewController: TweetDetailedViewController, retweetTweet: Tweet?) {
+        onRetweet(retweetTweet)
+    }
+    
+    func composeClicked(tweetDetailedViewController: TweetDetailedViewController, replyToTweet: Tweet?) {
+        onCompose(replyToTweet)
+    }
+    
+    // reusable methods
+    func onFav(favTweet: Tweet?) {
+        
+    }
+    
+    func onRetweet(retweetTweet: Tweet?) {
+        
+    }
+    
+    func onCompose(replyToTweet: Tweet?) {
         let composeVC = ComposeViewController()
         composeVC.delegate = self
         composeVC.user = User.currentUser
+        composeVC.replyToTweet = replyToTweet
         navigationController?.presentViewController(composeVC, animated: true, completion: nil)
     }
     

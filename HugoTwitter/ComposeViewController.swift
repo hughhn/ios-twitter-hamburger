@@ -26,6 +26,7 @@ class ComposeViewController: UIViewController, UITextViewDelegate {
     weak var delegate: ComposeViewControllerDelegate?
     
     var user: User?
+    var replyToTweet: Tweet?
     
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var closeBtn: UIButton!
