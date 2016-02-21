@@ -80,9 +80,11 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     // Makes a network request to get updated data
     // Updates the tableView with the new data
     // Hides the RefreshControl
-    func refreshControlAction(refreshControl: UIRefreshControl) {
+    func refreshControlAction(refreshControl: UIRefreshControl?) {
         TwitterClient.sharedInstance.homeTimeline(homeParams) { (tweets, error) -> () in
-            refreshControl.endRefreshing()
+            if refreshControl != nil {
+                refreshControl!.endRefreshing()
+            }
             
             self.tweets = tweets!
             
@@ -130,11 +132,15 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         navigationController?.presentViewController(composeVC, animated: true, completion: nil)
     }
     
-    func onTweetSend(composeViewController: ComposeViewController, tweet: String!) {
+    func onTweetSend(composeViewController: ComposeViewController, status: String!) {
         dismissViewControllerAnimated(true, completion: nil)
         
-        // post Tweet API
-        print(tweet)
+        let params: NSDictionary = ["status": status]
+        TwitterClient.sharedInstance.updateStatus(params) { (tweet, error) -> () in
+            if tweet != nil {
+                self.refreshControlAction(nil)
+            }
+        }
     }
     
     func onComposeViewClosed(composeViewController: ComposeViewController, tweet: String!) {
