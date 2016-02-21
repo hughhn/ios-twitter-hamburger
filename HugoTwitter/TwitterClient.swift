@@ -42,7 +42,7 @@ class TwitterClient: BDBOAuth1SessionManager {
     }
     
     func retweet(id: String!, params: NSDictionary?, completion: (tweet: Tweet?, error: NSError?) -> ()) {
-        let retweetUrl = "1.1/statuses/retweet/(id).json"
+        let retweetUrl = "1.1/statuses/retweet/\(id).json"
         POST(retweetUrl, parameters: params, success:
             { (operation: NSURLSessionDataTask, response: AnyObject?) -> Void in
                 
