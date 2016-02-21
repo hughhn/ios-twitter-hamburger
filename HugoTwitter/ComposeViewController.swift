@@ -56,6 +56,11 @@ class ComposeViewController: UIViewController, UITextViewDelegate {
         tweetTextView.delegate = self
         tweetTextView.becomeFirstResponder()
         
+        if replyToTweet != nil && replyToTweet!.user != nil {
+            placeHolderLabel.hidden = true
+            tweetTextView.text = "@\(replyToTweet!.user!.screenname!) "
+        }
+        
         setupAccessoryToolbar()
     }
     
