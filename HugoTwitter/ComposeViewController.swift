@@ -61,7 +61,7 @@ class ComposeViewController: UIViewController, UITextViewDelegate {
     func setupAccessoryToolbar() {
         toolbar.barStyle = UIBarStyle.Default
         
-        counterLabel = UILabel(frame: CGRectMake(0.0 , 0, 30, 30))
+        counterLabel = UILabel(frame: CGRectMake(0.0 , 0, 30, 40))
         counterLabel.font = UIFont(name: "GothamBook-Regular", size: 14)
         counterLabel.backgroundColor = UIColor.clearColor()
         counterLabel.textColor = UIColor.lightGrayColor()
@@ -69,7 +69,7 @@ class ComposeViewController: UIViewController, UITextViewDelegate {
         counterBarBtn = UIBarButtonItem(customView: counterLabel)
         
         tweetBtn = UIButton(type: .System)
-        tweetBtn.frame = CGRectMake(0, 0, 60, 30);
+        tweetBtn.frame = CGRectMake(0, 0, 70, 40);
         tweetBtn.backgroundColor = twitterColor
         tweetBtn.layer.cornerRadius = 5
         tweetBtn.titleLabel?.font = UIFont(name: "GothamBold-Regular", size: 14)
