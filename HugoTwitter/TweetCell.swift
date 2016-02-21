@@ -32,6 +32,8 @@ class TweetCell: UITableViewCell {
             tweetLabel.text = tweet.text
             if tweet.retweetName != nil {
                 retweetLabel.text = "\(tweet.retweetName!) retweeted"
+            } else if tweet.replyName != nil {
+                retweetLabel.text = "In reply to \(tweet.replyName!)"
             } else {
                 retweetLabel.hidden = true
                 retweetedIcon.hidden = true

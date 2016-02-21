@@ -10,6 +10,7 @@ import UIKit
 
 class Tweet: NSObject {
     let dictionary: NSDictionary
+    let id: String?
     let user: User?
     let text: String?
     let createdAtString: String?
@@ -24,6 +25,7 @@ class Tweet: NSObject {
     init(dictionary: NSDictionary) {
         self.dictionary = dictionary
         
+        var id: String? = nil
         var user: User? = nil
         var text = ""
         var createdAtString = ""
@@ -33,6 +35,10 @@ class Tweet: NSObject {
         var favorited = false
         var retweetCount = 0
         var favCount = 0
+        
+        if let idStr = dictionary["id_str"] as? String {
+            id = idStr
+        }
         
         if let userDict = dictionary["user"] as? NSDictionary {
             user = User(dictionary: userDict)
@@ -71,6 +77,7 @@ class Tweet: NSObject {
             favCount = favCountData
         }
         
+        self.id = id
         self.user = user
         self.text = text
         self.createdAtString = createdAtString
