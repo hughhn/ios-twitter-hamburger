@@ -27,7 +27,12 @@ The following **optional** features are implemented:
 
 The following **additional** features are implemented:
 
-- [ ] List anything else that you can get done to improve the app functionality!
+- [X] Import and use custom font Gotham
+- [X] Implement custom inputAccessoryView for the compose tweet view (matches with official app)
+- [X] Use NSDataDetector to detect for links and NSAttributedString to display clickable tweet content
+- [X] Include media image if a tweet has one
+- [X] Prettify timestamp
+- [X] Custom navigation bar, color, etc.
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
