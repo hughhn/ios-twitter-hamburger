@@ -33,6 +33,7 @@ The following **additional** features are implemented:
 - [X] Include media image if a tweet has one
 - [X] Prettify timestamps
 - [X] Custom navigation bar, colors, etc.
+- [X] Extensions to String and UIButton classes to provide string length and custom buttom stringTag (instead of the default tag(int))
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
