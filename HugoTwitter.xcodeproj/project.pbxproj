@@ -28,6 +28,7 @@
 		0BF98B7F1C79A6DB0003435D /* GothamLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0BF98B7B1C79A6DB0003435D /* GothamLight.ttf */; };
 		0BF98B801C79A6DB0003435D /* GothamMedium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0BF98B7C1C79A6DB0003435D /* GothamMedium.ttf */; };
 		0BF98B821C79B84A0003435D /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF98B811C79B84A0003435D /* Utils.swift */; };
+		0BF98B841C7A8C860003435D /* InfiniteScrollActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF98B831C7A8C860003435D /* InfiniteScrollActivityView.swift */; };
 		C332A8FAECE661CFFBFB4B01 /* Pods_HugoTwitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12B6BFF481AB3C8C604C36B1 /* Pods_HugoTwitter.framework */; };
 /* End PBXBuildFile section */
 
@@ -56,6 +57,7 @@
 		0BF98B7B1C79A6DB0003435D /* GothamLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = GothamLight.ttf; sourceTree = "<group>"; };
 		0BF98B7C1C79A6DB0003435D /* GothamMedium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = GothamMedium.ttf; sourceTree = "<group>"; };
 		0BF98B811C79B84A0003435D /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		0BF98B831C7A8C860003435D /* InfiniteScrollActivityView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfiniteScrollActivityView.swift; sourceTree = "<group>"; };
 		12B6BFF481AB3C8C604C36B1 /* Pods_HugoTwitter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HugoTwitter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A2E666C9F6480B96BBB813B /* Pods-HugoTwitter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HugoTwitter.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HugoTwitter/Pods-HugoTwitter.debug.xcconfig"; sourceTree = "<group>"; };
 		83A2D03B661622B7834AEE28 /* Pods-HugoTwitter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HugoTwitter.release.xcconfig"; path = "Pods/Target Support Files/Pods-HugoTwitter/Pods-HugoTwitter.release.xcconfig"; sourceTree = "<group>"; };
@@ -119,6 +121,7 @@
 				0BCA7D621C74681C00E82FED /* HugoTwitter-Bridging-Header.h */,
 				0BCA7D7D1C79131B00E82FED /* Constants.swift */,
 				0BF98B811C79B84A0003435D /* Utils.swift */,
+				0BF98B831C7A8C860003435D /* InfiniteScrollActivityView.swift */,
 			);
 			path = HugoTwitter;
 			sourceTree = "<group>";
@@ -300,6 +303,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0BCA7D7B1C78640E00E82FED /* TweetDetailedViewController.swift in Sources */,
+				0BF98B841C7A8C860003435D /* InfiniteScrollActivityView.swift in Sources */,
 				0BCA7D6A1C7468C500E82FED /* User.swift in Sources */,
 				0BCA7D761C7821CF00E82FED /* TweetCell.swift in Sources */,
 				0BCA7D6C1C7468D000E82FED /* Tweet.swift in Sources */,
