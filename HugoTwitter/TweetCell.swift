@@ -141,7 +141,8 @@ class TweetCell: UITableViewCell {
         if sender.stringTag! == tweet.id! {
             delegate?.retweetClicked?(self.tweet, completion: { (tweet, error) -> () in
                 if error == nil && tweet!.id! == self.tweet.id! {
-                    self.tweet = tweet
+                    self.tweet.retweeted = tweet!.retweeted
+                    self.tweet.retweetCount = tweet!.retweetCount
                     self.refreshTweetData()
                 } else {
                     print("error toggle tweet retweet")
@@ -156,7 +157,8 @@ class TweetCell: UITableViewCell {
         if sender.stringTag! == tweet.id! {
             delegate?.favClicked?(self.tweet, completion: { (tweet, error) -> () in
                 if error == nil && tweet!.id! == self.tweet.id! {
-                    self.tweet = tweet
+                    self.tweet.favorited = tweet!.favorited
+                    self.tweet.favCount = tweet!.favCount
                     self.refreshTweetData()
                 } else {
                     print("error toggle tweet fav")
