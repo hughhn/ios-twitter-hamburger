@@ -109,13 +109,14 @@ class TweetCell: UITableViewCell {
                 mediaImageView.hidden = false
                 mediaImageBottomSpace.constant = 12
                 
-                let url = NSURL(string: tweet.media!.mediaUrl!)
-                let data = NSData(contentsOfURL : url!)
-                let image = UIImage(data : data!)
-                let width = mediaImageView.frame.size.width
-                let newHeight = floor(image!.size.height * width / (image!.size.width))
-                mediaImageHeight.constant = newHeight
-                mediaImageView.image = image
+                mediaImageView.setImageWithURLRequest(NSURLRequest(URL: NSURL(string: tweet.media!.mediaUrl!)!), placeholderImage: nil, success: { (request: NSURLRequest, response: NSHTTPURLResponse?, image: UIImage) -> Void in
+                    let width = self.mediaImageView.frame.size.width
+                    let newHeight = floor(image.size.height * width / (image.size.width))
+                    self.mediaImageHeight.constant = newHeight
+                    self.mediaImageView.image = image
+                    }, failure: { (request: NSURLRequest, response: NSHTTPURLResponse?, error: NSError) -> Void in
+                        print(error.debugDescription)
+                })
             }
             
             refreshTweetData()
