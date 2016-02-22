@@ -30,6 +30,13 @@ class TweetDetailedViewController: UIViewController {
     @IBOutlet weak var retweetBtn: UIButton!
     @IBOutlet weak var favBtn: UIButton!
     
+    @IBOutlet weak var mediaImageView: UIImageView!
+    @IBOutlet weak var mediaImageHeight: NSLayoutConstraint!
+    
+    @IBOutlet weak var mediaImageBottomSpace: NSLayoutConstraint!
+    
+    
+    
     var tweet: Tweet!
     
     override func viewDidLoad() {
@@ -64,7 +71,6 @@ class TweetDetailedViewController: UIViewController {
         replyBtn.tintColor = customGrayColor
         
         setupViews()
-        print("Views loaded for Tweet: \(tweet.id!)")
     }
     
     func setupViews() {
@@ -107,6 +113,26 @@ class TweetDetailedViewController: UIViewController {
         
         retweetBtn.setImage(retweetImage, forState: UIControlState.Normal)
         favBtn.setImage(favImage, forState: UIControlState.Normal)
+        
+        
+        mediaImageView.layer.cornerRadius = 5
+        mediaImageView.clipsToBounds = true
+        if tweet.media == nil {
+            mediaImageView.hidden = true
+            mediaImageBottomSpace.constant = 0
+            mediaImageHeight.constant = 0
+        } else {
+            mediaImageView.hidden = false
+            mediaImageBottomSpace.constant = 16
+            
+            let url = NSURL(string: tweet.media!.mediaUrl!)
+            let data = NSData(contentsOfURL : url!)
+            let image = UIImage(data : data!)
+            let width = mediaImageView.frame.size.width
+            let newHeight = floor(image!.size.height * width / (image!.size.width))
+            mediaImageHeight.constant = newHeight
+            mediaImageView.image = image
+        }
         
         refreshTweetData()
     }

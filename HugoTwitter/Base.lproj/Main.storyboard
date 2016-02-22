@@ -196,12 +196,12 @@
                                             <outlet property="displayNameLabel" destination="XKF-P6-jyd" id="N9S-ao-C7G"/>
                                             <outlet property="favBtn" destination="M64-fC-gQG" id="z1l-oN-dim"/>
                                             <outlet property="favCountLabel" destination="HaI-Ei-MU4" id="eNr-3G-WtM"/>
+                                            <outlet property="mediaImageBottomSpace" destination="heA-64-DMU" id="GbS-ej-3xk"/>
                                             <outlet property="mediaImageHeight" destination="IyT-4T-DIc" id="Ypp-m4-pjw"/>
                                             <outlet property="mediaImageView" destination="svL-wg-kB9" id="WLs-g7-hiU"/>
                                             <outlet property="profileImageTopMargin" destination="2Qp-w4-ccq" id="Xix-bR-AwZ"/>
                                             <outlet property="profileImageView" destination="gWh-oa-rX2" id="laZ-OG-vjc"/>
                                             <outlet property="replyBtn" destination="JHs-zp-fdn" id="4HZ-I2-cWj"/>
-                                            <outlet property="replyBtnTopSpace" destination="heA-64-DMU" id="Wxq-s2-kMo"/>
                                             <outlet property="repostIcon" destination="tb3-4x-Mg1" id="AgF-VA-Zrp"/>
                                             <outlet property="repostLabel" destination="YRB-Jn-BwQ" id="uYM-KP-OVJ"/>
                                             <outlet property="retweetBtn" destination="Czm-43-CSI" id="8kR-YS-LBY"/>

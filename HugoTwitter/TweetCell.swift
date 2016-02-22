@@ -50,7 +50,7 @@ class TweetCell: UITableViewCell {
     @IBOutlet weak var mediaImageView: UIImageView!
     @IBOutlet weak var mediaImageHeight: NSLayoutConstraint!
     
-    @IBOutlet weak var replyBtnTopSpace: NSLayoutConstraint!
+    @IBOutlet weak var mediaImageBottomSpace: NSLayoutConstraint!
     @IBOutlet weak var profileImageTopMargin: NSLayoutConstraint!
     
     weak var delegate: TweetCellDelegate?
@@ -103,11 +103,11 @@ class TweetCell: UITableViewCell {
             mediaImageView.clipsToBounds = true
             if tweet.media == nil {
                 mediaImageView.hidden = true
-                replyBtnTopSpace.constant = 0
+                mediaImageBottomSpace.constant = 0
                 mediaImageHeight.constant = 0
             } else {
                 mediaImageView.hidden = false
-                replyBtnTopSpace.constant = 12
+                mediaImageBottomSpace.constant = 12
                 
                 let url = NSURL(string: tweet.media!.mediaUrl!)
                 let data = NSData(contentsOfURL : url!)
