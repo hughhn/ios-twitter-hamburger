@@ -8,9 +8,14 @@
 
 import UIKit
 
+@objc protocol TweetDetailedViewControllerDelegate {
+    func updateTweetCell(tweetDetailedViewController: TweetDetailedViewController, tweet: Tweet, indexPath: NSIndexPath)
+}
+
 class TweetDetailedViewController: UIViewController {
 
     weak var delegate: TweetCellDelegate?
+    weak var listener: TweetDetailedViewControllerDelegate?
     
     @IBOutlet weak var repostIcon: UIImageView!
     @IBOutlet weak var repostLabel: UILabel!
@@ -36,7 +41,7 @@ class TweetDetailedViewController: UIViewController {
     @IBOutlet weak var mediaImageBottomSpace: NSLayoutConstraint!
     
     
-    
+    var indexPath: NSIndexPath?
     var tweet: Tweet!
     
     override func viewDidLoad() {
@@ -176,6 +181,7 @@ class TweetDetailedViewController: UIViewController {
             if error == nil {
                 self.tweet = tweet
                 self.refreshTweetData()
+                self.listener?.updateTweetCell(self, tweet: self.tweet, indexPath: self.indexPath!)
             } else {
                 print("error toggle tweet retweet")
             }
@@ -187,6 +193,7 @@ class TweetDetailedViewController: UIViewController {
             if error == nil {
                 self.tweet = tweet
                 self.refreshTweetData()
+                self.listener?.updateTweetCell(self, tweet: self.tweet, indexPath: self.indexPath!)
             } else {
                 print("error toggle tweet fav")
             }

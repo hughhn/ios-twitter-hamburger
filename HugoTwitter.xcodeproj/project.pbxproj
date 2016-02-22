@@ -161,8 +161,8 @@
 			children = (
 				0BCA7D7F1C794E8600E82FED /* ComposeViewController.swift */,
 				0B1508341C745A630096A640 /* ViewController.swift */,
-				0BCA7D6D1C74774900E82FED /* TweetsViewController.swift */,
 				0BCA7D751C7821CF00E82FED /* TweetCell.swift */,
+				0BCA7D6D1C74774900E82FED /* TweetsViewController.swift */,
 				0BCA7D791C78640E00E82FED /* TweetDetailedViewController.swift */,
 			);
 			name = ViewControllers;

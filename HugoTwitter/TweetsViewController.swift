@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ComposeViewControllerDelegate, TweetCellDelegate, UIScrollViewDelegate {
+class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ComposeViewControllerDelegate, TweetCellDelegate, UIScrollViewDelegate, TweetDetailedViewControllerDelegate {
 
     @IBOutlet weak var tableView: UITableView!
     
@@ -123,8 +123,11 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         let tweetDetailedVC = TweetDetailedViewController()
         let tweet = tweets[indexPath.row]
+        
         tweetDetailedVC.tweet = tweet
+        tweetDetailedVC.indexPath = indexPath
         tweetDetailedVC.delegate = self
+        tweetDetailedVC.listener = self
         
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.Plain, target: nil, action: nil)
         
@@ -154,6 +157,16 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func composeClicked(replyToTweet: Tweet?) {
         onCompose(replyToTweet)
     }
+    
+    func updateTweetCell(tweetDetailedViewController: TweetDetailedViewController, tweet: Tweet, indexPath: NSIndexPath) {
+        let cell = tableView.cellForRowAtIndexPath(indexPath) as! TweetCell
+        cell.tweet.retweeted = tweet.retweeted
+        cell.tweet.retweetCount = tweet.retweetCount
+        cell.tweet.favorited = tweet.favorited
+        cell.tweet.favCount = tweet.favCount
+        tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.None)
+    }
+    
     
     // reusable methods
     func onFav(favTweet: Tweet?, completion: ((tweet: Tweet?, error: NSError?) -> ())?) {
