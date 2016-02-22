@@ -8,20 +8,38 @@
 
 import UIKit
 
+@objc protocol TweetCellDelegate {
+    optional func favClicked(favTweet: Tweet?, completion: ((tweet: Tweet?, error: NSError?) -> ())?)
+    optional func retweetClicked(retweetTweet: Tweet?, completion: ((tweet: Tweet?, error: NSError?) -> ())?)
+    optional func composeClicked(replyToTweet: Tweet?)
+}
+
+private struct AssociatedKeys {
+    static var btnStringTag = "btnStringTag"
+}
+
+extension UIButton {
+    var stringTag: String? {
+        get {
+            return objc_getAssociatedObject(self, &AssociatedKeys.btnStringTag) as? String
+        }
+        
+        set(value) {
+            objc_setAssociatedObject(self,&AssociatedKeys.btnStringTag, value as NSString?, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        }
+    }
+}
+
 class TweetCell: UITableViewCell {
 
     @IBOutlet weak var repostIcon: UIImageView!
     @IBOutlet weak var repostLabel: UILabel!
-    @IBOutlet weak var retweetLabel: UILabel!
     @IBOutlet weak var displayNameLabel: UILabel!
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var timestampLabel: UILabel!
     @IBOutlet weak var tweetLabel: UILabel!
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var retweetedIcon: UIImageView!
-    @IBOutlet weak var replyIcon: UIImageView!
-    @IBOutlet weak var retweetIcon: UIImageView!
-    @IBOutlet weak var favIcon: UIImageView!
     
     @IBOutlet weak var replyBtn: UIButton!
     @IBOutlet weak var retweetBtn: UIButton!
@@ -31,8 +49,14 @@ class TweetCell: UITableViewCell {
     
     @IBOutlet weak var profileImageTopMargin: NSLayoutConstraint!
     
+    weak var delegate: TweetCellDelegate?
+    
     var tweet: Tweet! {
         didSet {
+            replyBtn.stringTag = tweet.id
+            retweetBtn.stringTag = tweet.id
+            favBtn.stringTag = tweet.id
+            
             loadLowResThenHighResImg(profileImageView, smallImageUrl: tweet.user!.profileImageLowResUrl!, largeImageUrl: tweet.user!.profileImageUrl!, duration: 0)
             displayNameLabel.text = tweet.user!.name
             usernameLabel.text = "@\(tweet.user!.screenname!)"
@@ -78,6 +102,48 @@ class TweetCell: UITableViewCell {
         
         retweetBtn.setImage(retweetImage, forState: UIControlState.Normal)
         favBtn.setImage(favImage, forState: UIControlState.Normal)
+        
+        replyBtn.addTarget(self, action: "onReply:", forControlEvents: UIControlEvents.TouchUpInside)
+        retweetBtn.addTarget(self, action: "onRetweet:", forControlEvents: UIControlEvents.TouchUpInside)
+        favBtn.addTarget(self, action: "onFav:", forControlEvents: UIControlEvents.TouchUpInside)
+    }
+    
+    func onReply(sender: UIButton) {
+        print("replyButton tag: \(sender.stringTag!)")
+        
+        if sender.stringTag! == tweet.id! {
+            delegate?.composeClicked?(self.tweet)
+        }
+    }
+    
+    func onRetweet(sender: UIButton) {
+        print("retweetButton tag: \(sender.stringTag!)")
+        
+        if sender.stringTag! == tweet.id! {
+            delegate?.retweetClicked?(self.tweet, completion: { (tweet, error) -> () in
+                if error == nil && tweet!.id! == self.tweet.id! {
+                    self.tweet = tweet
+                    self.refreshTweetData()
+                } else {
+                    print("error toggle tweet retweet")
+                }
+            })
+        }
+    }
+    
+    func onFav(sender: UIButton) {
+        print("favButton tag: \(sender.stringTag!)")
+        
+        if sender.stringTag! == tweet.id! {
+            delegate?.favClicked?(self.tweet, completion: { (tweet, error) -> () in
+                if error == nil && tweet!.id! == self.tweet.id! {
+                    self.tweet = tweet
+                    self.refreshTweetData()
+                } else {
+                    print("error toggle tweet fav")
+                }
+            })
+        }
     }
     
     func refreshTweetData() {

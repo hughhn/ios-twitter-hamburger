@@ -8,15 +8,9 @@
 
 import UIKit
 
-@objc protocol TweetDetailedViewControllerDelegate {
-    optional func favClicked(tweetDetailedViewController: TweetDetailedViewController, favTweet: Tweet?, completion: ((tweet: Tweet?, error: NSError?) -> ())?)
-    optional func retweetClicked(tweetDetailedViewController: TweetDetailedViewController, retweetTweet: Tweet?, completion: ((tweet: Tweet?, error: NSError?) -> ())?)
-    optional func composeClicked(tweetDetailedViewController: TweetDetailedViewController, replyToTweet: Tweet?)
-}
-
 class TweetDetailedViewController: UIViewController {
 
-    weak var delegate: TweetDetailedViewControllerDelegate?
+    weak var delegate: TweetCellDelegate?
     
     @IBOutlet weak var repostIcon: UIImageView!
     @IBOutlet weak var repostLabel: UILabel!
@@ -127,15 +121,15 @@ class TweetDetailedViewController: UIViewController {
     }
     
     func onCompose() {
-        delegate?.composeClicked?(self, replyToTweet: nil)
+        delegate?.composeClicked?(nil)
     }
 
     @IBAction func onReply(sender: AnyObject) {
-        delegate?.composeClicked?(self, replyToTweet: self.tweet)
+        delegate?.composeClicked?(self.tweet)
     }
     
     @IBAction func onRetweet(sender: AnyObject) {
-        delegate?.retweetClicked?(self, retweetTweet: self.tweet, completion: { (tweet, error) -> () in
+        delegate?.retweetClicked?(self.tweet, completion: { (tweet, error) -> () in
             if error == nil {
                 self.tweet = tweet
                 self.refreshTweetData()
@@ -146,7 +140,7 @@ class TweetDetailedViewController: UIViewController {
     }
     
     @IBAction func onFav(sender: AnyObject) {
-        delegate?.favClicked?(self, favTweet: self.tweet, completion: { (tweet, error) -> () in
+        delegate?.favClicked?(self.tweet, completion: { (tweet, error) -> () in
             if error == nil {
                 self.tweet = tweet
                 self.refreshTweetData()

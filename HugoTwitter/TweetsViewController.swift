@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ComposeViewControllerDelegate, TweetDetailedViewControllerDelegate, UIScrollViewDelegate {
+class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ComposeViewControllerDelegate, TweetCellDelegate, UIScrollViewDelegate {
 
     @IBOutlet weak var tableView: UITableView!
     
@@ -134,6 +134,7 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("TweetCell", forIndexPath: indexPath) as! TweetCell
         cell.tweet = tweets[indexPath.row]
+        cell.delegate = self
         return cell
     }
 
@@ -142,15 +143,15 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         // Dispose of any resources that can be recreated.
     }
     
-    func favClicked(tweetDetailedViewController: TweetDetailedViewController, favTweet: Tweet?, completion: ((tweet: Tweet?, error: NSError?) -> ())?) {
+    func favClicked(favTweet: Tweet?, completion: ((tweet: Tweet?, error: NSError?) -> ())?) {
         onFav(favTweet, completion: completion)
     }
     
-    func retweetClicked(tweetDetailedViewController: TweetDetailedViewController, retweetTweet: Tweet?, completion: ((tweet: Tweet?, error: NSError?) -> ())?) {
+    func retweetClicked(retweetTweet: Tweet?, completion: ((tweet: Tweet?, error: NSError?) -> ())?) {
         onRetweet(retweetTweet, completion: completion)
     }
     
-    func composeClicked(tweetDetailedViewController: TweetDetailedViewController, replyToTweet: Tweet?) {
+    func composeClicked(replyToTweet: Tweet?) {
         onCompose(replyToTweet)
     }
     
