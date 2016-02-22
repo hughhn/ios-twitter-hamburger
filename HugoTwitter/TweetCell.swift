@@ -39,7 +39,6 @@ class TweetCell: UITableViewCell {
     @IBOutlet weak var timestampLabel: UILabel!
     @IBOutlet weak var tweetLabel: UILabel!
     @IBOutlet weak var profileImageView: UIImageView!
-    @IBOutlet weak var retweetedIcon: UIImageView!
     
     @IBOutlet weak var replyBtn: UIButton!
     @IBOutlet weak var retweetBtn: UIButton!
@@ -84,14 +83,15 @@ class TweetCell: UITableViewCell {
                 tweetLabel.text = tweet.text
             }
             
-            
+            repostIcon.hidden = false
+            repostLabel.hidden = false
+            profileImageTopMargin.constant = 30
+            repostIcon.tintColor = customGrayColor
             if tweet.retweetName != nil {
                 repostIcon.image = retweetImage
-                repostIcon.tintColor = customGrayColor
                 repostLabel.text = "\(tweet.retweetName!) retweeted"
             } else if tweet.replyName != nil {
                 repostIcon.image = replyImage
-                repostIcon.tintColor = customGrayColor
                 repostLabel.text = "In reply to \(tweet.replyName!)"
             } else {
                 repostIcon.hidden = true
@@ -134,9 +134,6 @@ class TweetCell: UITableViewCell {
         
         repostIcon.image = repostIcon.image!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
         repostIcon.tintColor = customGrayColor
-        
-        retweetedIcon.image = retweetedIcon.image!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
-        retweetedIcon.tintColor = customGrayColor
         
         let replyImage = UIImage(named: "icon_reply")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
         replyBtn.setImage(replyImage, forState: UIControlState.Normal)

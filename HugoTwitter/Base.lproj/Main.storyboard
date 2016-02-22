@@ -206,7 +206,6 @@
                                             <outlet property="repostLabel" destination="YRB-Jn-BwQ" id="uYM-KP-OVJ"/>
                                             <outlet property="retweetBtn" destination="Czm-43-CSI" id="8kR-YS-LBY"/>
                                             <outlet property="retweetCountLabel" destination="r15-Gs-6AB" id="PCw-LN-iP8"/>
-                                            <outlet property="retweetedIcon" destination="tb3-4x-Mg1" id="mJl-r6-FVN"/>
                                             <outlet property="timestampLabel" destination="oef-E5-JLd" id="49C-yZ-pSa"/>
                                             <outlet property="tweetLabel" destination="13u-g6-c0M" id="tPv-vy-yR5"/>
                                             <outlet property="usernameLabel" destination="Nmp-z8-csg" id="iF0-a1-fEY"/>
