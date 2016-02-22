@@ -69,7 +69,7 @@ class TweetCell: UITableViewCell {
                 var attributedString = NSMutableAttributedString(string: tweet.text!)
                 
                 let multipleAttributes = [
-                    NSForegroundColorAttributeName: linkColor ]
+                    NSForegroundColorAttributeName: twitterColor ]
                 
                 for match in matches {
                     attributedString.setAttributes(multipleAttributes, range: match.range)
