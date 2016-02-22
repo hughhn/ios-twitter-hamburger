@@ -27,7 +27,7 @@ The following **optional** features are implemented:
 
 The following **additional** features are implemented:
 
-- [X] Import and use custom font Gotham
+- [X] Import and use custom Gotham font instead of default System font
 - [X] Implement custom inputAccessoryView for the compose tweet view (matches with official app)
 - [X] Use NSDataDetector to detect for links and NSAttributedString to display clickable tweet content
 - [X] Include media image if a tweet has one
