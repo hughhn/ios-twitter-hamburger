@@ -75,6 +75,9 @@ class TweetCell: UITableViewCell {
         let replyImage = UIImage(named: "icon_reply")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
         replyBtn.setImage(replyImage, forState: UIControlState.Normal)
         replyBtn.tintColor = customGrayColor
+        
+        retweetBtn.setImage(retweetImage, forState: UIControlState.Normal)
+        favBtn.setImage(favImage, forState: UIControlState.Normal)
     }
     
     func refreshTweetData() {
@@ -82,18 +85,14 @@ class TweetCell: UITableViewCell {
         favCountLabel.text = "\(tweet.favCount)"
         
         if tweet.retweeted {
-            retweetBtn.setImage(retweetImage, forState: UIControlState.Normal)
             retweetBtn.tintColor = UIColor.greenColor()
         } else {
-            retweetBtn.setImage(retweetImage, forState: UIControlState.Normal)
             retweetBtn.tintColor = customGrayColor
         }
         
         if tweet.favorited {
-            favBtn.setImage(favedImage, forState: UIControlState.Normal)
             favBtn.tintColor = UIColor.redColor()
         } else {
-            favBtn.setImage(favImage, forState: UIControlState.Normal)
             favBtn.tintColor = customGrayColor
         }
     }
