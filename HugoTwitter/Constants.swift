@@ -10,6 +10,7 @@ import UIKit
 
 let twitterColor = UIColor(red: 64.0/255.0, green: 153.0/255.0, blue: 255.0/255.0, alpha: 1.0)
 let customGrayColor = UIColor(red: 171.0/255.0, green: 171.0/255.0, blue: 171.0/255.0, alpha: 1.0)
+let linkColor = UIColor(red: 0.05, green: 0.4, blue: 0.65, alpha: 1.0)
 
 let replyImage = UIImage(named: "icon_reply")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
 let retweetImage = UIImage(named: "icon_retweet")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)

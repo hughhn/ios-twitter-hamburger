@@ -61,7 +61,28 @@ class TweetCell: UITableViewCell {
             displayNameLabel.text = tweet.user!.name
             usernameLabel.text = "@\(tweet.user!.screenname!)"
             timestampLabel.text = DateManager.getFriendlyTime(tweet.createdAt!)
-            tweetLabel.text = tweet.text
+            
+            do {
+                let linkDetector = try NSDataDetector(types: NSTextCheckingType.Link.rawValue)
+                let matches = linkDetector.matchesInString(tweet.text!, options: [], range: NSMakeRange(0, tweet.text!.length))
+                
+                var attributedString = NSMutableAttributedString(string: tweet.text!)
+                
+                let multipleAttributes = [
+                    NSForegroundColorAttributeName: linkColor,
+                    NSBackgroundColorAttributeName: UIColor.yellowColor(),
+                    NSUnderlineStyleAttributeName: NSUnderlineStyle.StyleDouble.rawValue ]
+                
+                for match in matches {
+                    attributedString.setAttributes(multipleAttributes, range: match.range)
+                }
+                
+                tweetLabel.attributedText = attributedString
+            } catch {
+                tweetLabel.text = tweet.text
+            }
+            
+            
             if tweet.retweetName != nil {
                 repostIcon.image = retweetImage
                 repostIcon.tintColor = customGrayColor
