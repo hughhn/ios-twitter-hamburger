@@ -29,11 +29,11 @@ The following **additional** features are implemented:
 
 - [X] Use since_id & max_id for pull to refresh and infinite scrolling
 - [X] Import and use custom Gotham font instead of default System font
-- [X] Implement custom inputAccessoryView for the compose tweet view (matches with official app)
-- [X] Use NSDataDetector to detect for links and NSAttributedString to display clickable tweet content
+- [X] Implement custom inputAccessoryView for the compose tweet view (matches the official app)
+- [X] Use NSDataDetector to detect links and NSAttributedString to display clickable links
 - [X] Include media image if a tweet has one
-- [X] Prettify timestamp
-- [X] Custom navigation bar, color, etc.
+- [X] Prettify timestamps
+- [X] Custom navigation bar, colors, etc.
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
