@@ -27,7 +27,6 @@ The following **optional** features are implemented:
 
 The following **additional** features are implemented:
 
-- [X] Use since_id & max_id for pull to refresh and infinite scrolling
 - [X] Import and use custom Gotham font instead of default System font
 - [X] Implement custom inputAccessoryView for the compose tweet view (matches the official app)
 - [X] Use NSDataDetector to detect links and NSAttributedString to display clickable links
