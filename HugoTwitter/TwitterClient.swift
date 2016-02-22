@@ -27,11 +27,25 @@ class TwitterClient: BDBOAuth1SessionManager {
         return Static.instance
     }
     
-    func fav(id: String!, params: NSDictionary?, completion: (tweet: Tweet?, error: NSError?) -> ()) {
-        POST("1.1/favorites/create.json", parameters: params, success:
+    func fav(tweet: Tweet!, params: NSDictionary?, completion: (tweet: Tweet?, error: NSError?) -> ()) {
+        // Toggle fav
+        tweet.favorited = !tweet.favorited
+        
+        var myParams = (params == nil) ? NSMutableDictionary() : NSMutableDictionary(dictionary: params!)
+        myParams.setValue(tweet.id! as! String, forKey: "id")
+        
+        var favUrl = "1.1/favorites/create.json"
+        if !tweet.favorited {
+            // un-fav
+            tweet.favCount--
+            favUrl = "1.1/favorites/destroy.json"
+        } else {
+            tweet.favCount++
+        }
+        
+        POST(favUrl, parameters: myParams, success:
             { (operation: NSURLSessionDataTask, response: AnyObject?) -> Void in
                 
-                let tweet = Tweet(dictionary: response as! NSDictionary)
                 completion(tweet: tweet, error: nil)
                 
             }, failure: { (task: NSURLSessionDataTask?, error: NSError) -> Void in
@@ -41,16 +55,66 @@ class TwitterClient: BDBOAuth1SessionManager {
         })
     }
     
-    func retweet(id: String!, params: NSDictionary?, completion: (tweet: Tweet?, error: NSError?) -> ()) {
-        let retweetUrl = "1.1/statuses/retweet/\(id).json"
-        POST(retweetUrl, parameters: params, success:
+    func retweet(tweet: Tweet!, params: NSDictionary?, completion: (tweet: Tweet?, error: NSError?) -> ()) {
+        // Toggle retweet
+        tweet.retweeted = !tweet.retweeted
+        if tweet.retweeted {
+            tweet.retweetCount++
+        } else {
+            tweet.retweetCount--
+        }
+        
+        if tweet.retweeted {
+            let retweetUrl = "1.1/statuses/retweet/\(tweet.id!).json"
+            POST(retweetUrl, parameters: params, success:
+                { (operation: NSURLSessionDataTask, response: AnyObject?) -> Void in
+                    
+                    completion(tweet: tweet, error: nil)
+                    
+                }, failure: { (task: NSURLSessionDataTask?, error: NSError) -> Void in
+                    print("retweet API error")
+                    print(error.debugDescription)
+                    completion(tweet: nil, error: error)
+            })
+        } else {
+            unRetweet(tweet, params: params, completion: completion)
+        }
+    }
+    
+    func unRetweet(tweet: Tweet!, params: NSDictionary?, completion: (tweet: Tweet?, error: NSError?) -> ()) {
+        if tweet.retweetOriginalId == nil {
+            return
+        }
+        
+        print("retweet original Id = \(tweet.retweetOriginalId!)")
+        var myParams = NSMutableDictionary()
+        myParams.setValue(tweet.retweetOriginalId!, forKey: "id")
+        myParams.setValue("true", forKey: "include_my_retweet")
+        
+        GET("1.1/statuses/show.json", parameters: myParams, success:
             { (operation: NSURLSessionDataTask, response: AnyObject?) -> Void in
                 
-                let tweet = Tweet(dictionary: response as! NSDictionary)
-                completion(tweet: tweet, error: nil)
+                if let retweet = response as? NSDictionary {
+                    if let currentUserRetweet = retweet["current_user_retweet"] as? NSDictionary {
+                        if let retweetToDeleteID = currentUserRetweet["id_str"] as? String {
+                            let destroyUrl = "1.1/statuses/destroy/\(retweetToDeleteID).json"
+                            self.POST(destroyUrl, parameters: nil, success:
+                                { (operation: NSURLSessionDataTask, response: AnyObject?) -> Void in
+                                    
+                                    completion(tweet: tweet, error: nil)
+                                    
+                                }, failure: { (task: NSURLSessionDataTask?, error: NSError) -> Void in
+                                    print("un-retweet API error")
+                                    print(error.debugDescription)
+                                    completion(tweet: nil, error: error)
+                            })
+                            
+                        }
+                    }
+                }
                 
             }, failure: { (task: NSURLSessionDataTask?, error: NSError) -> Void in
-                print("retweet API error")
+                print("could not retrieve original retweet")
                 print(error.debugDescription)
                 completion(tweet: nil, error: error)
         })
@@ -75,13 +139,11 @@ class TwitterClient: BDBOAuth1SessionManager {
             { (operation: NSURLSessionDataTask, response: AnyObject?) -> Void in
             
             var tweets = Tweet.tweetsWithArray(response as! [NSDictionary])
-            //                for tweet in tweets {
-            //                    print("text: \(tweet.text); created: \(tweet.createAt)")
-            //                }
-            
+                
             completion(tweets: tweets, error: nil)
         }, failure: { (task: NSURLSessionDataTask?, error: NSError) -> Void in
             print("home_timeline error")
+            print(error.debugDescription)
             completion(tweets: nil, error: error)
         })
     }

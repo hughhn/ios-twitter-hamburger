@@ -139,10 +139,7 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
             return
         }
         
-        TwitterClient.sharedInstance.fav(favTweet!.id!, params: nil) { (tweet, error) -> () in
-            if tweet != nil {
-                self.refreshControlAction(nil)
-            }
+        TwitterClient.sharedInstance.fav(favTweet!, params: nil) { (tweet, error) -> () in
             if completion != nil {
                 completion!(tweet: tweet, error: error)
             }
@@ -154,10 +151,7 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
             return
         }
         
-        TwitterClient.sharedInstance.retweet(retweetTweet!.id!, params: nil) { (tweet, error) -> () in
-            if tweet != nil {
-                self.refreshControlAction(nil)
-            }
+        TwitterClient.sharedInstance.retweet(retweetTweet!, params: nil) { (tweet, error) -> () in
             if completion != nil {
                 completion!(tweet: tweet, error: error)
             }

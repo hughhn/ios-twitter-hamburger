@@ -21,7 +21,7 @@ class Tweet: NSObject {
     var retweeted: Bool
     var retweetCount: Int
     var favCount: Int
-    
+    let retweetOriginalId: String?
     
     init(dictionary: NSDictionary) {
         self.dictionary = dictionary
@@ -37,9 +37,11 @@ class Tweet: NSObject {
         var retweeted = false
         var retweetCount = 0
         var favCount = 0
+        var retweetOriginalId: String? = nil
         
         if let idStr = dictionary["id_str"] as? String {
             id = idStr
+            retweetOriginalId = idStr
         }
         
         if let userDict = dictionary["user"] as? NSDictionary {
@@ -54,6 +56,9 @@ class Tweet: NSObject {
         }
         
         if let retweetedStatus = dictionary["retweeted_status"] as? NSDictionary {
+            // not an original
+            retweetOriginalId = retweetedStatus["id_str"] as? String
+            
             if let retweetUserDict = retweetedStatus["user"] as? NSDictionary {
                 let retweetUser = User(dictionary: retweetUserDict)
                 retweetName = user!.name!
@@ -93,6 +98,7 @@ class Tweet: NSObject {
         self.retweeted = retweeted
         self.retweetCount = retweetCount
         self.favCount = favCount
+        self.retweetOriginalId = retweetOriginalId
     }
     
     class func tweetsWithArray(array: [NSDictionary]) -> [Tweet] {
