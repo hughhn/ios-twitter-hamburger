@@ -90,15 +90,15 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     // Hides the RefreshControl
     func refreshControlAction(refreshControl: UIRefreshControl?) {
         var params = NSMutableDictionary()
-        var sinceId: String? = nil
-        
-        if tweets.count > 0 {
-            sinceId = tweets[0].id
-        }
-        if sinceId != nil {
-            params.setValue(sinceId, forKey: "since_id")
-        }
         params.setValue("1", forKey: "include_rts")
+        
+//        var sinceId: String? = nil
+//        if tweets.count > 0 {
+//            sinceId = tweets[0].id
+//        }
+//        if sinceId != nil {
+//            params.setValue(sinceId, forKey: "since_id")
+//        }
         
         TwitterClient.sharedInstance.homeTimeline(params as! NSDictionary) { (tweets, error) -> () in
             if refreshControl != nil {
@@ -106,7 +106,8 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
             }
             
             if tweets != nil {
-                self.tweets.insertContentsOf(tweets!, at: 0)
+                //self.tweets.insertContentsOf(tweets!, at: 0)
+                self.tweets = tweets!
                 
                 // reload view
                 self.tableView.reloadData()
