@@ -243,7 +243,7 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
             self.isMoreDataLoading = false
             self.loadingMoreView!.stopAnimating()
             if tweets != nil {
-                if tweets![0].id! == self.tweets[tweets!.count - 1].id! {
+                if tweets![0].id! == self.tweets[self.tweets.count - 1].id! {
                     tweets!.removeAtIndex(0)
                 }
                 self.tweets.appendContentsOf(tweets!)
