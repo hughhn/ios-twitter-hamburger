@@ -15,7 +15,7 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var isMoreDataLoading = false
     var loadingMoreView:InfiniteScrollActivityView?
     var tweets = [Tweet]()
-    var homeParams: [String: String] = ["include_rts": "1"]
+    var defaultHomeParams: [String: String] = ["include_rts" : "1"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,7 +23,7 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         setupNavigationItem()
         setupTableView()
 
-        TwitterClient.sharedInstance.homeTimeline(homeParams as! NSDictionary) { (tweets, error) -> () in
+        TwitterClient.sharedInstance.homeTimeline(defaultHomeParams as! NSDictionary) { (tweets, error) -> () in
             if let tweets = tweets {
                 self.tweets = tweets
                 // reload view
@@ -89,15 +89,28 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     // Updates the tableView with the new data
     // Hides the RefreshControl
     func refreshControlAction(refreshControl: UIRefreshControl?) {
-        TwitterClient.sharedInstance.homeTimeline(homeParams as! NSDictionary) { (tweets, error) -> () in
+        var params = NSMutableDictionary()
+        var sinceId: String? = nil
+        
+        if tweets.count > 0 {
+            sinceId = tweets[0].id
+        }
+        if sinceId != nil {
+            params.setValue(sinceId, forKey: "since_id")
+        }
+        params.setValue("1", forKey: "include_rts")
+        
+        TwitterClient.sharedInstance.homeTimeline(params as! NSDictionary) { (tweets, error) -> () in
             if refreshControl != nil {
                 refreshControl!.endRefreshing()
             }
             
-            self.tweets = tweets!
-            
-            // reload view
-            self.tableView.reloadData()
+            if tweets != nil {
+                self.tweets.insertContentsOf(tweets!, at: 0)
+                
+                // reload view
+                self.tableView.reloadData()
+            }
         }
     }
     
@@ -210,6 +223,7 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
             let maxIdNum : Int64 = Int64(maxId!)!
             params.setValue(maxIdNum - 1, forKey: "max_id")
         }
+        params.setValue("1", forKey: "include_rts")
         
         TwitterClient.sharedInstance.homeTimeline(params) { (var tweets, error) -> () in
             self.isMoreDataLoading = false
