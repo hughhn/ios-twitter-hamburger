@@ -86,37 +86,37 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="waffletchnlgy retweeted" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YRB-Jn-BwQ">
-                                                    <rect key="frame" x="70" y="12" width="122" height="12"/>
+                                                    <rect key="frame" x="74" y="12" width="122" height="12"/>
                                                     <fontDescription key="fontDescription" name="GothamBook-Regular" family="Gotham Book" pointSize="10"/>
                                                     <color key="textColor" red="0.67165464743589742" green="0.67165464743589742" blue="0.67165464743589742" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Michael Moran" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XKF-P6-jyd">
-                                                    <rect key="frame" x="70" y="28" width="103" height="17"/>
+                                                    <rect key="frame" x="74" y="28" width="103" height="17"/>
                                                     <fontDescription key="fontDescription" name="GothamBold-Regular" family="Gotham Bold" pointSize="14"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="4h" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oef-E5-JLd">
-                                                    <rect key="frame" x="292" y="30" width="15.5" height="14.5"/>
-                                                    <fontDescription key="fontDescription" name="GothamBook-Regular" family="Gotham Book" pointSize="12"/>
+                                                    <rect key="frame" x="289" y="27.5" width="18.5" height="17"/>
+                                                    <fontDescription key="fontDescription" name="GothamBook-Regular" family="Gotham Book" pointSize="14"/>
                                                     <color key="textColor" red="0.67165464743589742" green="0.67165464743589742" blue="0.67165464743589742" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="@TheMichaelMoran" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nmp-z8-csg">
-                                                    <rect key="frame" x="177" y="30" width="107" height="14.5"/>
-                                                    <fontDescription key="fontDescription" name="GothamBook-Regular" family="Gotham Book" pointSize="12"/>
+                                                    <rect key="frame" x="181" y="27.5" width="100" height="17"/>
+                                                    <fontDescription key="fontDescription" name="GothamBook-Regular" family="Gotham Book" pointSize="14"/>
                                                     <color key="textColor" red="0.67165464743589742" green="0.67165464743589742" blue="0.67165464743589742" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I have seen the future of newspaper http://t.co/GSLhglaglaga" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="13u-g6-c0M">
-                                                    <rect key="frame" x="70" y="48" width="238" height="50.5"/>
-                                                    <fontDescription key="fontDescription" name="GothamBook-Regular" family="Gotham Book" pointSize="14"/>
+                                                    <rect key="frame" x="74" y="48" width="234" height="54"/>
+                                                    <fontDescription key="fontDescription" name="GothamBook-Regular" family="Gotham Book" pointSize="15"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JHs-zp-fdn">
-                                                    <rect key="frame" x="70" y="111" width="20" height="25"/>
+                                                    <rect key="frame" x="74" y="114.5" width="20" height="25"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="25" id="1Xq-kp-EB0"/>
                                                         <constraint firstAttribute="width" constant="20" id="fva-Ik-EkB"/>
@@ -124,7 +124,7 @@
                                                     <state key="normal" title="Button" image="icon_reply"/>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Czm-43-CSI">
-                                                    <rect key="frame" x="150" y="111.5" width="25" height="25"/>
+                                                    <rect key="frame" x="154" y="115" width="25" height="25"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="25" id="EkD-hr-aSm"/>
                                                         <constraint firstAttribute="height" constant="25" id="e0Y-aI-iJt"/>
@@ -132,7 +132,7 @@
                                                     <state key="normal" title="Button" image="icon_retweet"/>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M64-fC-gQG">
-                                                    <rect key="frame" x="235" y="111" width="25" height="25"/>
+                                                    <rect key="frame" x="239" y="114.5" width="25" height="25"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="25" id="5Zd-fG-C7K"/>
                                                         <constraint firstAttribute="height" constant="25" id="CBZ-AD-GwO"/>
@@ -140,13 +140,13 @@
                                                     <state key="normal" title="Button" image="icon_fav"/>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HaI-Ei-MU4">
-                                                    <rect key="frame" x="262" y="116.5" width="33" height="14.5"/>
+                                                    <rect key="frame" x="266" y="120" width="33" height="14.5"/>
                                                     <fontDescription key="fontDescription" name="GothamBook-Regular" family="Gotham Book" pointSize="12"/>
                                                     <color key="textColor" red="0.6705882352941176" green="0.6705882352941176" blue="0.6705882352941176" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r15-Gs-6AB">
-                                                    <rect key="frame" x="177" y="117.5" width="33" height="14.5"/>
+                                                    <rect key="frame" x="181" y="121" width="33" height="14.5"/>
                                                     <fontDescription key="fontDescription" name="GothamBook-Regular" family="Gotham Book" pointSize="12"/>
                                                     <color key="textColor" red="0.6705882352941176" green="0.6705882352941176" blue="0.6705882352941176" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -160,7 +160,7 @@
                                                 <constraint firstItem="JHs-zp-fdn" firstAttribute="leading" secondItem="XKF-P6-jyd" secondAttribute="leading" id="6Bl-DN-uIG"/>
                                                 <constraint firstItem="Czm-43-CSI" firstAttribute="centerY" secondItem="JHs-zp-fdn" secondAttribute="centerY" id="7Ac-ha-Mbr"/>
                                                 <constraint firstItem="YRB-Jn-BwQ" firstAttribute="top" secondItem="F2V-wI-Lyo" secondAttribute="top" constant="12" id="8XW-bB-xNs"/>
-                                                <constraint firstItem="XKF-P6-jyd" firstAttribute="leading" secondItem="gWh-oa-rX2" secondAttribute="trailing" constant="8" id="AjZ-VM-j8a"/>
+                                                <constraint firstItem="XKF-P6-jyd" firstAttribute="leading" secondItem="gWh-oa-rX2" secondAttribute="trailing" constant="12" id="AjZ-VM-j8a"/>
                                                 <constraint firstItem="r15-Gs-6AB" firstAttribute="leading" secondItem="Czm-43-CSI" secondAttribute="trailing" constant="2" id="BfO-of-5e2"/>
                                                 <constraint firstItem="XKF-P6-jyd" firstAttribute="top" secondItem="gWh-oa-rX2" secondAttribute="top" constant="-2" id="Csm-Oo-cqP"/>
                                                 <constraint firstItem="oef-E5-JLd" firstAttribute="baseline" secondItem="XKF-P6-jyd" secondAttribute="baseline" id="DM6-ie-rwb"/>
@@ -169,8 +169,8 @@
                                                 <constraint firstItem="M64-fC-gQG" firstAttribute="leading" secondItem="Czm-43-CSI" secondAttribute="trailing" constant="60" id="MJk-eJ-TcD"/>
                                                 <constraint firstItem="gWh-oa-rX2" firstAttribute="leading" secondItem="F2V-wI-Lyo" secondAttribute="leading" constant="12" id="WWn-dQ-dXl"/>
                                                 <constraint firstItem="tb3-4x-Mg1" firstAttribute="trailing" secondItem="gWh-oa-rX2" secondAttribute="trailing" id="YD2-yG-nzW"/>
-                                                <constraint firstItem="13u-g6-c0M" firstAttribute="leading" secondItem="gWh-oa-rX2" secondAttribute="trailing" constant="8" id="Z5N-SM-gRP"/>
                                                 <constraint firstItem="tb3-4x-Mg1" firstAttribute="top" secondItem="F2V-wI-Lyo" secondAttribute="top" constant="12" id="bNR-Sn-RL4"/>
+                                                <constraint firstItem="13u-g6-c0M" firstAttribute="leading" secondItem="XKF-P6-jyd" secondAttribute="leading" id="cD7-OU-rvr"/>
                                                 <constraint firstItem="13u-g6-c0M" firstAttribute="top" secondItem="Nmp-z8-csg" secondAttribute="bottom" constant="4" id="fea-V6-7uk"/>
                                                 <constraint firstAttribute="trailing" secondItem="oef-E5-JLd" secondAttribute="trailing" constant="12" id="iHd-gS-eqD"/>
                                                 <constraint firstItem="Nmp-z8-csg" firstAttribute="baseline" secondItem="XKF-P6-jyd" secondAttribute="baseline" id="j1v-yP-GUQ"/>
