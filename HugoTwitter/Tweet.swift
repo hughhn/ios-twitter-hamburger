@@ -22,6 +22,7 @@ class Tweet: NSObject {
     var retweetCount: Int
     var favCount: Int
     let retweetOriginalId: String?
+    let media: Media?
     
     init(dictionary: NSDictionary) {
         self.dictionary = dictionary
@@ -38,6 +39,7 @@ class Tweet: NSObject {
         var retweetCount = 0
         var favCount = 0
         var retweetOriginalId: String? = nil
+        var media: Media?
         
         if let idStr = dictionary["id_str"] as? String {
             id = idStr
@@ -87,6 +89,14 @@ class Tweet: NSObject {
             favCount = favCountData
         }
         
+        if let entities = dictionary["entities"] as? NSDictionary {
+            if let mediaArray = entities["media"] as? NSArray {
+                if mediaArray.count > 0 {
+                    media = Media(dictionary: mediaArray[0] as! NSDictionary)
+                }
+            }
+        }
+        
         self.id = id
         self.user = user
         self.text = text
@@ -99,6 +109,7 @@ class Tweet: NSObject {
         self.retweetCount = retweetCount
         self.favCount = favCount
         self.retweetOriginalId = retweetOriginalId
+        self.media = media
     }
     
     class func tweetsWithArray(array: [NSDictionary]) -> [Tweet] {
