@@ -60,15 +60,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="180" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6Dy-Zj-t4a">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="298" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6Dy-Zj-t4a">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TweetCell" rowHeight="180" id="M4D-GU-3oH" customClass="TweetCell" customModule="HugoTwitter" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="92" width="320" height="180"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TweetCell" rowHeight="298" id="M4D-GU-3oH" customClass="TweetCell" customModule="HugoTwitter" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="92" width="320" height="298"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="M4D-GU-3oH" id="F2V-wI-Lyo">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="179.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="297.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_retweet" translatesAutoresizingMaskIntoConstraints="NO" id="tb3-4x-Mg1">
@@ -98,25 +98,25 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="4h" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oef-E5-JLd">
-                                                    <rect key="frame" x="289" y="27.5" width="18.5" height="17"/>
+                                                    <rect key="frame" x="289" y="28" width="18.5" height="17"/>
                                                     <fontDescription key="fontDescription" name="GothamBook-Regular" family="Gotham Book" pointSize="14"/>
                                                     <color key="textColor" red="0.67165464743589742" green="0.67165464743589742" blue="0.67165464743589742" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="@TheMichaelMoran" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nmp-z8-csg">
-                                                    <rect key="frame" x="181" y="27.5" width="100" height="17"/>
+                                                    <rect key="frame" x="181" y="28" width="100" height="17"/>
                                                     <fontDescription key="fontDescription" name="GothamBook-Regular" family="Gotham Book" pointSize="14"/>
                                                     <color key="textColor" red="0.67165464743589742" green="0.67165464743589742" blue="0.67165464743589742" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I have seen the future of newspaper http://t.co/GSLhglaglaga" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="13u-g6-c0M">
-                                                    <rect key="frame" x="74" y="48" width="234" height="54"/>
+                                                    <rect key="frame" x="74" y="49" width="234" height="54"/>
                                                     <fontDescription key="fontDescription" name="GothamBook-Regular" family="Gotham Book" pointSize="15"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JHs-zp-fdn">
-                                                    <rect key="frame" x="74" y="114.5" width="20" height="25"/>
+                                                    <rect key="frame" x="74" y="252.5" width="20" height="25"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="25" id="1Xq-kp-EB0"/>
                                                         <constraint firstAttribute="width" constant="20" id="fva-Ik-EkB"/>
@@ -124,7 +124,7 @@
                                                     <state key="normal" title="Button" image="icon_reply"/>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Czm-43-CSI">
-                                                    <rect key="frame" x="154" y="115" width="25" height="25"/>
+                                                    <rect key="frame" x="154" y="253" width="25" height="25"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="25" id="EkD-hr-aSm"/>
                                                         <constraint firstAttribute="height" constant="25" id="e0Y-aI-iJt"/>
@@ -132,7 +132,7 @@
                                                     <state key="normal" title="Button" image="icon_retweet"/>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M64-fC-gQG">
-                                                    <rect key="frame" x="239" y="114.5" width="25" height="25"/>
+                                                    <rect key="frame" x="239" y="252.5" width="25" height="25"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="25" id="5Zd-fG-C7K"/>
                                                         <constraint firstAttribute="height" constant="25" id="CBZ-AD-GwO"/>
@@ -140,17 +140,23 @@
                                                     <state key="normal" title="Button" image="icon_fav"/>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HaI-Ei-MU4">
-                                                    <rect key="frame" x="266" y="120" width="33" height="14.5"/>
+                                                    <rect key="frame" x="266" y="258" width="33" height="14.5"/>
                                                     <fontDescription key="fontDescription" name="GothamBook-Regular" family="Gotham Book" pointSize="12"/>
                                                     <color key="textColor" red="0.6705882352941176" green="0.6705882352941176" blue="0.6705882352941176" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r15-Gs-6AB">
-                                                    <rect key="frame" x="181" y="121" width="33" height="14.5"/>
+                                                    <rect key="frame" x="181" y="259" width="33" height="14.5"/>
                                                     <fontDescription key="fontDescription" name="GothamBook-Regular" family="Gotham Book" pointSize="12"/>
                                                     <color key="textColor" red="0.6705882352941176" green="0.6705882352941176" blue="0.6705882352941176" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="svL-wg-kB9">
+                                                    <rect key="frame" x="74" y="120" width="233.5" height="120"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="120" id="IyT-4T-DIc"/>
+                                                    </constraints>
+                                                </imageView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="HaI-Ei-MU4" firstAttribute="leading" secondItem="M64-fC-gQG" secondAttribute="trailing" constant="2" id="0Ri-PV-ART"/>
@@ -167,18 +173,21 @@
                                                 <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="JHs-zp-fdn" secondAttribute="bottom" constant="12" id="Ibw-yj-XTP"/>
                                                 <constraint firstItem="Czm-43-CSI" firstAttribute="leading" secondItem="JHs-zp-fdn" secondAttribute="trailing" constant="60" id="JqT-3l-DyV"/>
                                                 <constraint firstItem="M64-fC-gQG" firstAttribute="leading" secondItem="Czm-43-CSI" secondAttribute="trailing" constant="60" id="MJk-eJ-TcD"/>
+                                                <constraint firstItem="svL-wg-kB9" firstAttribute="top" secondItem="13u-g6-c0M" secondAttribute="bottom" constant="17" id="OLa-dk-mZp"/>
                                                 <constraint firstItem="gWh-oa-rX2" firstAttribute="leading" secondItem="F2V-wI-Lyo" secondAttribute="leading" constant="12" id="WWn-dQ-dXl"/>
                                                 <constraint firstItem="tb3-4x-Mg1" firstAttribute="trailing" secondItem="gWh-oa-rX2" secondAttribute="trailing" id="YD2-yG-nzW"/>
                                                 <constraint firstItem="tb3-4x-Mg1" firstAttribute="top" secondItem="F2V-wI-Lyo" secondAttribute="top" constant="12" id="bNR-Sn-RL4"/>
                                                 <constraint firstItem="13u-g6-c0M" firstAttribute="leading" secondItem="XKF-P6-jyd" secondAttribute="leading" id="cD7-OU-rvr"/>
+                                                <constraint firstItem="svL-wg-kB9" firstAttribute="leading" secondItem="XKF-P6-jyd" secondAttribute="leading" id="f1G-Ft-YjQ"/>
                                                 <constraint firstItem="13u-g6-c0M" firstAttribute="top" secondItem="Nmp-z8-csg" secondAttribute="bottom" constant="4" id="fea-V6-7uk"/>
+                                                <constraint firstItem="JHs-zp-fdn" firstAttribute="top" secondItem="svL-wg-kB9" secondAttribute="bottom" constant="12" id="heA-64-DMU"/>
                                                 <constraint firstAttribute="trailing" secondItem="oef-E5-JLd" secondAttribute="trailing" constant="12" id="iHd-gS-eqD"/>
                                                 <constraint firstItem="Nmp-z8-csg" firstAttribute="baseline" secondItem="XKF-P6-jyd" secondAttribute="baseline" id="j1v-yP-GUQ"/>
                                                 <constraint firstItem="r15-Gs-6AB" firstAttribute="centerY" secondItem="Czm-43-CSI" secondAttribute="centerY" id="kdf-rQ-jCo"/>
                                                 <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="gWh-oa-rX2" secondAttribute="bottom" constant="12" id="mvh-MZ-qRL"/>
-                                                <constraint firstItem="JHs-zp-fdn" firstAttribute="top" secondItem="13u-g6-c0M" secondAttribute="bottom" constant="12" id="nic-Z2-CGm"/>
                                                 <constraint firstItem="Nmp-z8-csg" firstAttribute="leading" secondItem="XKF-P6-jyd" secondAttribute="trailing" constant="4" id="o3d-0j-sGc"/>
                                                 <constraint firstAttribute="trailing" secondItem="13u-g6-c0M" secondAttribute="trailing" constant="12" id="rmQ-jE-Oh0"/>
+                                                <constraint firstAttribute="trailing" secondItem="svL-wg-kB9" secondAttribute="trailing" constant="12" id="sRM-EN-Sax"/>
                                                 <constraint firstItem="XKF-P6-jyd" firstAttribute="leading" secondItem="YRB-Jn-BwQ" secondAttribute="leading" id="uDP-0f-r2H"/>
                                                 <constraint firstItem="HaI-Ei-MU4" firstAttribute="centerY" secondItem="M64-fC-gQG" secondAttribute="centerY" id="xWH-cN-qQj"/>
                                             </constraints>
@@ -187,9 +196,12 @@
                                             <outlet property="displayNameLabel" destination="XKF-P6-jyd" id="N9S-ao-C7G"/>
                                             <outlet property="favBtn" destination="M64-fC-gQG" id="z1l-oN-dim"/>
                                             <outlet property="favCountLabel" destination="HaI-Ei-MU4" id="eNr-3G-WtM"/>
+                                            <outlet property="mediaImageHeight" destination="IyT-4T-DIc" id="Ypp-m4-pjw"/>
+                                            <outlet property="mediaImageView" destination="svL-wg-kB9" id="WLs-g7-hiU"/>
                                             <outlet property="profileImageTopMargin" destination="2Qp-w4-ccq" id="Xix-bR-AwZ"/>
                                             <outlet property="profileImageView" destination="gWh-oa-rX2" id="laZ-OG-vjc"/>
                                             <outlet property="replyBtn" destination="JHs-zp-fdn" id="4HZ-I2-cWj"/>
+                                            <outlet property="replyBtnTopSpace" destination="heA-64-DMU" id="Wxq-s2-kMo"/>
                                             <outlet property="repostIcon" destination="tb3-4x-Mg1" id="AgF-VA-Zrp"/>
                                             <outlet property="repostLabel" destination="YRB-Jn-BwQ" id="uYM-KP-OVJ"/>
                                             <outlet property="retweetBtn" destination="Czm-43-CSI" id="8kR-YS-LBY"/>
