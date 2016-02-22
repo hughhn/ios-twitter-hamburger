@@ -99,13 +99,13 @@ class TweetDetailedViewController: UIViewController {
         likeCountLabel.text = "\(tweet.favCount)"
         
         if tweet.retweeted {
-            retweetBtn.tintColor = UIColor.greenColor()
+            retweetBtn.tintColor = retweetColor
         } else {
             retweetBtn.tintColor = customGrayColor
         }
         
         if tweet.favorited {
-            favBtn.tintColor = UIColor.redColor()
+            favBtn.tintColor = favColor
         } else {
             favBtn.tintColor = customGrayColor
         }

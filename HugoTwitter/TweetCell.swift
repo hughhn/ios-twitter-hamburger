@@ -170,15 +170,19 @@ class TweetCell: UITableViewCell {
         favCountLabel.text = "\(tweet.favCount)"
         
         if tweet.retweeted {
-            retweetBtn.tintColor = UIColor.greenColor()
+            retweetBtn.tintColor = retweetColor
+            retweetCountLabel.textColor = retweetColor
         } else {
             retweetBtn.tintColor = customGrayColor
+            retweetCountLabel.textColor = customGrayColor
         }
         
         if tweet.favorited {
-            favBtn.tintColor = UIColor.redColor()
+            favBtn.tintColor = favColor
+            favCountLabel.textColor = favColor
         } else {
             favBtn.tintColor = customGrayColor
+            favCountLabel.textColor = customGrayColor
         }
     }
 
