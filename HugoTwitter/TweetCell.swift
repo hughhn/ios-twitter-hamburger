@@ -10,6 +10,8 @@ import UIKit
 
 class TweetCell: UITableViewCell {
 
+    @IBOutlet weak var repostIcon: UIImageView!
+    @IBOutlet weak var repostLabel: UILabel!
     @IBOutlet weak var retweetLabel: UILabel!
     @IBOutlet weak var displayNameLabel: UILabel!
     @IBOutlet weak var usernameLabel: UILabel!
@@ -21,6 +23,12 @@ class TweetCell: UITableViewCell {
     @IBOutlet weak var retweetIcon: UIImageView!
     @IBOutlet weak var favIcon: UIImageView!
     
+    @IBOutlet weak var replyBtn: UIButton!
+    @IBOutlet weak var retweetBtn: UIButton!
+    @IBOutlet weak var favBtn: UIButton!
+    @IBOutlet weak var retweetCountLabel: UILabel!
+    @IBOutlet weak var favCountLabel: UILabel!
+    
     @IBOutlet weak var profileImageTopMargin: NSLayoutConstraint!
     
     var tweet: Tweet! {
@@ -31,14 +39,20 @@ class TweetCell: UITableViewCell {
             timestampLabel.text = DateManager.getFriendlyTime(tweet.createdAt!)
             tweetLabel.text = tweet.text
             if tweet.retweetName != nil {
-                retweetLabel.text = "\(tweet.retweetName!) retweeted"
+                repostIcon.image = retweetImage
+                repostIcon.tintColor = customGrayColor
+                repostLabel.text = "\(tweet.retweetName!) retweeted"
             } else if tweet.replyName != nil {
-                retweetLabel.text = "In reply to \(tweet.replyName!)"
+                repostIcon.image = replyImage
+                repostIcon.tintColor = customGrayColor
+                repostLabel.text = "In reply to \(tweet.replyName!)"
             } else {
-                retweetLabel.hidden = true
-                retweetedIcon.hidden = true
+                repostIcon.hidden = true
+                repostLabel.hidden = true
                 profileImageTopMargin.constant = 12
             }
+            
+            refreshTweetData()
         }
     }
     
@@ -52,17 +66,36 @@ class TweetCell: UITableViewCell {
         profileImageView.layer.cornerRadius = 5
         profileImageView.clipsToBounds = true
         
+        repostIcon.image = repostIcon.image!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+        repostIcon.tintColor = customGrayColor
+        
         retweetedIcon.image = retweetedIcon.image!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
         retweetedIcon.tintColor = customGrayColor
         
-        replyIcon.image = replyIcon.image!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
-        replyIcon.tintColor = customGrayColor
+        let replyImage = UIImage(named: "icon_reply")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+        replyBtn.setImage(replyImage, forState: UIControlState.Normal)
+        replyBtn.tintColor = customGrayColor
+    }
+    
+    func refreshTweetData() {
+        retweetCountLabel.text = "\(tweet.retweetCount)"
+        favCountLabel.text = "\(tweet.favCount)"
         
-        retweetIcon.image = retweetIcon.image!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
-        retweetIcon.tintColor = customGrayColor
+        if tweet.retweeted {
+            retweetBtn.setImage(retweetImage, forState: UIControlState.Normal)
+            retweetBtn.tintColor = UIColor.greenColor()
+        } else {
+            retweetBtn.setImage(retweetImage, forState: UIControlState.Normal)
+            retweetBtn.tintColor = customGrayColor
+        }
         
-        favIcon.image = favIcon.image!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
-        favIcon.tintColor = customGrayColor
+        if tweet.favorited {
+            favBtn.setImage(favedImage, forState: UIControlState.Normal)
+            favBtn.tintColor = UIColor.redColor()
+        } else {
+            favBtn.setImage(favImage, forState: UIControlState.Normal)
+            favBtn.tintColor = customGrayColor
+        }
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

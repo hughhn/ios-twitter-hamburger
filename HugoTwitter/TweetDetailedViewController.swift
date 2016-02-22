@@ -36,11 +36,6 @@ class TweetDetailedViewController: UIViewController {
     @IBOutlet weak var retweetBtn: UIButton!
     @IBOutlet weak var favBtn: UIButton!
     
-    let retweetImage = UIImage(named: "icon_retweet")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
-
-    let favImage = UIImage(named: "icon_fav")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
-    let favedImage = UIImage(named: "icon_faved")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
-    
     var tweet: Tweet!
     
     override func viewDidLoad() {
@@ -86,7 +81,13 @@ class TweetDetailedViewController: UIViewController {
         tweetLabel.text = tweet.text
         
         if tweet.retweetName != nil {
+            repostIcon.image = retweetImage
+            repostIcon.tintColor = customGrayColor
             repostLabel.text = "\(tweet.retweetName!) retweeted"
+        } else if tweet.replyName != nil {
+            repostIcon.image = replyImage
+            repostIcon.tintColor = customGrayColor
+            repostLabel.text = "In reply to \(tweet.replyName!)"
         } else {
             repostIcon.hidden = true
             repostLabel.hidden = true

@@ -134,17 +134,35 @@ class TwitterClient: BDBOAuth1SessionManager {
         })
     }
     
+    let homelineCacheKey = "homelineCacheKey"
     func homeTimeline(params: NSDictionary?, completion: (tweets: [Tweet]?, error: NSError?) -> ()) {
         GET("1.1/statuses/home_timeline.json", parameters: params, success:
             { (operation: NSURLSessionDataTask, response: AnyObject?) -> Void in
             
+            do {
+                let data = try NSJSONSerialization.dataWithJSONObject(response!, options: []) as NSData
+                NSUserDefaults.standardUserDefaults().setObject(data, forKey: self.homelineCacheKey)
+            } catch {}
+            
             var tweets = Tweet.tweetsWithArray(response as! [NSDictionary])
-                
             completion(tweets: tweets, error: nil)
-        }, failure: { (task: NSURLSessionDataTask?, error: NSError) -> Void in
+        }, failure: { (task: NSURLSessionDataTask?, apiError: NSError) -> Void in
             print("home_timeline error")
-            print(error.debugDescription)
-            completion(tweets: nil, error: error)
+            print(apiError.debugDescription)
+            
+            
+            var data = NSUserDefaults.standardUserDefaults().objectForKey(self.homelineCacheKey) as? NSData
+            if data != nil {
+                do {
+                    var cache = try NSJSONSerialization.JSONObjectWithData(data!, options: []) as! [NSDictionary]
+                    var tweets = Tweet.tweetsWithArray(cache)
+                    completion(tweets: tweets, error: nil)
+                } catch {
+                    completion(tweets: nil, error: apiError)
+                }
+            }
+            
+            //completion(tweets: nil, error: error)
         })
     }
     

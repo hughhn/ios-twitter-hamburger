@@ -13,6 +13,8 @@
             <string>GothamBook-Regular</string>
             <string>GothamBook-Regular</string>
             <string>GothamBook-Regular</string>
+            <string>GothamBook-Regular</string>
+            <string>GothamBook-Regular</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -58,15 +60,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="118" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6Dy-Zj-t4a">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="180" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6Dy-Zj-t4a">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TweetCell" rowHeight="118" id="M4D-GU-3oH" customClass="TweetCell" customModule="HugoTwitter" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="92" width="320" height="118"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TweetCell" rowHeight="180" id="M4D-GU-3oH" customClass="TweetCell" customModule="HugoTwitter" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="92" width="320" height="180"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="M4D-GU-3oH" id="F2V-wI-Lyo">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="117.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="179.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_retweet" translatesAutoresizingMaskIntoConstraints="NO" id="tb3-4x-Mg1">
@@ -83,20 +85,6 @@
                                                         <constraint firstAttribute="height" constant="50" id="yrw-Lb-Rbf"/>
                                                     </constraints>
                                                 </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_reply" translatesAutoresizingMaskIntoConstraints="NO" id="zUo-Os-HVh">
-                                                    <rect key="frame" x="70" y="83.5" width="12" height="15"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="12" id="SOd-we-BPn"/>
-                                                        <constraint firstAttribute="height" constant="15" id="w5f-HW-ufc"/>
-                                                    </constraints>
-                                                </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_retweet" translatesAutoresizingMaskIntoConstraints="NO" id="CcW-B3-M8K">
-                                                    <rect key="frame" x="142" y="83.5" width="15" height="15"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="15" id="02e-Hy-TkD"/>
-                                                        <constraint firstAttribute="width" constant="15" id="UTq-xb-dpo"/>
-                                                    </constraints>
-                                                </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="waffletchnlgy retweeted" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YRB-Jn-BwQ">
                                                     <rect key="frame" x="70" y="12" width="122" height="12"/>
                                                     <fontDescription key="fontDescription" name="GothamBook-Regular" family="Gotham Book" pointSize="10"/>
@@ -104,72 +92,108 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Michael Moran" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XKF-P6-jyd">
-                                                    <rect key="frame" x="70" y="28" width="88.5" height="14.5"/>
-                                                    <fontDescription key="fontDescription" name="GothamBold-Regular" family="Gotham Bold" pointSize="12"/>
+                                                    <rect key="frame" x="70" y="28" width="103" height="17"/>
+                                                    <fontDescription key="fontDescription" name="GothamBold-Regular" family="Gotham Bold" pointSize="14"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="4h" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oef-E5-JLd">
-                                                    <rect key="frame" x="292.5" y="28" width="15.5" height="14.5"/>
+                                                    <rect key="frame" x="292" y="30" width="15.5" height="14.5"/>
                                                     <fontDescription key="fontDescription" name="GothamBook-Regular" family="Gotham Book" pointSize="12"/>
                                                     <color key="textColor" red="0.67165464743589742" green="0.67165464743589742" blue="0.67165464743589742" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="@TheMichaelMoran" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nmp-z8-csg">
-                                                    <rect key="frame" x="162" y="28" width="116.5" height="14.5"/>
+                                                    <rect key="frame" x="177" y="30" width="107" height="14.5"/>
                                                     <fontDescription key="fontDescription" name="GothamBook-Regular" family="Gotham Book" pointSize="12"/>
                                                     <color key="textColor" red="0.67165464743589742" green="0.67165464743589742" blue="0.67165464743589742" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I have seen the future of newspaper http://t.co/GSLhglaglaga" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="13u-g6-c0M">
-                                                    <rect key="frame" x="70" y="44.5" width="238" height="29"/>
-                                                    <fontDescription key="fontDescription" name="GothamBook-Regular" family="Gotham Book" pointSize="12"/>
+                                                    <rect key="frame" x="70" y="48" width="238" height="50.5"/>
+                                                    <fontDescription key="fontDescription" name="GothamBook-Regular" family="Gotham Book" pointSize="14"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_fav" translatesAutoresizingMaskIntoConstraints="NO" id="8tq-Ae-cG5">
-                                                    <rect key="frame" x="217" y="83.5" width="15" height="15"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JHs-zp-fdn">
+                                                    <rect key="frame" x="70" y="111" width="20" height="25"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="15" id="cnJ-if-6HH"/>
-                                                        <constraint firstAttribute="height" constant="15" id="iYb-0P-eDD"/>
+                                                        <constraint firstAttribute="height" constant="25" id="1Xq-kp-EB0"/>
+                                                        <constraint firstAttribute="width" constant="20" id="fva-Ik-EkB"/>
                                                     </constraints>
-                                                </imageView>
+                                                    <state key="normal" title="Button" image="icon_reply"/>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Czm-43-CSI">
+                                                    <rect key="frame" x="150" y="111.5" width="25" height="25"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="25" id="EkD-hr-aSm"/>
+                                                        <constraint firstAttribute="height" constant="25" id="e0Y-aI-iJt"/>
+                                                    </constraints>
+                                                    <state key="normal" title="Button" image="icon_retweet"/>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M64-fC-gQG">
+                                                    <rect key="frame" x="235" y="111" width="25" height="25"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="25" id="5Zd-fG-C7K"/>
+                                                        <constraint firstAttribute="height" constant="25" id="CBZ-AD-GwO"/>
+                                                    </constraints>
+                                                    <state key="normal" title="Button" image="icon_fav"/>
+                                                </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HaI-Ei-MU4">
+                                                    <rect key="frame" x="262" y="116.5" width="33" height="14.5"/>
+                                                    <fontDescription key="fontDescription" name="GothamBook-Regular" family="Gotham Book" pointSize="12"/>
+                                                    <color key="textColor" red="0.6705882352941176" green="0.6705882352941176" blue="0.6705882352941176" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r15-Gs-6AB">
+                                                    <rect key="frame" x="177" y="117.5" width="33" height="14.5"/>
+                                                    <fontDescription key="fontDescription" name="GothamBook-Regular" family="Gotham Book" pointSize="12"/>
+                                                    <color key="textColor" red="0.6705882352941176" green="0.6705882352941176" blue="0.6705882352941176" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="HaI-Ei-MU4" firstAttribute="leading" secondItem="M64-fC-gQG" secondAttribute="trailing" constant="2" id="0Ri-PV-ART"/>
                                                 <constraint firstItem="gWh-oa-rX2" firstAttribute="top" secondItem="F2V-wI-Lyo" secondAttribute="top" constant="30" id="2Qp-w4-ccq"/>
                                                 <constraint firstItem="oef-E5-JLd" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Nmp-z8-csg" secondAttribute="trailing" constant="8" id="2fr-NO-bW6"/>
-                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="zUo-Os-HVh" secondAttribute="bottom" constant="12" id="4xT-bw-hZQ"/>
+                                                <constraint firstItem="M64-fC-gQG" firstAttribute="centerY" secondItem="JHs-zp-fdn" secondAttribute="centerY" id="69d-5l-kKA"/>
+                                                <constraint firstItem="JHs-zp-fdn" firstAttribute="leading" secondItem="XKF-P6-jyd" secondAttribute="leading" id="6Bl-DN-uIG"/>
+                                                <constraint firstItem="Czm-43-CSI" firstAttribute="centerY" secondItem="JHs-zp-fdn" secondAttribute="centerY" id="7Ac-ha-Mbr"/>
                                                 <constraint firstItem="YRB-Jn-BwQ" firstAttribute="top" secondItem="F2V-wI-Lyo" secondAttribute="top" constant="12" id="8XW-bB-xNs"/>
                                                 <constraint firstItem="XKF-P6-jyd" firstAttribute="leading" secondItem="gWh-oa-rX2" secondAttribute="trailing" constant="8" id="AjZ-VM-j8a"/>
+                                                <constraint firstItem="r15-Gs-6AB" firstAttribute="leading" secondItem="Czm-43-CSI" secondAttribute="trailing" constant="2" id="BfO-of-5e2"/>
                                                 <constraint firstItem="XKF-P6-jyd" firstAttribute="top" secondItem="gWh-oa-rX2" secondAttribute="top" constant="-2" id="Csm-Oo-cqP"/>
                                                 <constraint firstItem="oef-E5-JLd" firstAttribute="baseline" secondItem="XKF-P6-jyd" secondAttribute="baseline" id="DM6-ie-rwb"/>
+                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="JHs-zp-fdn" secondAttribute="bottom" constant="12" id="Ibw-yj-XTP"/>
+                                                <constraint firstItem="Czm-43-CSI" firstAttribute="leading" secondItem="JHs-zp-fdn" secondAttribute="trailing" constant="60" id="JqT-3l-DyV"/>
+                                                <constraint firstItem="M64-fC-gQG" firstAttribute="leading" secondItem="Czm-43-CSI" secondAttribute="trailing" constant="60" id="MJk-eJ-TcD"/>
                                                 <constraint firstItem="gWh-oa-rX2" firstAttribute="leading" secondItem="F2V-wI-Lyo" secondAttribute="leading" constant="12" id="WWn-dQ-dXl"/>
                                                 <constraint firstItem="tb3-4x-Mg1" firstAttribute="trailing" secondItem="gWh-oa-rX2" secondAttribute="trailing" id="YD2-yG-nzW"/>
                                                 <constraint firstItem="13u-g6-c0M" firstAttribute="leading" secondItem="gWh-oa-rX2" secondAttribute="trailing" constant="8" id="Z5N-SM-gRP"/>
-                                                <constraint firstItem="zUo-Os-HVh" firstAttribute="top" secondItem="13u-g6-c0M" secondAttribute="bottom" constant="10" id="ZXA-0d-zis"/>
                                                 <constraint firstItem="tb3-4x-Mg1" firstAttribute="top" secondItem="F2V-wI-Lyo" secondAttribute="top" constant="12" id="bNR-Sn-RL4"/>
-                                                <constraint firstItem="13u-g6-c0M" firstAttribute="top" secondItem="Nmp-z8-csg" secondAttribute="bottom" constant="2" id="fea-V6-7uk"/>
-                                                <constraint firstItem="CcW-B3-M8K" firstAttribute="top" secondItem="13u-g6-c0M" secondAttribute="bottom" constant="10" id="hVn-UN-ass"/>
+                                                <constraint firstItem="13u-g6-c0M" firstAttribute="top" secondItem="Nmp-z8-csg" secondAttribute="bottom" constant="4" id="fea-V6-7uk"/>
                                                 <constraint firstAttribute="trailing" secondItem="oef-E5-JLd" secondAttribute="trailing" constant="12" id="iHd-gS-eqD"/>
                                                 <constraint firstItem="Nmp-z8-csg" firstAttribute="baseline" secondItem="XKF-P6-jyd" secondAttribute="baseline" id="j1v-yP-GUQ"/>
+                                                <constraint firstItem="r15-Gs-6AB" firstAttribute="centerY" secondItem="Czm-43-CSI" secondAttribute="centerY" id="kdf-rQ-jCo"/>
                                                 <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="gWh-oa-rX2" secondAttribute="bottom" constant="12" id="mvh-MZ-qRL"/>
+                                                <constraint firstItem="JHs-zp-fdn" firstAttribute="top" secondItem="13u-g6-c0M" secondAttribute="bottom" constant="12" id="nic-Z2-CGm"/>
                                                 <constraint firstItem="Nmp-z8-csg" firstAttribute="leading" secondItem="XKF-P6-jyd" secondAttribute="trailing" constant="4" id="o3d-0j-sGc"/>
                                                 <constraint firstAttribute="trailing" secondItem="13u-g6-c0M" secondAttribute="trailing" constant="12" id="rmQ-jE-Oh0"/>
                                                 <constraint firstItem="XKF-P6-jyd" firstAttribute="leading" secondItem="YRB-Jn-BwQ" secondAttribute="leading" id="uDP-0f-r2H"/>
-                                                <constraint firstItem="8tq-Ae-cG5" firstAttribute="top" secondItem="13u-g6-c0M" secondAttribute="bottom" constant="10" id="wA0-pv-KOC"/>
-                                                <constraint firstItem="zUo-Os-HVh" firstAttribute="leading" secondItem="XKF-P6-jyd" secondAttribute="leading" id="wak-NV-73b"/>
-                                                <constraint firstItem="CcW-B3-M8K" firstAttribute="leading" secondItem="zUo-Os-HVh" secondAttribute="trailing" constant="60" id="x70-D8-oXt"/>
-                                                <constraint firstItem="8tq-Ae-cG5" firstAttribute="leading" secondItem="CcW-B3-M8K" secondAttribute="trailing" constant="60" id="xnH-ui-CeK"/>
+                                                <constraint firstItem="HaI-Ei-MU4" firstAttribute="centerY" secondItem="M64-fC-gQG" secondAttribute="centerY" id="xWH-cN-qQj"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="displayNameLabel" destination="XKF-P6-jyd" id="N9S-ao-C7G"/>
-                                            <outlet property="favIcon" destination="8tq-Ae-cG5" id="Xmi-AF-yqe"/>
+                                            <outlet property="favBtn" destination="M64-fC-gQG" id="z1l-oN-dim"/>
+                                            <outlet property="favCountLabel" destination="HaI-Ei-MU4" id="eNr-3G-WtM"/>
                                             <outlet property="profileImageTopMargin" destination="2Qp-w4-ccq" id="Xix-bR-AwZ"/>
                                             <outlet property="profileImageView" destination="gWh-oa-rX2" id="laZ-OG-vjc"/>
-                                            <outlet property="replyIcon" destination="zUo-Os-HVh" id="ZXH-7f-ohp"/>
-                                            <outlet property="retweetIcon" destination="CcW-B3-M8K" id="xmE-bx-cWi"/>
-                                            <outlet property="retweetLabel" destination="YRB-Jn-BwQ" id="N39-4a-wVZ"/>
+                                            <outlet property="replyBtn" destination="JHs-zp-fdn" id="4HZ-I2-cWj"/>
+                                            <outlet property="repostIcon" destination="tb3-4x-Mg1" id="AgF-VA-Zrp"/>
+                                            <outlet property="repostLabel" destination="YRB-Jn-BwQ" id="uYM-KP-OVJ"/>
+                                            <outlet property="retweetBtn" destination="Czm-43-CSI" id="8kR-YS-LBY"/>
+                                            <outlet property="retweetCountLabel" destination="r15-Gs-6AB" id="PCw-LN-iP8"/>
                                             <outlet property="retweetedIcon" destination="tb3-4x-Mg1" id="mJl-r6-FVN"/>
                                             <outlet property="timestampLabel" destination="oef-E5-JLd" id="49C-yZ-pSa"/>
                                             <outlet property="tweetLabel" destination="13u-g6-c0M" id="tPv-vy-yR5"/>
