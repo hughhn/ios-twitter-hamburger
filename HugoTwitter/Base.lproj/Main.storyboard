@@ -154,7 +154,7 @@
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="svL-wg-kB9">
                                                     <rect key="frame" x="74" y="120" width="233.5" height="120"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" priority="750" constant="120" identifier="mediaImageHeight" id="IyT-4T-DIc"/>
+                                                        <constraint firstAttribute="height" priority="999" constant="120" identifier="mediaImageHeight" id="IyT-4T-DIc"/>
                                                     </constraints>
                                                 </imageView>
                                             </subviews>
