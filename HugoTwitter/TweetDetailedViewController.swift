@@ -80,27 +80,10 @@ class TweetDetailedViewController: UIViewController {
     
     func setupViews() {
         loadLowResThenHighResImg(profileImageView, smallImageUrl: tweet.user!.profileImageLowResUrl!, largeImageUrl: tweet.user!.profileImageUrl!, duration: 1.0)
-        nameLabel.text = tweet.user!.name
+        nameLabel.text = tweet.user!.name!
         usernameLabel.text = "@\(tweet.user!.screenname!)"
         timeLabel.text = DateManager.detailedFormatter.stringFromDate(tweet.createdAt!)
-        
-        do {
-            let linkDetector = try NSDataDetector(types: NSTextCheckingType.Link.rawValue)
-            let matches = linkDetector.matchesInString(tweet.text!, options: [], range: NSMakeRange(0, tweet.text!.length))
-            
-            var attributedString = NSMutableAttributedString(string: tweet.text!)
-            
-            let multipleAttributes = [
-                NSForegroundColorAttributeName: twitterColor ]
-            
-            for match in matches {
-                attributedString.setAttributes(multipleAttributes, range: match.range)
-            }
-            
-            tweetLabel.attributedText = attributedString
-        } catch {
-            tweetLabel.text = tweet.text
-        }
+        tweetLabel.text = tweet.text
         
         if tweet.retweetName != nil {
             repostIcon.image = retweetImage
@@ -140,6 +123,24 @@ class TweetDetailedViewController: UIViewController {
         }
         
         refreshTweetData()
+        
+        do {
+            let linkDetector = try NSDataDetector(types: NSTextCheckingType.Link.rawValue)
+            let matches = linkDetector.matchesInString(tweet.text!, options: [], range: NSMakeRange(0, tweet.text!.length))
+            
+            var attributedString = NSMutableAttributedString(string: tweet.text!)
+            
+            let multipleAttributes = [
+                NSForegroundColorAttributeName: twitterColor ]
+            
+            for match in matches {
+                attributedString.setAttributes(multipleAttributes, range: match.range)
+            }
+            
+            tweetLabel.attributedText = attributedString
+        } catch {
+            
+        }
     }
     
     func refreshTweetData() {

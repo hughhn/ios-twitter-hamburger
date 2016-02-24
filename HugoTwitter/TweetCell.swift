@@ -61,36 +61,21 @@ class TweetCell: UITableViewCell {
             favBtn.stringTag = tweet.id
             
             loadLowResThenHighResImg(profileImageView, smallImageUrl: tweet.user!.profileImageLowResUrl!, largeImageUrl: tweet.user!.profileImageUrl!, duration: 0)
-            displayNameLabel.text = tweet.user!.name
+            displayNameLabel.text = tweet.user!.name!
             usernameLabel.text = "@\(tweet.user!.screenname!)"
             timestampLabel.text = DateManager.getFriendlyTime(tweet.createdAt!)
+            tweetLabel.text = tweet.text
             
-            do {
-                let linkDetector = try NSDataDetector(types: NSTextCheckingType.Link.rawValue)
-                let matches = linkDetector.matchesInString(tweet.text!, options: [], range: NSMakeRange(0, tweet.text!.length))
-                
-                var attributedString = NSMutableAttributedString(string: tweet.text!)
-                
-                let multipleAttributes = [
-                    NSForegroundColorAttributeName: twitterColor ]
-                
-                for match in matches {
-                    attributedString.setAttributes(multipleAttributes, range: match.range)
-                }
-                
-                tweetLabel.attributedText = attributedString
-            } catch {
-                tweetLabel.text = tweet.text
-            }
-            
-            repostIcon.hidden = false
-            repostLabel.hidden = false
-            profileImageTopMargin.constant = 30
-            repostIcon.tintColor = customGrayColor
             if tweet.retweetName != nil {
+                repostIcon.hidden = false
+                repostLabel.hidden = false
+                profileImageTopMargin.constant = 30
                 repostIcon.image = retweetImage
                 repostLabel.text = "\(tweet.retweetName!) retweeted"
             } else if tweet.replyName != nil {
+                repostIcon.hidden = false
+                repostLabel.hidden = false
+                profileImageTopMargin.constant = 30
                 repostIcon.image = replyImage
                 repostLabel.text = "In reply to \(tweet.replyName!)"
             } else {
@@ -99,8 +84,6 @@ class TweetCell: UITableViewCell {
                 profileImageTopMargin.constant = 12
             }
             
-            mediaImageView.layer.cornerRadius = 5
-            mediaImageView.clipsToBounds = true
             if tweet.media == nil {
                 mediaImageView.hidden = true
                 mediaImageBottomSpace.constant = 0
@@ -120,6 +103,25 @@ class TweetCell: UITableViewCell {
             }
             
             refreshTweetData()
+            
+            
+            do {
+                let linkDetector = try NSDataDetector(types: NSTextCheckingType.Link.rawValue)
+                let matches = linkDetector.matchesInString(tweet.text!, options: [], range: NSMakeRange(0, tweet.text!.length))
+                
+                var attributedString = NSMutableAttributedString(string: tweet.text!)
+                
+                let multipleAttributes = [
+                    NSForegroundColorAttributeName: twitterColor ]
+                
+                for match in matches {
+                    attributedString.setAttributes(multipleAttributes, range: match.range)
+                }
+                
+                tweetLabel.attributedText = attributedString
+            } catch {
+
+            }
         }
     }
     
@@ -146,6 +148,9 @@ class TweetCell: UITableViewCell {
         replyBtn.addTarget(self, action: "onReply:", forControlEvents: UIControlEvents.TouchUpInside)
         retweetBtn.addTarget(self, action: "onRetweet:", forControlEvents: UIControlEvents.TouchUpInside)
         favBtn.addTarget(self, action: "onFav:", forControlEvents: UIControlEvents.TouchUpInside)
+        
+        mediaImageView.layer.cornerRadius = 5
+        mediaImageView.clipsToBounds = true
     }
     
     func onReply(sender: UIButton) {
