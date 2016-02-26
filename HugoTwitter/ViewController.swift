@@ -24,7 +24,11 @@ class ViewController: UIViewController {
         TwitterClient.sharedInstance.loginWithCompletion { (user, error) -> () in
             if user != nil {
                 print("loginCompleted, user: \(user!.name!)")
-                self.performSegueWithIdentifier("loginSegue", sender: self)
+                //self.performSegueWithIdentifier("loginSegue", sender: self)
+                
+                let hamburgerVC = HamburgerViewController()
+                let menuVC = MenuViewController(withHamburger: hamburgerVC)
+                self.presentViewController(hamburgerVC, animated: true, completion: nil)
             } else {
                 // handle error
             }
