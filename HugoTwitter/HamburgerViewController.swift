@@ -23,6 +23,14 @@ class HamburgerViewController: UIViewController {
         }
     }
     
+    var contentViewController: UIViewController! {
+        didSet {
+            view.layoutIfNeeded()
+            contentView.addSubview(contentViewController.view)
+            toggleHamburger(false)
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

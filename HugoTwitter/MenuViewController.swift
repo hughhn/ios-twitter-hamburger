@@ -30,11 +30,22 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.delegate = self
         tableView.dataSource = self
         tableView.registerNib(UINib(nibName: "MenuCell", bundle: nil), forCellReuseIdentifier: "MenuCell")
+        
+        let storyboard = UIStoryboard(name: "TweetsViewController", bundle: nil)
+        let homeTimeline = storyboard.instantiateViewControllerWithIdentifier("TweetsViewController")
+        let homeTimelineNav = UINavigationController(rootViewController: homeTimeline)
+        
+        viewControllers.append(homeTimelineNav)
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return viewControllers.count
-        return 2
+        return viewControllers.count
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        
+        hamburgerViewController.contentViewController = viewControllers[indexPath.row]
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {

@@ -36,6 +36,7 @@
 		0BF98B8F1C8046770003435D /* MenuCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0BF98B8D1C8046770003435D /* MenuCell.xib */; };
 		0BF98B921C8048150003435D /* HamburgerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF98B901C8048150003435D /* HamburgerViewController.swift */; };
 		0BF98B931C8048150003435D /* HamburgerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0BF98B911C8048150003435D /* HamburgerViewController.xib */; };
+		0BF98B971C805FC90003435D /* TweetsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0BF98B961C805FC90003435D /* TweetsViewController.storyboard */; };
 		C332A8FAECE661CFFBFB4B01 /* Pods_HugoTwitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12B6BFF481AB3C8C604C36B1 /* Pods_HugoTwitter.framework */; };
 /* End PBXBuildFile section */
 
@@ -72,6 +73,7 @@
 		0BF98B8D1C8046770003435D /* MenuCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuCell.xib; sourceTree = "<group>"; };
 		0BF98B901C8048150003435D /* HamburgerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HamburgerViewController.swift; sourceTree = "<group>"; };
 		0BF98B911C8048150003435D /* HamburgerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HamburgerViewController.xib; sourceTree = "<group>"; };
+		0BF98B961C805FC90003435D /* TweetsViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TweetsViewController.storyboard; sourceTree = "<group>"; };
 		12B6BFF481AB3C8C604C36B1 /* Pods_HugoTwitter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HugoTwitter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A2E666C9F6480B96BBB813B /* Pods-HugoTwitter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HugoTwitter.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HugoTwitter/Pods-HugoTwitter.debug.xcconfig"; sourceTree = "<group>"; };
 		83A2D03B661622B7834AEE28 /* Pods-HugoTwitter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HugoTwitter.release.xcconfig"; path = "Pods/Target Support Files/Pods-HugoTwitter/Pods-HugoTwitter.release.xcconfig"; sourceTree = "<group>"; };
@@ -164,6 +166,7 @@
 				0BF98B8D1C8046770003435D /* MenuCell.xib */,
 				0BF98B891C8040040003435D /* MenuViewController.xib */,
 				0BF98B911C8048150003435D /* HamburgerViewController.xib */,
+				0BF98B961C805FC90003435D /* TweetsViewController.storyboard */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -276,6 +279,7 @@
 				0BF98B8B1C8040040003435D /* MenuViewController.xib in Resources */,
 				0BF98B7D1C79A6DB0003435D /* GothamBold.ttf in Resources */,
 				0BF98B7E1C79A6DB0003435D /* GothamBook.ttf in Resources */,
+				0BF98B971C805FC90003435D /* TweetsViewController.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
