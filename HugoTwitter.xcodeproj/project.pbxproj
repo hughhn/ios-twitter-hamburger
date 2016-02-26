@@ -89,10 +89,7 @@
 		0B1508261C745A630096A640 = {
 			isa = PBXGroup;
 			children = (
-				0BF98B791C79A6DB0003435D /* GothamBold.ttf */,
-				0BF98B7A1C79A6DB0003435D /* GothamBook.ttf */,
-				0BF98B7B1C79A6DB0003435D /* GothamLight.ttf */,
-				0BF98B7C1C79A6DB0003435D /* GothamMedium.ttf */,
+				0BF98B871C802F3B0003435D /* GothamFont */,
 				0B1508311C745A630096A640 /* HugoTwitter */,
 				0B1508301C745A630096A640 /* Products */,
 				0636A9921825B480D6609941 /* Pods */,
@@ -116,7 +113,6 @@
 				0BCA7D661C74685E00E82FED /* Models */,
 				0BCA7D651C74685800E82FED /* API */,
 				0B1508321C745A630096A640 /* AppDelegate.swift */,
-				0B1508361C745A630096A640 /* Main.storyboard */,
 				0B1508391C745A630096A640 /* Assets.xcassets */,
 				0B15083B1C745A630096A640 /* LaunchScreen.storyboard */,
 				0B15083E1C745A630096A640 /* Info.plist */,
@@ -152,6 +148,7 @@
 			children = (
 				0BCA7D801C794E8600E82FED /* ComposeViewController.xib */,
 				0BCA7D7A1C78640E00E82FED /* TweetDetailedViewController.xib */,
+				0B1508361C745A630096A640 /* Main.storyboard */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -166,6 +163,17 @@
 				0BCA7D791C78640E00E82FED /* TweetDetailedViewController.swift */,
 			);
 			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		0BF98B871C802F3B0003435D /* GothamFont */ = {
+			isa = PBXGroup;
+			children = (
+				0BF98B791C79A6DB0003435D /* GothamBold.ttf */,
+				0BF98B7A1C79A6DB0003435D /* GothamBook.ttf */,
+				0BF98B7B1C79A6DB0003435D /* GothamLight.ttf */,
+				0BF98B7C1C79A6DB0003435D /* GothamMedium.ttf */,
+			);
+			name = GothamFont;
 			sourceTree = "<group>";
 		};
 		E796EDECBDBF56B6F471D1A2 /* Frameworks */ = {

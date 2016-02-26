@@ -22,6 +22,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TweetDetailedViewController" customModule="HugoTwitter" customModuleProvider="target">
             <connections>
+                <outlet property="contentView" destination="NXo-pg-fAX" id="sUR-R1-Kxr"/>
                 <outlet property="favBtn" destination="d2y-9t-qkn" id="pV1-yP-jpd"/>
                 <outlet property="likeCountLabel" destination="go4-85-tWz" id="Aro-2N-doe"/>
                 <outlet property="likeCountSuffixLabel" destination="JcU-c2-OJ3" id="Y8r-Jz-x4l"/>
@@ -37,6 +38,7 @@
                 <outlet property="retweetBtn" destination="i61-RU-BRJ" id="Xdl-xu-a0a"/>
                 <outlet property="retweetCountLabel" destination="qVu-p0-EjO" id="cbr-qK-CRr"/>
                 <outlet property="retweetCountSuffixLabel" destination="97Z-QJ-yWM" id="tJU-8F-Wah"/>
+                <outlet property="scrollView" destination="Ds3-1c-gvb" id="79X-S9-wys"/>
                 <outlet property="timeLabel" destination="YtP-9p-pZK" id="DvW-z2-XL6"/>
                 <outlet property="tweetLabel" destination="81L-rY-vLb" id="ScR-xG-stQ"/>
                 <outlet property="usernameLabel" destination="rc3-fb-lVk" id="zRR-oj-tE2"/>

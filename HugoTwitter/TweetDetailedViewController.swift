@@ -17,6 +17,8 @@ class TweetDetailedViewController: UIViewController {
     weak var delegate: TweetCellDelegate?
     weak var listener: TweetDetailedViewControllerDelegate?
     
+    @IBOutlet weak var contentView: UIView!
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var repostIcon: UIImageView!
     @IBOutlet weak var repostLabel: UILabel!
     @IBOutlet weak var profileImageView: UIImageView!
@@ -48,6 +50,7 @@ class TweetDetailedViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
         navigationController?.navigationBar.translucent = false;
         navigationItem.title = "Tweet"
         
