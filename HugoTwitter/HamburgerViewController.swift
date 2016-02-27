@@ -19,14 +19,25 @@ class HamburgerViewController: UIViewController {
     var menuViewController: UIViewController! {
         didSet {
             view.layoutIfNeeded()
+            menuViewController.willMoveToParentViewController(self)
             menuView.addSubview(menuViewController.view)
+            menuViewController.didMoveToParentViewController(self)
         }
     }
     
     var contentViewController: UIViewController! {
-        didSet {
+        didSet(oldContentViewController) {
             view.layoutIfNeeded()
+            
+            if oldContentViewController != nil {
+                oldContentViewController.willMoveToParentViewController(nil)
+                oldContentViewController.view.removeFromSuperview()
+                oldContentViewController.didMoveToParentViewController(nil)
+            }
+            
+            contentViewController.willMoveToParentViewController(self)
             contentView.addSubview(contentViewController.view)
+            contentViewController.didMoveToParentViewController(self)
             toggleHamburger(false)
         }
     }
