@@ -67,7 +67,16 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("MenuCell", forIndexPath: indexPath) as! MenuCell
         
-        cell.menuItemLabel.text = "Test Item"
+        switch indexPath.row {
+        case 0:
+            cell.menuItemLabel.text = "Home"
+        case 1:
+            cell.menuItemLabel.text = "Mentions"
+        case 2:
+            cell.menuItemLabel.text = "Profile"
+        default:
+            cell.menuItemLabel.text = "NA"
+        }
         
         return cell
     }
