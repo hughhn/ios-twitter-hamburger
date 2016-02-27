@@ -16,7 +16,7 @@ class HamburgerViewController: UIViewController {
     
     var originalLeftMargin: CGFloat!
     
-    var menuViewController: MenuViewController! {
+    var menuViewController: UIViewController! {
         didSet {
             view.layoutIfNeeded()
             menuView.addSubview(menuViewController.view)

@@ -20,7 +20,9 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
     {
         self.init(nibName: nil, bundle: nil)
         self.hamburgerViewController = hamburgerViewController!
-        hamburgerViewController!.menuViewController = self
+        
+        let menuNav = UINavigationController(rootViewController: self)
+        hamburgerViewController!.menuViewController = menuNav
     }
     
     override func viewDidLoad() {
