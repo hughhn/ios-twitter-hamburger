@@ -17,18 +17,20 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var tweets = [Tweet]()
     var defaultHomeParams: [String: String] = ["include_rts" : "1"]
     
+    var tweetsEndpoint: ((params: NSDictionary?, completion: (tweets: [Tweet]?, error: NSError?) -> ()) -> ())?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupNavigationItem()
         setupTableView()
 
-        TwitterClient.sharedInstance.homeTimeline(defaultHomeParams as! NSDictionary) { (tweets, error) -> () in
+        tweetsEndpoint?(params: defaultHomeParams as NSDictionary) { (tweets, error) -> () in
             if let tweets = tweets {
                 self.tweets = tweets
                 // reload view
                 self.tableView.reloadData()
-
+                
             }
         }
     }
@@ -100,7 +102,7 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
 //            params.setValue(sinceId, forKey: "since_id")
 //        }
         
-        TwitterClient.sharedInstance.homeTimeline(params as! NSDictionary) { (tweets, error) -> () in
+        tweetsEndpoint?(params: params as NSDictionary) { (tweets, error) -> () in
             if refreshControl != nil {
                 refreshControl!.endRefreshing()
             }
@@ -240,7 +242,7 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
         params.setValue("1", forKey: "include_rts")
         
-        TwitterClient.sharedInstance.homeTimeline(params) { (var tweets, error) -> () in
+        tweetsEndpoint?(params: params) { (var tweets, error) -> () in
             self.isMoreDataLoading = false
             self.loadingMoreView!.stopAnimating()
             if tweets != nil {

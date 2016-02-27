@@ -35,13 +35,19 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         let storyboard = UIStoryboard(name: "TweetsViewController", bundle: nil)
         
-        let homeTimeline = storyboard.instantiateViewControllerWithIdentifier("TweetsViewController")
+        let homeTimeline = storyboard.instantiateViewControllerWithIdentifier("TweetsViewController") as! TweetsViewController
+        homeTimeline.tweetsEndpoint = TwitterClient.sharedInstance.homeTimeline
         let homeTimelineNav = UINavigationController(rootViewController: homeTimeline)
+        
+        let mentionsTimeline = storyboard.instantiateViewControllerWithIdentifier("TweetsViewController") as! TweetsViewController
+        mentionsTimeline.tweetsEndpoint = TwitterClient.sharedInstance.mentionsTimeline
+        let mentionsTimelineNav = UINavigationController(rootViewController: mentionsTimeline)
         
         let profile = storyboard.instantiateViewControllerWithIdentifier("ProfileViewController")
         let profileNav = UINavigationController(rootViewController: profile)
         
         viewControllers.append(homeTimelineNav)
+        viewControllers.append(mentionsTimelineNav)
         viewControllers.append(profileNav)
         
         // Initial view - home
