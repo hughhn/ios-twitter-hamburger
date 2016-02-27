@@ -200,6 +200,24 @@
             </objects>
             <point key="canvasLocation" x="138.13333333333333" y="423.15999999999997"/>
         </scene>
+        <!--Profile View Controller-->
+        <scene sceneID="VqR-Ig-E7a">
+            <objects>
+                <viewController storyboardIdentifier="ProfileViewController" id="skc-6X-laU" customClass="ProfileViewController" customModule="HugoTwitter" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="HmT-rH-K54"/>
+                        <viewControllerLayoutGuide type="bottom" id="gbd-CY-QXM"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="oRa-VF-y0e">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.0" green="1" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iVl-Bi-Htd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="138" y="1110"/>
+        </scene>
     </scenes>
     <resources>
         <image name="icon_fav" width="43" height="43"/>

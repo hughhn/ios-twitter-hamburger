@@ -32,10 +32,15 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.registerNib(UINib(nibName: "MenuCell", bundle: nil), forCellReuseIdentifier: "MenuCell")
         
         let storyboard = UIStoryboard(name: "TweetsViewController", bundle: nil)
+        
         let homeTimeline = storyboard.instantiateViewControllerWithIdentifier("TweetsViewController")
         let homeTimelineNav = UINavigationController(rootViewController: homeTimeline)
         
+        let profile = storyboard.instantiateViewControllerWithIdentifier("ProfileViewController")
+        let profileNav = UINavigationController(rootViewController: profile)
+        
         viewControllers.append(homeTimelineNav)
+        viewControllers.append(profileNav)
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
