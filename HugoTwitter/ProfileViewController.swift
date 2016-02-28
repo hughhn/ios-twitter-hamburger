@@ -24,6 +24,7 @@ class ProfileViewController: UIViewController, TweetsViewControllerDelegate {
     @IBOutlet weak var followerLabel: UILabel!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     
+    @IBOutlet weak var profileImageTopMargin: NSLayoutConstraint!
     var headerImageView:UIImageView!
     var offsetHeaderViewStop: CGFloat!
     var offsetHeader: CGFloat?
@@ -85,11 +86,12 @@ class ProfileViewController: UIViewController, TweetsViewControllerDelegate {
         offsetHeaderBackgroundViewStop = headerBackground.frame.size.height - navHeight
         offsetNavLabelViewStop = navNameLabel.frame.origin.y - (navHeight / 2)
         
-        profileImageView.layer.cornerRadius = 5
+        profileImageView.layer.cornerRadius = 10
         profileImageView.clipsToBounds = true
         profileImageView.layer.borderColor = UIColor.whiteColor().CGColor
         profileImageView.layer.borderWidth = 3.0
-        profileImageView.frame.origin.y = navHeight + 3.0
+        profileImageTopMargin.constant = navHeight + 3.0
+//        profileImageView.frame.origin.y = navHeight + 3.0
         
         profileEndpoint?(screenName: screenName, userId: userId, params: nil, completion: { (user, error) -> () in
             if user != nil {

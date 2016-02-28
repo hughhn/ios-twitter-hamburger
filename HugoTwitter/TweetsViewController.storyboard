@@ -297,7 +297,7 @@
                                     <constraint firstAttribute="height" constant="100" id="D9L-96-gO5"/>
                                 </constraints>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ula-Yw-9ae">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ula-Yw-9ae">
                                 <rect key="frame" x="8" y="70" width="65" height="65"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="65" id="NeS-Rk-Si6"/>
@@ -339,6 +339,7 @@
                         <outlet property="headerView" destination="v0E-ey-J9N" id="UXF-Le-M8C"/>
                         <outlet property="nameLabel" destination="Nxc-Iy-wLR" id="YpN-do-Nmr"/>
                         <outlet property="navNameLabel" destination="jhH-Qz-9N1" id="me0-Wz-BDU"/>
+                        <outlet property="profileImageTopMargin" destination="7vc-SI-IA3" id="v8x-Xt-HQO"/>
                         <outlet property="profileImageView" destination="Ula-Yw-9ae" id="PNA-gV-oRF"/>
                         <outlet property="screenNameLabel" destination="P7M-3V-qCd" id="TDC-QU-3UH"/>
                         <outlet property="segmentedControl" destination="8dL-S6-6hq" id="c9F-7h-ZoF"/>
