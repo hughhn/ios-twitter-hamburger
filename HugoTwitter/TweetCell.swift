@@ -12,6 +12,7 @@ import UIKit
     optional func favClicked(favTweet: Tweet?, completion: ((tweet: Tweet?, error: NSError?) -> ())?)
     optional func retweetClicked(retweetTweet: Tweet?, completion: ((tweet: Tweet?, error: NSError?) -> ())?)
     optional func composeClicked(replyToTweet: Tweet?)
+    optional func userClicked(user: User?)
 }
 
 private struct AssociatedKeys {
@@ -59,9 +60,12 @@ class TweetCell: UITableViewCell {
             replyBtn.stringTag = tweet.id
             retweetBtn.stringTag = tweet.id
             favBtn.stringTag = tweet.id
+            profileImageButton.stringTag = tweet.id
             
 //            loadLowResThenHighResImg(profileImageButton, smallImageUrl: tweet.user!.profileImageLowResUrl!, largeImageUrl: tweet.user!.profileImageUrl!, duration: 0)
             profileImageButton.setBackgroundImageForState(UIControlState.Normal, withURL: NSURL(string: tweet.user!.profileImageUrl!)!)
+            profileImageButton.addTarget(self, action: "onProfileClicked:", forControlEvents: UIControlEvents.TouchUpInside)
+            
             displayNameLabel.text = tweet.user!.name!
             usernameLabel.text = "@\(tweet.user!.screenname!)"
             timestampLabel.text = DateManager.getFriendlyTime(tweet.createdAt!)
@@ -160,6 +164,12 @@ class TweetCell: UITableViewCell {
         
         mediaImageView.layer.cornerRadius = 5
         mediaImageView.clipsToBounds = true
+    }
+    
+    func onProfileClicked(sender: UIButton) {
+        if sender.stringTag! == tweet.id! {
+            delegate?.userClicked?(self.tweet.user)
+        }
     }
     
     func onReply(sender: UIButton) {

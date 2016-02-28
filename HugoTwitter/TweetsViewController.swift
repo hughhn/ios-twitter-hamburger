@@ -189,6 +189,10 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         // Dispose of any resources that can be recreated.
     }
     
+    func userClicked(user: User?) {
+        onUser(user)
+    }
+    
     func favClicked(favTweet: Tweet?, completion: ((tweet: Tweet?, error: NSError?) -> ())?) {
         onFav(favTweet, completion: completion)
     }
@@ -212,6 +216,19 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     
     // reusable methods
+    func onUser(user: User?) {
+        if user == nil || (User.currentUser != nil && User.currentUser!.screenname == user?.screenname) {
+            return
+        }
+        
+        let storyboard = UIStoryboard(name: "TweetsViewController", bundle: nil)
+        let profileVC = storyboard.instantiateViewControllerWithIdentifier("ProfileViewController") as! ProfileViewController
+        profileVC.profileEndpoint = TwitterClient.sharedInstance.userProfile
+        profileVC.screenName = user?.screenname
+        
+        navigationController?.pushViewController(profileVC, animated: true)
+    }
+    
     func onFav(favTweet: Tweet?, completion: ((tweet: Tweet?, error: NSError?) -> ())?) {
         if favTweet == nil {
             return
