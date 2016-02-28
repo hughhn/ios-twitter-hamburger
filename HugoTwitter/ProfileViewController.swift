@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ProfileViewController: UIViewController, TweetsViewControllerDelegate {
+class ProfileViewController: UIViewController, TweetsViewControllerDelegate, UIGestureRecognizerDelegate {
 
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var headerView: UIView!
@@ -93,6 +93,11 @@ class ProfileViewController: UIViewController, TweetsViewControllerDelegate {
         profileImageTopMargin.constant = navHeight + 3.0
         profileImageView.layer.zPosition = 1
         
+        
+        let pan = UIPanGestureRecognizer(target: self, action: Selector("onPanGesture:"))
+        pan.delegate = self
+        headerView.addGestureRecognizer(pan)
+        
         profileEndpoint?(screenName: screenName, userId: userId, params: nil, completion: { (user, error) -> () in
             if user != nil {
                 self.loadViewWithUser(user!)
@@ -125,6 +130,20 @@ class ProfileViewController: UIViewController, TweetsViewControllerDelegate {
     func onTabChanged(sender: UISegmentedControl) {
         let selectedSegment = sender.selectedSegmentIndex
         selectViewController(viewControllers[selectedSegment])
+    }
+    
+    var startPoint: CGPoint!
+    func onPanGesture(gesture: UIPanGestureRecognizer) {
+        let translation = gesture.translationInView(gesture.view)
+        
+        if gesture.state == UIGestureRecognizerState.Changed {
+//            let tweetsVC = viewControllers[0] as! TweetsViewController
+//            tweetsVC.tableView.contentOffset = CGPoint(x: 0, y: -translation.y)
+            
+            var scrollInfo: [NSObject : AnyObject] = [:]
+            scrollInfo[ScrollNotificationKey] = -translation.y
+            NSNotificationCenter.defaultCenter().postNotificationName(ScrollNotification, object: self, userInfo: scrollInfo)
+        }
     }
     
     var initialOffset: CGFloat? = nil

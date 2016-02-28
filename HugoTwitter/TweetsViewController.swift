@@ -12,6 +12,9 @@ import UIKit
     optional func tweetsViewOnScroll(scrollView: UIScrollView)
 }
 
+let ScrollNotification = "com.codepath.hugo.onScroll"
+let ScrollNotificationKey = "com.codepath.hugo.scrollY"
+
 class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ComposeViewControllerDelegate, TweetCellDelegate, UIScrollViewDelegate, TweetDetailedViewControllerDelegate {
 
     @IBOutlet weak var tableView: UITableView!
@@ -90,6 +93,14 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func setupTableView() {
         if contentInsetHeight != nil {
             tableView.contentInset = UIEdgeInsetsMake(contentInsetHeight!, 0, 0, 0)
+        }
+        
+        NSNotificationCenter.defaultCenter().addObserverForName(ScrollNotification, object: nil, queue: NSOperationQueue.mainQueue()) { (notification: NSNotification!) -> Void in
+            let userInfo = notification?.userInfo
+            let scrollY: CGFloat? = userInfo?[ScrollNotificationKey] as? CGFloat
+            if scrollY != nil {
+                self.tableView.contentOffset = CGPoint(x: 0, y: scrollY!)
+            }
         }
         
         tableView.delegate = self
