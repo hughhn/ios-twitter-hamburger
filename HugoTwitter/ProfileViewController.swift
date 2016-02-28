@@ -58,12 +58,14 @@ class ProfileViewController: UIViewController, TweetsViewControllerDelegate, UIG
         tweetsViewController.tweetsEndpoint = TwitterClient.sharedInstance.homeTimeline
         tweetsViewController.delegate = self
         tweetsViewController.contentInsetHeight = headerView.frame.size.height
+        tweetsViewController.view.layoutIfNeeded()
         
         let likesViewController = storyboard.instantiateViewControllerWithIdentifier("TweetsViewController") as! TweetsViewController
         likesViewController.isStandaloneController = false
         likesViewController.tweetsEndpoint = TwitterClient.sharedInstance.mentionsTimeline
         likesViewController.delegate = self
         likesViewController.contentInsetHeight = headerView.frame.size.height
+        likesViewController.view.layoutIfNeeded()
         
         viewControllers.append(tweetsViewController)
         viewControllers.append(likesViewController)
@@ -115,16 +117,28 @@ class ProfileViewController: UIViewController, TweetsViewControllerDelegate, UIG
     }
     
     func selectViewController(viewController: UIViewController) {
+        var contentOffset: CGPoint?
         if let oldViewController = selectedViewController {
+            if oldViewController.isKindOfClass(TweetsViewController.classForCoder()) {
+                let oldTweetsVC = oldViewController as! TweetsViewController
+                contentOffset = oldTweetsVC.tableView.contentOffset
+            }
             oldViewController.willMoveToParentViewController(nil)
             oldViewController.view.removeFromSuperview()
             oldViewController.removeFromParentViewController()
         }
+        
         self.addChildViewController(viewController)
         viewController.view.frame = self.contentView.bounds
         viewController.view.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
         self.contentView.addSubview(viewController.view)
         viewController.didMoveToParentViewController(self)
+        selectedViewController = viewController
+        
+        if contentOffset != nil && viewController.isKindOfClass(TweetsViewController.classForCoder()) {
+            let newTweetsVC = viewController as! TweetsViewController
+            newTweetsVC.tableView.setContentOffset(CGPoint(x: 0, y: min(contentOffset!.y, headerView.frame.size.height)), animated: false)
+        }
     }
     
     func onTabChanged(sender: UISegmentedControl) {
