@@ -78,6 +78,15 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
     }
     
+    override func didMoveToParentViewController(parent: UIViewController?) {
+//        if parent != nil && parent!.isKindOfClass(ProfileViewController.classForCoder()) {
+//            let profileVC = parent as! ProfileViewController
+//            if profileVC.offsetHeader != nil {
+//                tableView.contentOffset.y = -(profileVC.offsetHeader!)
+//            }
+//        }
+    }
+    
     func setupTableView() {
         if contentInsetHeight != nil {
             tableView.contentInset = UIEdgeInsetsMake(contentInsetHeight!, 0, 0, 0)

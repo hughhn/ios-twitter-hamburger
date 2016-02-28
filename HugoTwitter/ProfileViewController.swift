@@ -26,6 +26,7 @@ class ProfileViewController: UIViewController, TweetsViewControllerDelegate {
     
     var headerImageView:UIImageView!
     var offsetHeaderViewStop: CGFloat!
+    var offsetHeader: CGFloat?
     
     var viewControllers: [UIViewController] = []
     
@@ -126,16 +127,13 @@ class ProfileViewController: UIViewController, TweetsViewControllerDelegate {
         
         let offset = scrollView.contentOffset.y - initialOffset!
         
+        offsetHeader = max(-offsetHeaderViewStop, -offset)
         
-        let shouldTransform = (offsetHeaderViewStop - offset > 0.0)
-        if !shouldTransform {
-            return
+        if fabs(offsetHeader!) > 0 {
+            var headerTransform = CATransform3DIdentity
+            headerTransform = CATransform3DTranslate(headerTransform, 0, offsetHeader!, 0)
+            headerView.layer.transform = headerTransform
         }
-        
-        var headerTransform = CATransform3DIdentity
-        headerTransform = CATransform3DTranslate(headerTransform, 0, max(-offsetHeaderViewStop, -offset), 0)
-        headerView.layer.transform = headerTransform
-        
         
         if offset < 0 {
             // Pull down
