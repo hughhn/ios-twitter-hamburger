@@ -99,7 +99,8 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
             let userInfo = notification?.userInfo
             let scrollY: CGFloat? = userInfo?[ScrollNotificationKey] as? CGFloat
             if scrollY != nil {
-                self.tableView.contentOffset = CGPoint(x: 0, y: scrollY!)
+                self.tableView.setContentOffset(CGPoint(x: 0, y: scrollY!), animated: false)
+//                self.tableView.contentOffset = CGPoint(x: 0, y: scrollY!)
             }
         }
         

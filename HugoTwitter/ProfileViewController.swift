@@ -35,7 +35,8 @@ class ProfileViewController: UIViewController, TweetsViewControllerDelegate, UIG
     var viewControllers: [UIViewController] = []
     
     var selectedViewController: UIViewController?
-    
+    var pan: UIPanGestureRecognizer!
+    var navHeight: CGFloat!
     
     var screenName: String?
     var userId: String?
@@ -81,7 +82,7 @@ class ProfileViewController: UIViewController, TweetsViewControllerDelegate, UIG
         navigationController!.view.backgroundColor = UIColor.clearColor()
         navigationController!.navigationBar.backgroundColor = UIColor.clearColor()
         
-        let navHeight = navigationController!.navigationBar.frame.size.height + navigationController!.navigationBar.frame.origin.y
+        navHeight = navigationController!.navigationBar.frame.size.height + navigationController!.navigationBar.frame.origin.y
         offsetHeaderViewStop = segmentedControl.frame.origin.y - navHeight - 8
         offsetHeaderBackgroundViewStop = headerBackground.frame.size.height - navHeight
         offsetNavLabelViewStop = navNameLabel.frame.origin.y - (navHeight / 2)
@@ -93,8 +94,7 @@ class ProfileViewController: UIViewController, TweetsViewControllerDelegate, UIG
         profileImageTopMargin.constant = navHeight + 3.0
         profileImageView.layer.zPosition = 1
         
-        
-        let pan = UIPanGestureRecognizer(target: self, action: Selector("onPanGesture:"))
+        pan = UIPanGestureRecognizer(target: self, action: Selector("onPanGesture:"))
         pan.delegate = self
         headerView.addGestureRecognizer(pan)
         
