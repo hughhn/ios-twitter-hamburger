@@ -225,7 +225,7 @@
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v0E-ey-J9N" userLabel="Header View">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="275"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="276"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nxc-Iy-wLR">
                                         <rect key="frame" x="8" y="153" width="47.5" height="19.5"/>
@@ -270,6 +270,13 @@
                                             <segment title="Second"/>
                                         </segments>
                                     </segmentedControl>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nta-ET-ENP">
+                                        <rect key="frame" x="0.0" y="275" width="320" height="1"/>
+                                        <color key="backgroundColor" red="0.6705882352941176" green="0.6705882352941176" blue="0.6705882352941176" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="6Ep-Qx-l5t"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -277,17 +284,20 @@
                                     <constraint firstItem="veP-oP-oHe" firstAttribute="baseline" secondItem="vp3-wy-X0h" secondAttribute="baseline" id="7DR-u5-Vec"/>
                                     <constraint firstItem="P7M-3V-qCd" firstAttribute="top" secondItem="Nxc-Iy-wLR" secondAttribute="bottom" constant="2" id="8MY-nv-h2m"/>
                                     <constraint firstItem="3RO-N4-Kdv" firstAttribute="leading" secondItem="vp3-wy-X0h" secondAttribute="trailing" constant="2" id="BD0-pi-auv"/>
+                                    <constraint firstAttribute="bottom" secondItem="Nta-ET-ENP" secondAttribute="bottom" id="DZd-pQ-nZR"/>
+                                    <constraint firstAttribute="trailing" secondItem="Nta-ET-ENP" secondAttribute="trailing" id="FKh-yY-Fky"/>
                                     <constraint firstItem="LDl-0x-3Et" firstAttribute="leading" secondItem="veP-oP-oHe" secondAttribute="trailing" constant="2" id="HEo-Dx-lVL"/>
                                     <constraint firstItem="vp3-wy-X0h" firstAttribute="top" secondItem="P7M-3V-qCd" secondAttribute="bottom" constant="4" id="HP4-Gl-PbB"/>
                                     <constraint firstItem="Nxc-Iy-wLR" firstAttribute="leading" secondItem="v0E-ey-J9N" secondAttribute="leading" constant="8" id="MLZ-Xo-ox9"/>
                                     <constraint firstItem="3RO-N4-Kdv" firstAttribute="baseline" secondItem="vp3-wy-X0h" secondAttribute="baseline" id="P05-6W-nnm"/>
+                                    <constraint firstItem="Nta-ET-ENP" firstAttribute="leading" secondItem="v0E-ey-J9N" secondAttribute="leading" id="adJ-6Y-eTX"/>
                                     <constraint firstItem="P7M-3V-qCd" firstAttribute="leading" secondItem="v0E-ey-J9N" secondAttribute="leading" constant="8" id="idg-6b-kqW"/>
                                     <constraint firstItem="vp3-wy-X0h" firstAttribute="leading" secondItem="v0E-ey-J9N" secondAttribute="leading" constant="8" id="nKu-eq-qgG"/>
                                     <constraint firstItem="8dL-S6-6hq" firstAttribute="leading" secondItem="v0E-ey-J9N" secondAttribute="leading" constant="8" id="pqh-qJ-Syv"/>
                                     <constraint firstItem="LDl-0x-3Et" firstAttribute="baseline" secondItem="vp3-wy-X0h" secondAttribute="baseline" id="q7a-Z9-sBo"/>
                                     <constraint firstItem="8dL-S6-6hq" firstAttribute="top" secondItem="LDl-0x-3Et" secondAttribute="bottom" constant="32" id="qLZ-bn-rOe"/>
+                                    <constraint firstItem="Nta-ET-ENP" firstAttribute="top" secondItem="8dL-S6-6hq" secondAttribute="bottom" constant="8" id="qv8-WA-3dW"/>
                                     <constraint firstItem="veP-oP-oHe" firstAttribute="leading" secondItem="3RO-N4-Kdv" secondAttribute="trailing" constant="30" id="rII-PG-eMN"/>
-                                    <constraint firstAttribute="bottom" secondItem="8dL-S6-6hq" secondAttribute="bottom" constant="8" id="xHM-st-OU8"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4id-si-vSJ" userLabel="Background">
