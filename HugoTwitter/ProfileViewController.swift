@@ -25,6 +25,7 @@ class ProfileViewController: UIViewController, TweetsViewControllerDelegate {
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     
     var headerImageView:UIImageView!
+    var offsetHeaderViewStop: CGFloat!
     
     var viewControllers: [UIViewController] = []
     
@@ -71,6 +72,16 @@ class ProfileViewController: UIViewController, TweetsViewControllerDelegate {
         profileImageView.layer.cornerRadius = 5
         profileImageView.clipsToBounds = true
         
+        
+        navigationController!.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
+        navigationController!.navigationBar.shadowImage = UIImage()
+        navigationController!.navigationBar.translucent = true;
+        navigationController!.view.backgroundColor = UIColor.clearColor()
+        navigationController!.navigationBar.backgroundColor = UIColor.clearColor()
+        
+        let navHeight = navigationController!.navigationBar.frame.size.height + navigationController!.navigationBar.frame.origin.y
+        offsetHeaderViewStop = segmentedControl.frame.origin.y - navHeight
+        
         profileEndpoint?(screenName: screenName, userId: userId, params: nil, completion: { (user, error) -> () in
             if user != nil {
                 self.loadViewWithUser(user!)
@@ -112,17 +123,27 @@ class ProfileViewController: UIViewController, TweetsViewControllerDelegate {
             initialOffset = scrollView.contentOffset.y
             initialHeaderViewOffset = headerView.frame.origin.y
         }
-        let offset = scrollView.contentOffset.y - initialOffset!
-        var headerTransform = CATransform3DIdentity
-        print(offset)
         
-//        headerView.center.y += scrollView.contentOffset.y
+        let offset = scrollView.contentOffset.y - initialOffset!
+        
+        
+        let shouldTransform = (offsetHeaderViewStop - offset > 0.0)
+        if !shouldTransform {
+            return
+        }
+        
+        var headerTransform = CATransform3DIdentity
+        headerTransform = CATransform3DTranslate(headerTransform, 0, max(-offsetHeaderViewStop, -offset), 0)
+        headerView.layer.transform = headerTransform
+        
         
         if offset < 0 {
+            // Pull down
             
-            headerTransform = CATransform3DTranslate(headerTransform, 0, -offset, 0)
             
-            headerView.layer.transform = headerTransform
+        } else {
+            // Scroll up/down
+            
         }
     }
 
