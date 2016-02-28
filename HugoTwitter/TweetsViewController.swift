@@ -21,6 +21,7 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     weak var delegate: TweetsViewControllerDelegate?
     
+    var refreshControl: UIRefreshControl!
     var isMoreDataLoading = false
     var loadingMoreView:InfiniteScrollActivityView?
     var tweets = [Tweet]()
@@ -95,15 +96,6 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
             tableView.tableHeaderView = UIView(frame: CGRectMake(0, 0, tableView.bounds.width, contentInsetHeight!))
         }
         
-        NSNotificationCenter.defaultCenter().addObserverForName(ScrollNotification, object: nil, queue: NSOperationQueue.mainQueue()) { (notification: NSNotification!) -> Void in
-            let userInfo = notification?.userInfo
-            let scrollY: CGFloat? = userInfo?[ScrollNotificationKey] as? CGFloat
-            if scrollY != nil {
-                self.tableView.setContentOffset(CGPoint(x: 0, y: scrollY!), animated: false)
-//                self.tableView.contentOffset = CGPoint(x: 0, y: scrollY!)
-            }
-        }
-        
         tableView.delegate = self
         tableView.dataSource = self
         tableView.estimatedRowHeight = 100
@@ -117,9 +109,18 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         tableView.addSubview(loadingMoreView!)
         
         // Initialize a UIRefreshControl
-        let refreshControl = UIRefreshControl()
+        refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: "refreshControlAction:", forControlEvents: UIControlEvents.ValueChanged)
         tableView.insertSubview(refreshControl, atIndex: 0)
+        
+        NSNotificationCenter.defaultCenter().addObserverForName(ScrollNotification, object: nil, queue: NSOperationQueue.mainQueue()) { (notification: NSNotification!) -> Void in
+            let userInfo = notification?.userInfo
+            let scrollY: CGFloat? = userInfo?[ScrollNotificationKey] as? CGFloat
+            if scrollY != nil {
+                self.tableView.setContentOffset(CGPoint(x: 0, y: scrollY!), animated: false)
+                //                self.tableView.contentOffset = CGPoint(x: 0, y: scrollY!)
+            }
+        }
     }
     
     
