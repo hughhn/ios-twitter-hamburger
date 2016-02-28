@@ -178,6 +178,28 @@ class TwitterClient: BDBOAuth1SessionManager {
         })
     }
     
+    func userProfile(screenName: String?, userId: String?, params: NSDictionary?, completion: (user: User?, error: NSError?) -> ()) {
+        var myParams = (params == nil) ? NSMutableDictionary() : NSMutableDictionary(dictionary: params!)
+        if screenName != nil {
+            myParams.setValue(screenName!, forKey: "screen_name")
+        } else if userId != nil {
+            myParams.setValue(userId!, forKey: "user_id")
+        } else {
+            completion(user: nil, error: NSError(domain: "need screen_name or user_id", code: 123, userInfo: nil))
+            return
+        }
+        
+        GET("1.1/users/show.json", parameters: myParams, success:
+            { (operation: NSURLSessionDataTask, response: AnyObject?) -> Void in
+                var user = User(dictionary: response as! NSDictionary)
+                completion(user: user, error: nil)
+            }, failure: { (task: NSURLSessionDataTask?, apiError: NSError) -> Void in
+                print("users/show error")
+                print(apiError.debugDescription)
+                completion(user: nil, error: apiError)
+        })
+    }
+    
     func loginWithCompletion(completion: (user: User?, error: NSError?) -> ()) {
         loginCompletion = completion
         

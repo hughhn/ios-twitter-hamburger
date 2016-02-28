@@ -43,7 +43,11 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         mentionsTimeline.tweetsEndpoint = TwitterClient.sharedInstance.mentionsTimeline
         let mentionsTimelineNav = UINavigationController(rootViewController: mentionsTimeline)
         
-        let profile = storyboard.instantiateViewControllerWithIdentifier("ProfileViewController")
+        let profile = storyboard.instantiateViewControllerWithIdentifier("ProfileViewController") as! ProfileViewController
+        profile.profileEndpoint = TwitterClient.sharedInstance.userProfile
+        if User.currentUser != nil {
+            profile.screenName = User.currentUser?.screenname
+        }
         let profileNav = UINavigationController(rootViewController: profile)
         
         viewControllers.append(homeTimelineNav)

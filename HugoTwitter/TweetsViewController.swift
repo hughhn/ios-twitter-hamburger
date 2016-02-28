@@ -17,6 +17,8 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var tweets = [Tweet]()
     var defaultHomeParams: [String: String] = ["include_rts" : "1"]
     
+    var isStandaloneController: Bool = true
+    
     var tweetsEndpoint: ((params: NSDictionary?, completion: (tweets: [Tweet]?, error: NSError?) -> ()) -> ())?
     
     override func viewDidLoad() {
@@ -36,35 +38,37 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func setupNavigationItem() {
-        let titleView = UIView(frame: CGRectMake(0, 0, 30, 30))
-        let titleImageView = UIImageView(image: UIImage(named: "icon_twitter"))
-        titleImageView.image = titleImageView.image!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
-        titleImageView.tintColor = twitterColor
-        titleImageView.frame = CGRectMake(0, 0, titleView.frame.width, titleView.frame.height)
-        titleView.addSubview(titleImageView)
-        navigationItem.titleView = titleView
-        
-        let leftBtn = UIButton(type: .System)
-        leftBtn.frame = CGRectMake(0, 0, 25, 23);
-        let logoutImage = UIImage(named: "icon_logout")
-        leftBtn.setImage(logoutImage!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate), forState: UIControlState.Normal)
-        leftBtn.tintColor = twitterColor
-        leftBtn.addTarget(self, action: "onLogout", forControlEvents: UIControlEvents.TouchUpInside)
-        
-        let negativeSpacer = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FixedSpace, target: nil, action: nil)
-        negativeSpacer.width = -10
-        let leftBarBtn = UIBarButtonItem(customView: leftBtn)
-        navigationItem.leftBarButtonItems = [negativeSpacer, leftBarBtn]
-        
-        let rightBtn = UIButton(type: .System)
-        rightBtn.frame = CGRectMake(0, 0, 30, 30);
-        let composeImage = UIImage(named: "icon_compose")
-        rightBtn.setImage(composeImage!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate), forState: UIControlState.Normal)
-        rightBtn.tintColor = twitterColor
-        rightBtn.addTarget(self, action: "onCompose", forControlEvents: UIControlEvents.TouchUpInside)
-        
-        let rightBarBtn = UIBarButtonItem(customView: rightBtn)
-        navigationItem.rightBarButtonItems = [negativeSpacer, rightBarBtn]
+        if isStandaloneController {
+            let titleView = UIView(frame: CGRectMake(0, 0, 30, 30))
+            let titleImageView = UIImageView(image: UIImage(named: "icon_twitter"))
+            titleImageView.image = titleImageView.image!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+            titleImageView.tintColor = twitterColor
+            titleImageView.frame = CGRectMake(0, 0, titleView.frame.width, titleView.frame.height)
+            titleView.addSubview(titleImageView)
+            navigationItem.titleView = titleView
+            
+            let leftBtn = UIButton(type: .System)
+            leftBtn.frame = CGRectMake(0, 0, 25, 23);
+            let logoutImage = UIImage(named: "icon_logout")
+            leftBtn.setImage(logoutImage!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate), forState: UIControlState.Normal)
+            leftBtn.tintColor = twitterColor
+            leftBtn.addTarget(self, action: "onLogout", forControlEvents: UIControlEvents.TouchUpInside)
+            
+            let negativeSpacer = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FixedSpace, target: nil, action: nil)
+            negativeSpacer.width = -10
+            let leftBarBtn = UIBarButtonItem(customView: leftBtn)
+            navigationItem.leftBarButtonItems = [negativeSpacer, leftBarBtn]
+            
+            let rightBtn = UIButton(type: .System)
+            rightBtn.frame = CGRectMake(0, 0, 30, 30);
+            let composeImage = UIImage(named: "icon_compose")
+            rightBtn.setImage(composeImage!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate), forState: UIControlState.Normal)
+            rightBtn.tintColor = twitterColor
+            rightBtn.addTarget(self, action: "onCompose", forControlEvents: UIControlEvents.TouchUpInside)
+            
+            let rightBarBtn = UIBarButtonItem(customView: rightBtn)
+            navigationItem.rightBarButtonItems = [negativeSpacer, rightBarBtn]
+        }
     }
     
     func setupTableView() {
