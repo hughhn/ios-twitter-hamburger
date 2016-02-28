@@ -161,7 +161,7 @@ class ProfileViewController: UIViewController, TweetsViewControllerDelegate {
             var avatarTransform = CATransform3DIdentity
             let avatarScaleFactor = (min(offsetHeaderBackgroundViewStop, offset)) / profileImageView.bounds.height / 1.4 // Slow down the animation
             let avatarSizeVariation = (profileImageView.bounds.height * avatarScaleFactor) / 2.0
-            avatarTransform = CATransform3DTranslate(avatarTransform, 0, avatarSizeVariation, 0)
+            avatarTransform = CATransform3DTranslate(avatarTransform, 0, -avatarSizeVariation, 0)
             avatarTransform = CATransform3DScale(avatarTransform, 1.0 - avatarScaleFactor, 1.0 - avatarScaleFactor, 0)
             profileImageView.layer.transform = avatarTransform
 //
