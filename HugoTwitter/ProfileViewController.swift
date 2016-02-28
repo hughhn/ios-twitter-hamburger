@@ -49,6 +49,9 @@ class ProfileViewController: UIViewController, TweetsViewControllerDelegate, UIG
         // Do any additional setup after loading the view.
         
         segmentedControl.addTarget(self, action: "onTabChanged:", forControlEvents: UIControlEvents.ValueChanged)
+        segmentedControl.tintColor = twitterColor
+        segmentedControl.setTitle("Tweets", forSegmentAtIndex: 0)
+        segmentedControl.setTitle("Likes", forSegmentAtIndex: 1)
         
         var params = NSMutableDictionary()
         if screenName != nil {
