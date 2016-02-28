@@ -10,6 +10,7 @@ import UIKit
 
 class ProfileViewController: UIViewController, TweetsViewControllerDelegate, UIGestureRecognizerDelegate {
 
+    @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var headerView: UIView!
     
@@ -25,7 +26,9 @@ class ProfileViewController: UIViewController, TweetsViewControllerDelegate, UIG
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     
     @IBOutlet weak var profileImageTopMargin: NSLayoutConstraint!
-    var headerImageView:UIImageView!
+    @IBOutlet weak var headerImageView:UIImageView!
+    @IBOutlet weak var blurredHeaderImageView: UIImageView!
+    
     var offsetHeaderViewStop: CGFloat!
     var offsetHeader: CGFloat?
     var offsetHeaderBackgroundViewStop: CGFloat!
@@ -84,14 +87,12 @@ class ProfileViewController: UIViewController, TweetsViewControllerDelegate, UIG
         // Initial Tab
         selectViewController(viewControllers[0])
         
-        headerImageView = UIImageView(frame: headerBackground.bounds)
-        headerImageView?.contentMode = UIViewContentMode.ScaleAspectFill
-        headerBackground.insertSubview(headerImageView, atIndex: 0)
-        
         navHeight = navigationController!.navigationBar.frame.size.height + navigationController!.navigationBar.frame.origin.y
         offsetHeaderViewStop = segmentedControl.frame.origin.y - navHeight - 8
         offsetHeaderBackgroundViewStop = headerBackground.frame.size.height - navHeight
         offsetNavLabelViewStop = navNameLabel.frame.origin.y - (navHeight / 2)
+        
+        headerBackground.clipsToBounds = true
         
         profileImageView.layer.cornerRadius = 10
         profileImageView.clipsToBounds = true
@@ -133,7 +134,18 @@ class ProfileViewController: UIViewController, TweetsViewControllerDelegate, UIG
         screenNameLabel.text = "@\(user.screenname!)"
         
         loadLowResThenHighResImg(profileImageView, smallImageUrl: user.profileImageLowResUrl!, largeImageUrl: user.profileImageUrl!, duration: 1.0)
-        fadeInImg(headerImageView, imageUrl: user.profileBackgroundImageUrl!, duration: 1.0)
+        //fadeInImg(headerImageView, imageUrl: user.profileBackgroundImageUrl!, duration: 1.0)
+        
+        headerImageView.setImageWithURLRequest(NSURLRequest(URL: NSURL(string: user.profileBackgroundImageUrl!)!), placeholderImage: nil, success: { (request, response, image) -> Void in
+            
+            self.headerImageView.image = image
+            self.blurredHeaderImageView.image = image
+            self.blurredHeaderImageView.alpha = 0.0
+            
+            
+            }) { (request, response, error) -> Void in
+                print(error.debugDescription)
+        }
     }
     
     func selectViewController(viewController: UIViewController) {

@@ -302,9 +302,25 @@
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4id-si-vSJ" userLabel="Background">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="faz-xa-4fH">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fOt-ns-PE8">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
+                                    </imageView>
+                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="faz-xa-4fH" secondAttribute="bottom" id="68G-hf-dd0"/>
                                     <constraint firstAttribute="height" constant="100" id="D9L-96-gO5"/>
+                                    <constraint firstAttribute="trailing" secondItem="fOt-ns-PE8" secondAttribute="trailing" id="FK0-0I-APo"/>
+                                    <constraint firstItem="faz-xa-4fH" firstAttribute="top" secondItem="4id-si-vSJ" secondAttribute="top" id="GUb-Lw-5Dx"/>
+                                    <constraint firstItem="fOt-ns-PE8" firstAttribute="leading" secondItem="4id-si-vSJ" secondAttribute="leading" id="QB1-a9-Tsh"/>
+                                    <constraint firstItem="fOt-ns-PE8" firstAttribute="top" secondItem="4id-si-vSJ" secondAttribute="top" id="RAJ-96-Dv1"/>
+                                    <constraint firstItem="faz-xa-4fH" firstAttribute="leading" secondItem="4id-si-vSJ" secondAttribute="leading" id="eEu-K9-PLR"/>
+                                    <constraint firstAttribute="trailing" secondItem="faz-xa-4fH" secondAttribute="trailing" id="s9e-zX-dmS"/>
+                                    <constraint firstAttribute="bottom" secondItem="fOt-ns-PE8" secondAttribute="bottom" id="zBB-FD-3gm"/>
                                 </constraints>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ula-Yw-9ae">
@@ -341,12 +357,15 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="blurredHeaderImageView" destination="fOt-ns-PE8" id="LEJ-B1-1eG"/>
+                        <outlet property="containerView" destination="oRa-VF-y0e" id="eNZ-jl-cF7"/>
                         <outlet property="contentView" destination="PfB-rb-ruD" id="rQq-sq-8Vd"/>
                         <outlet property="followerCountLabel" destination="veP-oP-oHe" id="lMr-Xw-Dfu"/>
                         <outlet property="followerLabel" destination="LDl-0x-3Et" id="W1M-g6-F7Y"/>
                         <outlet property="followingCountLabel" destination="vp3-wy-X0h" id="hOu-Oa-sf3"/>
                         <outlet property="followingLabel" destination="3RO-N4-Kdv" id="7d5-w4-MA2"/>
                         <outlet property="headerBackground" destination="4id-si-vSJ" id="6Pi-DP-V53"/>
+                        <outlet property="headerImageView" destination="faz-xa-4fH" id="jai-Eq-Lew"/>
                         <outlet property="headerView" destination="v0E-ey-J9N" id="UXF-Le-M8C"/>
                         <outlet property="nameLabel" destination="Nxc-Iy-wLR" id="YpN-do-Nmr"/>
                         <outlet property="navNameLabel" destination="jhH-Qz-9N1" id="me0-Wz-BDU"/>
