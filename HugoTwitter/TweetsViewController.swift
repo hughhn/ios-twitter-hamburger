@@ -92,7 +92,7 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func setupTableView() {
         if contentInsetHeight != nil {
-            tableView.contentInset = UIEdgeInsetsMake(contentInsetHeight!, 0, 0, 0)
+            tableView.tableHeaderView = UIView(frame: CGRectMake(0, 0, tableView.bounds.width, contentInsetHeight!))
         }
         
         NSNotificationCenter.defaultCenter().addObserverForName(ScrollNotification, object: nil, queue: NSOperationQueue.mainQueue()) { (notification: NSNotification!) -> Void in
