@@ -88,13 +88,6 @@ class ProfileViewController: UIViewController, TweetsViewControllerDelegate, UIG
         headerImageView?.contentMode = UIViewContentMode.ScaleAspectFill
         headerBackground.insertSubview(headerImageView, atIndex: 0)
         
-        
-        navigationController!.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
-        navigationController!.navigationBar.shadowImage = UIImage()
-        navigationController!.navigationBar.translucent = true;
-        navigationController!.view.backgroundColor = UIColor.clearColor()
-        navigationController!.navigationBar.backgroundColor = UIColor.clearColor()
-        
         navHeight = navigationController!.navigationBar.frame.size.height + navigationController!.navigationBar.frame.origin.y
         offsetHeaderViewStop = segmentedControl.frame.origin.y - navHeight - 8
         offsetHeaderBackgroundViewStop = headerBackground.frame.size.height - navHeight
@@ -116,6 +109,22 @@ class ProfileViewController: UIViewController, TweetsViewControllerDelegate, UIG
                 self.loadViewWithUser(user!)
             }
         })
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        setupNavBar()
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        navigationController!.navigationBar.setBackgroundImage(nil, forBarMetrics: UIBarMetrics.Default)
+    }
+    
+    func setupNavBar() {
+        navigationController!.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
+        navigationController!.navigationBar.shadowImage = UIImage()
+        navigationController!.navigationBar.translucent = true;
+        navigationController!.view.backgroundColor = UIColor.clearColor()
+        navigationController!.navigationBar.backgroundColor = UIColor.clearColor()
     }
     
     func loadViewWithUser(user: User!) {
