@@ -165,7 +165,7 @@ class ProfileViewController: UIViewController, TweetsViewControllerDelegate {
             
             var avatarYTranslation = avatarSizeVariation
             if offset > offsetHeaderBackgroundViewStop {
-                avatarYTranslation += (offset - offsetHeaderBackgroundViewStop)
+                avatarYTranslation += (offset - offsetHeaderBackgroundViewStop) * 1.4
             }
             avatarTransform = CATransform3DTranslate(avatarTransform, 0, -avatarYTranslation, 0)
             print("-avatarYTranslation \(-avatarYTranslation)")
