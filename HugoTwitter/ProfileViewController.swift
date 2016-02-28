@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ProfileViewController: UIViewController {
+class ProfileViewController: UIViewController, TweetsViewControllerDelegate {
 
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var headerView: UIView!
@@ -23,6 +23,8 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var followerCountLabel: UILabel!
     @IBOutlet weak var followerLabel: UILabel!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
+    
+    var headerImageView:UIImageView!
     
     var viewControllers: [UIViewController] = []
     
@@ -45,10 +47,14 @@ class ProfileViewController: UIViewController {
         let storyboard = UIStoryboard(name: "TweetsViewController", bundle: nil)
 
         let tweetsViewController = storyboard.instantiateViewControllerWithIdentifier("TweetsViewController") as! TweetsViewController
+        tweetsViewController.isStandaloneController = false
         tweetsViewController.tweetsEndpoint = TwitterClient.sharedInstance.homeTimeline
+        tweetsViewController.delegate = self
         
         let likesViewController = storyboard.instantiateViewControllerWithIdentifier("TweetsViewController") as! TweetsViewController
+        likesViewController.isStandaloneController = false
         likesViewController.tweetsEndpoint = TwitterClient.sharedInstance.mentionsTimeline
+        likesViewController.delegate = self
         
         viewControllers.append(tweetsViewController)
         viewControllers.append(likesViewController)
@@ -56,6 +62,9 @@ class ProfileViewController: UIViewController {
         // Initial Tab
         selectViewController(viewControllers[0])
         
+        headerImageView = UIImageView(frame: headerBackground.bounds)
+        headerImageView?.contentMode = UIViewContentMode.ScaleAspectFill
+        headerBackground.insertSubview(headerImageView, atIndex: 0)
         
         profileImageView.layer.cornerRadius = 5
         profileImageView.clipsToBounds = true
@@ -73,6 +82,7 @@ class ProfileViewController: UIViewController {
         screenNameLabel.text = "@\(user.screenname!)"
         
         loadLowResThenHighResImg(profileImageView, smallImageUrl: user.profileImageLowResUrl!, largeImageUrl: user.profileImageUrl!, duration: 1.0)
+        fadeInImg(headerImageView, imageUrl: user.profileBackgroundImageUrl!, duration: 1.0)
     }
     
     func selectViewController(viewController: UIViewController) {
@@ -91,6 +101,10 @@ class ProfileViewController: UIViewController {
     func onTabChanged(sender: UISegmentedControl) {
         let selectedSegment = sender.selectedSegmentIndex
         selectViewController(viewControllers[selectedSegment])
+    }
+    
+    func tweetsViewOnScroll(scrollView: UIScrollView) {
+        
     }
 
     override func didReceiveMemoryWarning() {

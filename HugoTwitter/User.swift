@@ -19,6 +19,7 @@ class User: NSObject {
     let screenname: String?
     let profileImageLowResUrl: String?
     let profileImageUrl: String?
+    let profileBackgroundImageUrl: String?
     let tagline: String?
     
     init(dictionary: NSDictionary) {
@@ -27,7 +28,9 @@ class User: NSObject {
         var screenname = ""
         var profileImageLowResUrl = ""
         var profileImageUrl = ""
+        var profileBackgroundImageUrl = ""
         var tagline = ""
+        
         if let nameStr = dictionary["name"] as? String {
             name = nameStr
         }
@@ -38,6 +41,9 @@ class User: NSObject {
             profileImageLowResUrl = profileImageUrlStr
             profileImageUrl = profileImageUrlStr.stringByReplacingOccurrencesOfString("_normal", withString: "")
         }
+        if let profileBackgroundImageUrlStr = dictionary["profile_background_image_url"] as? String {
+            profileBackgroundImageUrl = profileBackgroundImageUrlStr
+        }
         if let taglineStr = dictionary["description"] as? String {
             tagline = taglineStr
         }
@@ -46,6 +52,7 @@ class User: NSObject {
         self.screenname = screenname
         self.profileImageLowResUrl = profileImageLowResUrl
         self.profileImageUrl = profileImageUrl
+        self.profileBackgroundImageUrl = profileBackgroundImageUrl
         self.tagline = tagline
     }
     

@@ -8,9 +8,15 @@
 
 import UIKit
 
+@objc protocol TweetsViewControllerDelegate {
+    optional func tweetsViewOnScroll(scrollView: UIScrollView)
+}
+
 class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ComposeViewControllerDelegate, TweetCellDelegate, UIScrollViewDelegate, TweetDetailedViewControllerDelegate {
 
     @IBOutlet weak var tableView: UITableView!
+    
+    weak var delegate: TweetsViewControllerDelegate?
     
     var isMoreDataLoading = false
     var loadingMoreView:InfiniteScrollActivityView?
@@ -262,6 +268,8 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func scrollViewDidScroll(scrollView: UIScrollView) {
+        delegate?.tweetsViewOnScroll?(scrollView)
+        
         if isMoreDataLoading {
             return
         }
