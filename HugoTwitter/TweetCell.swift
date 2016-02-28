@@ -38,7 +38,7 @@ class TweetCell: UITableViewCell {
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var timestampLabel: UILabel!
     @IBOutlet weak var tweetLabel: UILabel!
-    @IBOutlet weak var profileImageView: UIImageView!
+    @IBOutlet weak var profileImageButton: UIButton!
     
     @IBOutlet weak var replyBtn: UIButton!
     @IBOutlet weak var retweetBtn: UIButton!
@@ -50,7 +50,7 @@ class TweetCell: UITableViewCell {
     @IBOutlet weak var mediaImageHeight: NSLayoutConstraint!
     
     @IBOutlet weak var mediaImageBottomSpace: NSLayoutConstraint!
-    @IBOutlet weak var profileImageTopMargin: NSLayoutConstraint!
+    @IBOutlet weak var profileImageButtonTopMargin: NSLayoutConstraint!
     
     weak var delegate: TweetCellDelegate?
     
@@ -60,7 +60,8 @@ class TweetCell: UITableViewCell {
             retweetBtn.stringTag = tweet.id
             favBtn.stringTag = tweet.id
             
-            loadLowResThenHighResImg(profileImageView, smallImageUrl: tweet.user!.profileImageLowResUrl!, largeImageUrl: tweet.user!.profileImageUrl!, duration: 0)
+//            loadLowResThenHighResImg(profileImageButton, smallImageUrl: tweet.user!.profileImageLowResUrl!, largeImageUrl: tweet.user!.profileImageUrl!, duration: 0)
+            profileImageButton.setBackgroundImageForState(UIControlState.Normal, withURL: NSURL(string: tweet.user!.profileImageUrl!)!)
             displayNameLabel.text = tweet.user!.name!
             usernameLabel.text = "@\(tweet.user!.screenname!)"
             timestampLabel.text = DateManager.getFriendlyTime(tweet.createdAt!)
@@ -69,19 +70,19 @@ class TweetCell: UITableViewCell {
             if tweet.retweetName != nil {
                 repostIcon.hidden = false
                 repostLabel.hidden = false
-                profileImageTopMargin.constant = 30
+                profileImageButtonTopMargin.constant = 30
                 repostIcon.image = retweetImage
                 repostLabel.text = "\(tweet.retweetName!) retweeted"
             } else if tweet.replyName != nil {
                 repostIcon.hidden = false
                 repostLabel.hidden = false
-                profileImageTopMargin.constant = 30
+                profileImageButtonTopMargin.constant = 30
                 repostIcon.image = replyImage
                 repostLabel.text = "In reply to \(tweet.replyName!)"
             } else {
                 repostIcon.hidden = true
                 repostLabel.hidden = true
-                profileImageTopMargin.constant = 12
+                profileImageButtonTopMargin.constant = 12
             }
             
             if tweet.media == nil {
@@ -140,8 +141,8 @@ class TweetCell: UITableViewCell {
         self.layoutMargins = UIEdgeInsetsZero
         self.preservesSuperviewLayoutMargins = false
         
-        profileImageView.layer.cornerRadius = 5
-        profileImageView.clipsToBounds = true
+        profileImageButton.layer.cornerRadius = 5
+        profileImageButton.clipsToBounds = true
         
         repostIcon.image = repostIcon.image!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
         repostIcon.tintColor = customGrayColor

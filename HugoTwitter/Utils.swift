@@ -75,3 +75,39 @@ func loadLowResThenHighResImg(imageView: UIImageView, smallImageUrl: String, lar
             // possibly try to get the large image
     })
 }
+
+
+func loadLowResThenHighResImg(button: UIButton, smallImageUrl: String, largeImageUrl: String, duration: NSTimeInterval) {
+    let smallImageRequest = NSURLRequest(URL: NSURL(string: smallImageUrl)!)
+    let largeImageRequest = NSURLRequest(URL: NSURL(string: largeImageUrl)!)
+    
+    button.setImageForState(UIControlState.Normal, withURLRequest: smallImageRequest, placeholderImage: nil, success: { (smallImageRequest, smallImageResponse, smallImage) -> Void in
+        
+        button.imageView?.alpha = 0.0
+        button.imageView?.image = smallImage
+        
+        UIView.animateWithDuration(duration, animations: { () -> Void in
+            
+            button.imageView?.alpha = 1.0
+            
+            }, completion: { (sucess) -> Void in
+                
+                // The AFNetworking ImageView Category only allows one request to be sent at a time
+                // per ImageView. This code must be in the completion block.
+                button.setImageForState(UIControlState.Normal, withURLRequest: largeImageRequest, placeholderImage: nil, success: { (largeImageRequest, largeImageResponse, largeImage) -> Void in
+                        
+                        button.imageView?.image = largeImage;
+                        
+                    },
+                    failure: { (request, response, error) -> Void in
+                        // do something for the failure condition of the large image request
+                        // possibly setting the ImageView's image to a default image
+                })
+        })
+        
+        },
+        failure: { (request, response, error) -> Void in
+            // do something for the failure condition
+            // possibly try to get the large image
+        })
+}
