@@ -28,6 +28,7 @@ class ProfileViewController: UIViewController, TweetsViewControllerDelegate {
     var offsetHeaderViewStop: CGFloat!
     var offsetHeader: CGFloat?
     var offsetHeaderBackgroundViewStop: CGFloat!
+    var offsetNavLabelViewStop: CGFloat!
     
     
     var viewControllers: [UIViewController] = []
@@ -72,9 +73,6 @@ class ProfileViewController: UIViewController, TweetsViewControllerDelegate {
         headerImageView?.contentMode = UIViewContentMode.ScaleAspectFill
         headerBackground.insertSubview(headerImageView, atIndex: 0)
         
-        profileImageView.layer.cornerRadius = 5
-        profileImageView.clipsToBounds = true
-        
         
         navigationController!.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
         navigationController!.navigationBar.shadowImage = UIImage()
@@ -85,6 +83,13 @@ class ProfileViewController: UIViewController, TweetsViewControllerDelegate {
         let navHeight = navigationController!.navigationBar.frame.size.height + navigationController!.navigationBar.frame.origin.y
         offsetHeaderViewStop = segmentedControl.frame.origin.y - navHeight - 8
         offsetHeaderBackgroundViewStop = headerBackground.frame.size.height - navHeight
+        offsetNavLabelViewStop = navNameLabel.frame.origin.y - (navHeight / 2)
+        
+        profileImageView.layer.cornerRadius = 5
+        profileImageView.clipsToBounds = true
+        profileImageView.layer.borderColor = UIColor.whiteColor().CGColor
+        profileImageView.layer.borderWidth = 3.0
+        profileImageView.frame.origin.y = navHeight + 3.0
         
         profileEndpoint?(screenName: screenName, userId: userId, params: nil, completion: { (user, error) -> () in
             if user != nil {
@@ -132,12 +137,6 @@ class ProfileViewController: UIViewController, TweetsViewControllerDelegate {
         
         offsetHeader = max(-offsetHeaderViewStop, -offset)
         
-        if offset >= 0 && fabs(offsetHeader!) > 0 {
-            var headerTransform = CATransform3DIdentity
-            headerTransform = CATransform3DTranslate(headerTransform, 0, offsetHeader!, 0)
-            headerView.layer.transform = headerTransform
-            //headerView.frame.origin.y = offsetHeader!
-        }
         
         if offset < 0 {
             // Pull down
@@ -145,9 +144,17 @@ class ProfileViewController: UIViewController, TweetsViewControllerDelegate {
             
         } else {
             // Scroll up/down
+            
+            var headerTransform = CATransform3DIdentity
+            headerTransform = CATransform3DTranslate(headerTransform, 0, offsetHeader!, 0)
+            headerView.layer.transform = headerTransform
+            
             var headerBackgroundTransform = CATransform3DIdentity
             headerBackgroundTransform = CATransform3DTranslate(headerBackgroundTransform, 0, max(-offsetHeaderBackgroundViewStop, -offset), 0)
             headerBackground.layer.transform = headerBackgroundTransform
+            
+            let labelTransform = CATransform3DMakeTranslation(0, max(-offsetNavLabelViewStop, -offset), 0)
+            navNameLabel.layer.transform = labelTransform
             
             var avatarTransform = CATransform3DIdentity
             let avatarScaleFactor = (min(offsetHeaderBackgroundViewStop, offset)) / profileImageView.bounds.height / 1.4 // Slow down the animation
