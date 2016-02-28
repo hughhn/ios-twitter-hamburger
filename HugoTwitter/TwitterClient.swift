@@ -200,6 +200,32 @@ class TwitterClient: BDBOAuth1SessionManager {
         })
     }
     
+    func userTweets(params: NSDictionary?, completion: (tweets: [Tweet]?, error: NSError?) -> ()) {
+        
+        GET("1.1/statuses/user_timeline.json", parameters: params, success:
+            { (operation: NSURLSessionDataTask, response: AnyObject?) -> Void in
+                var tweets = Tweet.tweetsWithArray(response as! [NSDictionary])
+                completion(tweets: tweets, error: nil)
+            }, failure: { (task: NSURLSessionDataTask?, apiError: NSError) -> Void in
+                print("user_timeline error")
+                print(apiError.debugDescription)
+                completion(tweets: nil, error: apiError)
+        })
+    }
+    
+    func userLikes(params: NSDictionary?, completion: (tweets: [Tweet]?, error: NSError?) -> ()) {
+        
+        GET("1.1/favorites/list.json", parameters: params, success:
+            { (operation: NSURLSessionDataTask, response: AnyObject?) -> Void in
+                var tweets = Tweet.tweetsWithArray(response as! [NSDictionary])
+                completion(tweets: tweets, error: nil)
+            }, failure: { (task: NSURLSessionDataTask?, apiError: NSError) -> Void in
+                print("favorites/list error")
+                print(apiError.debugDescription)
+                completion(tweets: nil, error: apiError)
+        })
+    }
+    
     func loginWithCompletion(completion: (user: User?, error: NSError?) -> ()) {
         loginCompletion = completion
         

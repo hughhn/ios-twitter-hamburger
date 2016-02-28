@@ -50,19 +50,27 @@ class ProfileViewController: UIViewController, TweetsViewControllerDelegate, UIG
         
         segmentedControl.addTarget(self, action: "onTabChanged:", forControlEvents: UIControlEvents.ValueChanged)
         
+        var params = NSMutableDictionary()
+        if screenName != nil {
+            params.setValue(screenName!, forKey: "screen_name")
+        } else if userId != nil {
+            params.setValue(userId!, forKey: "user_id")
+        }
         
         let storyboard = UIStoryboard(name: "TweetsViewController", bundle: nil)
 
         let tweetsViewController = storyboard.instantiateViewControllerWithIdentifier("TweetsViewController") as! TweetsViewController
         tweetsViewController.isStandaloneController = false
-        tweetsViewController.tweetsEndpoint = TwitterClient.sharedInstance.homeTimeline
+        tweetsViewController.params = params
+        tweetsViewController.tweetsEndpoint = TwitterClient.sharedInstance.userTweets
         tweetsViewController.delegate = self
         tweetsViewController.contentInsetHeight = headerView.frame.size.height
         tweetsViewController.view.layoutIfNeeded()
         
         let likesViewController = storyboard.instantiateViewControllerWithIdentifier("TweetsViewController") as! TweetsViewController
         likesViewController.isStandaloneController = false
-        likesViewController.tweetsEndpoint = TwitterClient.sharedInstance.mentionsTimeline
+        likesViewController.params = params
+        likesViewController.tweetsEndpoint = TwitterClient.sharedInstance.userLikes
         likesViewController.delegate = self
         likesViewController.contentInsetHeight = headerView.frame.size.height
         likesViewController.view.layoutIfNeeded()

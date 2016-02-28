@@ -30,6 +30,7 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var isStandaloneController: Bool = true
     var contentInsetHeight: CGFloat?
     
+    var params: NSDictionary?
     var tweetsEndpoint: ((params: NSDictionary?, completion: (tweets: [Tweet]?, error: NSError?) -> ()) -> ())?
     
     override func viewDidLoad() {
@@ -38,7 +39,9 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         setupNavigationItem()
         setupTableView()
 
-        tweetsEndpoint?(params: defaultHomeParams as NSDictionary) { (tweets, error) -> () in
+        var myParams = (params == nil) ? NSMutableDictionary() : NSMutableDictionary(dictionary: params!)
+        myParams.setValue("1", forKey: "include_rts")
+        tweetsEndpoint?(params: myParams) { (tweets, error) -> () in
             if let tweets = tweets {
                 self.tweets = tweets
                 // reload view
@@ -128,9 +131,6 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     // Updates the tableView with the new data
     // Hides the RefreshControl
     func refreshControlAction(refreshControl: UIRefreshControl?) {
-        var params = NSMutableDictionary()
-        params.setValue("1", forKey: "include_rts")
-        
 //        var sinceId: String? = nil
 //        if tweets.count > 0 {
 //            sinceId = tweets[0].id
@@ -139,7 +139,10 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
 //            params.setValue(sinceId, forKey: "since_id")
 //        }
         
-        tweetsEndpoint?(params: params as NSDictionary) { (tweets, error) -> () in
+        var myParams = (params == nil) ? NSMutableDictionary() : NSMutableDictionary(dictionary: params!)
+        myParams.setValue("1", forKey: "include_rts")
+        
+        tweetsEndpoint?(params: myParams) { (tweets, error) -> () in
             if refreshControl != nil {
                 refreshControl!.endRefreshing()
             }
@@ -267,7 +270,7 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func loadMoreTweets() {
-        var params = NSMutableDictionary()
+        var myParams = (params == nil) ? NSMutableDictionary() : NSMutableDictionary(dictionary: params!)
         var maxId: String? = nil
         
         if tweets.count > 0 {
@@ -275,11 +278,11 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
         if maxId != nil {
             let maxIdNum : Int64 = Int64(maxId!)!
-            params.setValue(maxIdNum - 1, forKey: "max_id")
+            myParams.setValue(maxIdNum - 1, forKey: "max_id")
         }
-        params.setValue("1", forKey: "include_rts")
+        myParams.setValue("1", forKey: "include_rts")
         
-        tweetsEndpoint?(params: params) { (var tweets, error) -> () in
+        tweetsEndpoint?(params: myParams) { (var tweets, error) -> () in
             self.isMoreDataLoading = false
             self.loadingMoreView!.stopAnimating()
             if tweets != nil {
