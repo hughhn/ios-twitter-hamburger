@@ -91,7 +91,7 @@ class ProfileViewController: UIViewController, TweetsViewControllerDelegate {
         profileImageView.layer.borderColor = UIColor.whiteColor().CGColor
         profileImageView.layer.borderWidth = 3.0
         profileImageTopMargin.constant = navHeight + 3.0
-//        profileImageView.frame.origin.y = navHeight + 3.0
+        profileImageView.layer.zPosition = 1
         
         profileEndpoint?(screenName: screenName, userId: userId, params: nil, completion: { (user, error) -> () in
             if user != nil {
@@ -159,21 +159,34 @@ class ProfileViewController: UIViewController, TweetsViewControllerDelegate {
             navNameLabel.layer.transform = labelTransform
             
             var avatarTransform = CATransform3DIdentity
-            let avatarScaleFactor = (min(offsetHeaderBackgroundViewStop, offset)) / profileImageView.bounds.height / 1.4 // Slow down the animation
+            let avatarScaleFactor = (min(offsetHeaderBackgroundViewStop, offset)) / profileImageView.bounds.height / 1.5 // Slow down the animation
             let avatarSizeVariation = (profileImageView.bounds.height * avatarScaleFactor) / 2.0
-            avatarTransform = CATransform3DTranslate(avatarTransform, 0, -avatarSizeVariation, 0)
             avatarTransform = CATransform3DScale(avatarTransform, 1.0 - avatarScaleFactor, 1.0 - avatarScaleFactor, 0)
+            
+            var avatarYTranslation = avatarSizeVariation
+            if offset > offsetHeaderBackgroundViewStop {
+                avatarYTranslation += (offset - offsetHeaderBackgroundViewStop)
+            }
+            avatarTransform = CATransform3DTranslate(avatarTransform, 0, -avatarYTranslation, 0)
+            print("-avatarYTranslation \(-avatarYTranslation)")
             profileImageView.layer.transform = avatarTransform
-//
-//            if offset <= offsetHeaderBackgroundViewStop {
-//                if profileImageView.layer.zPosition < headerBackground.layer.zPosition{
-//                    headerBackground.layer.zPosition = profileImageView.layer.zPosition - 1
-//                }
-//            } else {
-//                if profileImageView.layer.zPosition >= headerBackground.layer.zPosition{
-//                    headerBackground.layer.zPosition = profileImageView.layer.zPosition + 1
-//                }
-//            }
+            
+            
+            if offset <= offsetHeaderBackgroundViewStop {
+                
+                if profileImageView.layer.zPosition < headerBackground.layer.zPosition{
+                    headerBackground.layer.zPosition = profileImageView.layer.zPosition - 1
+                }
+            } else {
+                
+                if profileImageView.layer.zPosition >= headerBackground.layer.zPosition{
+                    headerBackground.layer.zPosition = profileImageView.layer.zPosition + 1
+                }
+            }
+            
+            
+
+            
             
         }
     }
