@@ -9,6 +9,7 @@
         <mutableArray key="GothamBold.ttf">
             <string>GothamBold-Regular</string>
             <string>GothamBold-Regular</string>
+            <string>GothamBold-Regular</string>
         </mutableArray>
         <mutableArray key="GothamBook.ttf">
             <string>GothamBook-Regular</string>
@@ -305,8 +306,8 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NavTitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jhH-Qz-9N1">
-                                <rect key="frame" x="129" y="150" width="62" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <rect key="frame" x="126" y="150" width="68.5" height="19.5"/>
+                                <fontDescription key="fontDescription" name="GothamBold-Regular" family="Gotham Bold" pointSize="16"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
