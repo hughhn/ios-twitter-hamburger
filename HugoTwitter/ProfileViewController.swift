@@ -137,7 +137,9 @@ class ProfileViewController: UIViewController, TweetsViewControllerDelegate, UIG
         
         if contentOffset != nil && viewController.isKindOfClass(TweetsViewController.classForCoder()) {
             let newTweetsVC = viewController as! TweetsViewController
-            newTweetsVC.tableView.setContentOffset(CGPoint(x: 0, y: min(contentOffset!.y, headerView.frame.size.height)), animated: false)
+            let newY = min(contentOffset!.y, headerView.frame.size.height)
+            
+            newTweetsVC.tableView.setContentOffset(CGPoint(x: 0, y: newY), animated: false)
         }
     }
     
