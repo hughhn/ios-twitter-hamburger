@@ -224,7 +224,7 @@
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v0E-ey-J9N" userLabel="Header View">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="300"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="272"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nxc-Iy-wLR">
                                         <rect key="frame" x="8" y="150" width="47.5" height="19.5"/>
@@ -238,13 +238,6 @@
                                         <color key="textColor" red="0.6705882352941176" green="0.6705882352941176" blue="0.6705882352941176" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="8dL-S6-6hq">
-                                        <rect key="frame" x="8" y="236" width="304" height="57"/>
-                                        <segments>
-                                            <segment title="First"/>
-                                            <segment title="Second"/>
-                                        </segments>
-                                    </segmentedControl>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="351" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vp3-wy-X0h">
                                         <rect key="frame" x="8" y="190" width="19" height="14.5"/>
                                         <fontDescription key="fontDescription" name="GothamBook-Regular" family="Gotham Book" pointSize="12"/>
@@ -269,6 +262,13 @@
                                         <color key="textColor" red="0.6705882352941176" green="0.6705882352941176" blue="0.6705882352941176" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="8dL-S6-6hq">
+                                        <rect key="frame" x="8" y="236" width="304" height="29"/>
+                                        <segments>
+                                            <segment title="First"/>
+                                            <segment title="Second"/>
+                                        </segments>
+                                    </segmentedControl>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -281,7 +281,6 @@
                                     <constraint firstItem="vp3-wy-X0h" firstAttribute="top" secondItem="P7M-3V-qCd" secondAttribute="bottom" constant="4" id="HP4-Gl-PbB"/>
                                     <constraint firstItem="Nxc-Iy-wLR" firstAttribute="leading" secondItem="v0E-ey-J9N" secondAttribute="leading" constant="8" id="MLZ-Xo-ox9"/>
                                     <constraint firstItem="3RO-N4-Kdv" firstAttribute="baseline" secondItem="vp3-wy-X0h" secondAttribute="baseline" id="P05-6W-nnm"/>
-                                    <constraint firstAttribute="height" constant="300" id="ejD-t5-1QQ"/>
                                     <constraint firstItem="P7M-3V-qCd" firstAttribute="leading" secondItem="v0E-ey-J9N" secondAttribute="leading" constant="8" id="idg-6b-kqW"/>
                                     <constraint firstItem="vp3-wy-X0h" firstAttribute="leading" secondItem="v0E-ey-J9N" secondAttribute="leading" constant="8" id="nKu-eq-qgG"/>
                                     <constraint firstItem="8dL-S6-6hq" firstAttribute="leading" secondItem="v0E-ey-J9N" secondAttribute="leading" constant="8" id="pqh-qJ-Syv"/>
