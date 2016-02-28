@@ -136,29 +136,24 @@ class ProfileViewController: UIViewController, TweetsViewControllerDelegate {
         }
         
         let offset = scrollView.contentOffset.y - initialOffset!
-        
         offsetHeader = max(-offsetHeaderViewStop, -offset)
+            
+        var headerTransform = CATransform3DIdentity
+        headerTransform = CATransform3DTranslate(headerTransform, 0, offsetHeader!, 0)
+        headerView.layer.transform = headerTransform
         
+        var headerBackgroundTransform = CATransform3DIdentity
+        headerBackgroundTransform = CATransform3DTranslate(headerBackgroundTransform, 0, max(-offsetHeaderBackgroundViewStop, -offset), 0)
+        headerBackground.layer.transform = headerBackgroundTransform
         
+        let labelTransform = CATransform3DMakeTranslation(0, max(-offsetNavLabelViewStop, -offset), 0)
+        navNameLabel.layer.transform = labelTransform
+        
+        var avatarTransform = CATransform3DIdentity
         if offset < 0 {
-            // Pull down
-            
-            
+            // pull down
+            avatarTransform = CATransform3DTranslate(avatarTransform, 0, -offset, 0)
         } else {
-            // Scroll up/down
-            
-            var headerTransform = CATransform3DIdentity
-            headerTransform = CATransform3DTranslate(headerTransform, 0, offsetHeader!, 0)
-            headerView.layer.transform = headerTransform
-            
-            var headerBackgroundTransform = CATransform3DIdentity
-            headerBackgroundTransform = CATransform3DTranslate(headerBackgroundTransform, 0, max(-offsetHeaderBackgroundViewStop, -offset), 0)
-            headerBackground.layer.transform = headerBackgroundTransform
-            
-            let labelTransform = CATransform3DMakeTranslation(0, max(-offsetNavLabelViewStop, -offset), 0)
-            navNameLabel.layer.transform = labelTransform
-            
-            var avatarTransform = CATransform3DIdentity
             let avatarScaleFactor = (min(offsetHeaderBackgroundViewStop, offset)) / profileImageView.bounds.height / 1.4 // Slow down the animation
             let avatarSizeVariation = profileImageView.bounds.height * avatarScaleFactor
             avatarTransform = CATransform3DScale(avatarTransform, 1.0 - avatarScaleFactor, 1.0 - avatarScaleFactor, 0)
@@ -169,27 +164,20 @@ class ProfileViewController: UIViewController, TweetsViewControllerDelegate {
             }
             avatarTransform = CATransform3DTranslate(avatarTransform, 0, -avatarYTranslation, 0)
             //print("-avatarYTranslation \(-avatarYTranslation) ; scaleFactor = \(avatarScaleFactor)")
-            profileImageView.layer.transform = avatarTransform
-            
-            
-            if offset <= offsetHeaderBackgroundViewStop {
-                
-                if profileImageView.layer.zPosition < headerBackground.layer.zPosition{
-                    headerBackground.layer.zPosition = profileImageView.layer.zPosition - 1
-                    navNameLabel.layer.zPosition = headerBackground.layer.zPosition
-                }
-            } else {
-                
-                if profileImageView.layer.zPosition >= headerBackground.layer.zPosition{
-                    headerBackground.layer.zPosition = profileImageView.layer.zPosition + 1
-                    navNameLabel.layer.zPosition = headerBackground.layer.zPosition + 1
-                }
+        }
+        profileImageView.layer.transform = avatarTransform
+        
+        
+        if offset <= offsetHeaderBackgroundViewStop {
+            if profileImageView.layer.zPosition < headerBackground.layer.zPosition{
+                headerBackground.layer.zPosition = profileImageView.layer.zPosition - 1
+                navNameLabel.layer.zPosition = headerBackground.layer.zPosition
             }
-            
-            
-
-            
-            
+        } else {
+            if profileImageView.layer.zPosition >= headerBackground.layer.zPosition{
+                headerBackground.layer.zPosition = profileImageView.layer.zPosition + 1
+                navNameLabel.layer.zPosition = headerBackground.layer.zPosition + 1
+            }
         }
     }
 
