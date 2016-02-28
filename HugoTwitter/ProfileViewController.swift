@@ -176,11 +176,13 @@ class ProfileViewController: UIViewController, TweetsViewControllerDelegate {
                 
                 if profileImageView.layer.zPosition < headerBackground.layer.zPosition{
                     headerBackground.layer.zPosition = profileImageView.layer.zPosition - 1
+                    navNameLabel.layer.zPosition = headerBackground.layer.zPosition
                 }
             } else {
                 
                 if profileImageView.layer.zPosition >= headerBackground.layer.zPosition{
                     headerBackground.layer.zPosition = profileImageView.layer.zPosition + 1
+                    navNameLabel.layer.zPosition = headerBackground.layer.zPosition + 1
                 }
             }
             
