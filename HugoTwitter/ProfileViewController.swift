@@ -27,6 +27,8 @@ class ProfileViewController: UIViewController, TweetsViewControllerDelegate {
     var headerImageView:UIImageView!
     var offsetHeaderViewStop: CGFloat!
     var offsetHeader: CGFloat?
+    var offsetHeaderBackgroundViewStop: CGFloat!
+    
     
     var viewControllers: [UIViewController] = []
     
@@ -81,7 +83,8 @@ class ProfileViewController: UIViewController, TweetsViewControllerDelegate {
         navigationController!.navigationBar.backgroundColor = UIColor.clearColor()
         
         let navHeight = navigationController!.navigationBar.frame.size.height + navigationController!.navigationBar.frame.origin.y
-        offsetHeaderViewStop = segmentedControl.frame.origin.y - navHeight
+        offsetHeaderViewStop = segmentedControl.frame.origin.y - navHeight - 8
+        offsetHeaderBackgroundViewStop = headerBackground.frame.size.height - navHeight
         
         profileEndpoint?(screenName: screenName, userId: userId, params: nil, completion: { (user, error) -> () in
             if user != nil {
@@ -129,10 +132,11 @@ class ProfileViewController: UIViewController, TweetsViewControllerDelegate {
         
         offsetHeader = max(-offsetHeaderViewStop, -offset)
         
-        if fabs(offsetHeader!) > 0 {
+        if offset >= 0 && fabs(offsetHeader!) > 0 {
             var headerTransform = CATransform3DIdentity
             headerTransform = CATransform3DTranslate(headerTransform, 0, offsetHeader!, 0)
             headerView.layer.transform = headerTransform
+            //headerView.frame.origin.y = offsetHeader!
         }
         
         if offset < 0 {
@@ -141,6 +145,26 @@ class ProfileViewController: UIViewController, TweetsViewControllerDelegate {
             
         } else {
             // Scroll up/down
+            var headerBackgroundTransform = CATransform3DIdentity
+            headerBackgroundTransform = CATransform3DTranslate(headerBackgroundTransform, 0, max(-offsetHeaderBackgroundViewStop, -offset), 0)
+            headerBackground.layer.transform = headerBackgroundTransform
+            
+            var avatarTransform = CATransform3DIdentity
+            let avatarScaleFactor = (min(offsetHeaderBackgroundViewStop, offset)) / profileImageView.bounds.height / 1.4 // Slow down the animation
+            let avatarSizeVariation = (profileImageView.bounds.height * avatarScaleFactor) / 2.0
+            avatarTransform = CATransform3DTranslate(avatarTransform, 0, avatarSizeVariation, 0)
+            avatarTransform = CATransform3DScale(avatarTransform, 1.0 - avatarScaleFactor, 1.0 - avatarScaleFactor, 0)
+            profileImageView.layer.transform = avatarTransform
+//
+//            if offset <= offsetHeaderBackgroundViewStop {
+//                if profileImageView.layer.zPosition < headerBackground.layer.zPosition{
+//                    headerBackground.layer.zPosition = profileImageView.layer.zPosition - 1
+//                }
+//            } else {
+//                if profileImageView.layer.zPosition >= headerBackground.layer.zPosition{
+//                    headerBackground.layer.zPosition = profileImageView.layer.zPosition + 1
+//                }
+//            }
             
         }
     }
