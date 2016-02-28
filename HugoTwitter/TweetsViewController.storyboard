@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <customFonts key="customFonts">
         <mutableArray key="GothamBold.ttf">
@@ -209,7 +210,7 @@
         <!--Profile View Controller-->
         <scene sceneID="VqR-Ig-E7a">
             <objects>
-                <viewController storyboardIdentifier="ProfileViewController" id="skc-6X-laU" customClass="ProfileViewController" customModule="HugoTwitter" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ProfileViewController" automaticallyAdjustsScrollViewInsets="NO" id="skc-6X-laU" customClass="ProfileViewController" customModule="HugoTwitter" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="HmT-rH-K54"/>
                         <viewControllerLayoutGuide type="bottom" id="gbd-CY-QXM"/>
@@ -219,19 +220,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PfB-rb-ruD" userLabel="Content View">
-                                <rect key="frame" x="0.0" y="300" width="320" height="268"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v0E-ey-J9N" userLabel="Header View">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="300"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4id-si-vSJ" userLabel="Background">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="130"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="130" id="Rk5-WQ-guK"/>
-                                        </constraints>
-                                    </view>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ula-Yw-9ae">
                                         <rect key="frame" x="8" y="100" width="65" height="65"/>
                                         <constraints>
@@ -288,6 +282,13 @@
                                         <color key="textColor" red="0.6705882352941176" green="0.6705882352941176" blue="0.6705882352941176" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4id-si-vSJ" userLabel="Background">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="130"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="130" id="Rk5-WQ-guK"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -320,11 +321,11 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="PfB-rb-ruD" firstAttribute="top" secondItem="v0E-ey-J9N" secondAttribute="bottom" id="0Np-aN-tGO"/>
-                            <constraint firstItem="v0E-ey-J9N" firstAttribute="top" secondItem="oRa-VF-y0e" secondAttribute="top" id="6ig-5J-h96"/>
                             <constraint firstItem="v0E-ey-J9N" firstAttribute="leading" secondItem="oRa-VF-y0e" secondAttribute="leading" id="6rL-LO-coH"/>
                             <constraint firstAttribute="trailing" secondItem="PfB-rb-ruD" secondAttribute="trailing" id="9Gk-4d-b3w"/>
+                            <constraint firstItem="v0E-ey-J9N" firstAttribute="top" secondItem="oRa-VF-y0e" secondAttribute="top" id="EDi-MF-d0U"/>
                             <constraint firstAttribute="trailing" secondItem="v0E-ey-J9N" secondAttribute="trailing" id="Wlx-4v-Rc7"/>
+                            <constraint firstItem="PfB-rb-ruD" firstAttribute="top" secondItem="oRa-VF-y0e" secondAttribute="topMargin" id="Xgw-Ly-Dxt"/>
                             <constraint firstItem="PfB-rb-ruD" firstAttribute="leading" secondItem="oRa-VF-y0e" secondAttribute="leading" id="qNO-OE-Gxt"/>
                             <constraint firstItem="gbd-CY-QXM" firstAttribute="top" secondItem="PfB-rb-ruD" secondAttribute="bottom" id="rk2-au-0wb"/>
                         </constraints>

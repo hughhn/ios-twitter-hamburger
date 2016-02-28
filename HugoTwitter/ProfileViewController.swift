@@ -50,11 +50,13 @@ class ProfileViewController: UIViewController, TweetsViewControllerDelegate {
         tweetsViewController.isStandaloneController = false
         tweetsViewController.tweetsEndpoint = TwitterClient.sharedInstance.homeTimeline
         tweetsViewController.delegate = self
+        tweetsViewController.contentInsetHeight = headerView.frame.size.height
         
         let likesViewController = storyboard.instantiateViewControllerWithIdentifier("TweetsViewController") as! TweetsViewController
         likesViewController.isStandaloneController = false
         likesViewController.tweetsEndpoint = TwitterClient.sharedInstance.mentionsTimeline
         likesViewController.delegate = self
+        likesViewController.contentInsetHeight = headerView.frame.size.height
         
         viewControllers.append(tweetsViewController)
         viewControllers.append(likesViewController)
@@ -103,8 +105,25 @@ class ProfileViewController: UIViewController, TweetsViewControllerDelegate {
         selectViewController(viewControllers[selectedSegment])
     }
     
+    var initialOffset: CGFloat? = nil
+    var initialHeaderViewOffset: CGFloat? = nil
     func tweetsViewOnScroll(scrollView: UIScrollView) {
+        if initialOffset == nil {
+            initialOffset = scrollView.contentOffset.y
+            initialHeaderViewOffset = headerView.frame.origin.y
+        }
+        let offset = scrollView.contentOffset.y - initialOffset!
+        var headerTransform = CATransform3DIdentity
+        print(offset)
         
+//        headerView.center.y += scrollView.contentOffset.y
+        
+        if offset < 0 {
+            
+            headerTransform = CATransform3DTranslate(headerTransform, 0, -offset, 0)
+            
+            headerView.layer.transform = headerTransform
+        }
     }
 
     override func didReceiveMemoryWarning() {

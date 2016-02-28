@@ -24,6 +24,7 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var defaultHomeParams: [String: String] = ["include_rts" : "1"]
     
     var isStandaloneController: Bool = true
+    var contentInsetHeight: CGFloat?
     
     var tweetsEndpoint: ((params: NSDictionary?, completion: (tweets: [Tweet]?, error: NSError?) -> ()) -> ())?
     
@@ -78,6 +79,10 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func setupTableView() {
+        if contentInsetHeight != nil {
+            tableView.contentInset = UIEdgeInsetsMake(contentInsetHeight!, 0, 0, 0)
+        }
+        
         tableView.delegate = self
         tableView.dataSource = self
         tableView.estimatedRowHeight = 100

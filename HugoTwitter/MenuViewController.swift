@@ -55,7 +55,8 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         viewControllers.append(profileNav)
         
         // Initial view - home
-        hamburgerViewController.contentViewController = homeTimelineNav
+//        hamburgerViewController.contentViewController = homeTimelineNav
+        hamburgerViewController.contentViewController = profileNav
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
