@@ -46,6 +46,7 @@ class ProfileViewController: UIViewController, TweetsViewControllerDelegate, UIG
     
     var screenName: String?
     var userId: String?
+    var user: User?
     
     var profileEndpoint: ((screenName: String?, userId: String?, params: NSDictionary?, completion: (user: User?, error: NSError?) -> ()) -> ())?
     
@@ -155,15 +156,19 @@ class ProfileViewController: UIViewController, TweetsViewControllerDelegate, UIG
     }
     
     func loadViewWithUser(user: User!) {
+        self.user = user
         nameLabel.text = user.name!
         navNameLabel.text = user.name!
         screenNameLabel.text = "@\(user.screenname!)"
         followingCountLabel.text = "\(user.followingCount!.prettify())"
         followerCountLabel.text = "\(user.followersCount!.prettify())"
         
-        navSublabel.text = "\(user.tweetsCount!.prettify()) Tweets"
-        navSublabel.text = "\(user.likesCount!.prettify()) Likes"
-            
+        if segmentedControl.selectedSegmentIndex == 0 {
+            navSublabel.text = "\(self.user!.tweetsCount!.prettify()) Tweets"
+        } else {
+            navSublabel.text = "\(self.user!.likesCount!.prettify()) Likes"
+        }
+
         loadLowResThenHighResImg(profileImageView, smallImageUrl: user.profileImageLowResUrl!, largeImageUrl: user.profileImageUrl!, duration: 1.0)
         //fadeInImg(headerImageView, imageUrl: user.profileBackgroundImageUrl!, duration: 1.0)
         
@@ -213,6 +218,15 @@ class ProfileViewController: UIViewController, TweetsViewControllerDelegate, UIG
     func onTabChanged(sender: UISegmentedControl) {
         let selectedSegment = sender.selectedSegmentIndex
         selectViewController(viewControllers[selectedSegment])
+        
+        if self.user != nil {
+            if selectedSegment == 0 {
+                navSublabel.text = "\(self.user!.tweetsCount!.prettify()) Tweets"
+            } else {
+                navSublabel.text = "\(self.user!.likesCount!.prettify()) Likes"
+            }
+        }
+        
     }
     
     var startPoint: CGPoint!
