@@ -90,7 +90,7 @@ class ProfileViewController: UIViewController, TweetsViewControllerDelegate, UIG
         
         navHeight = navigationController!.navigationBar.frame.size.height + navigationController!.navigationBar.frame.origin.y
         offsetHeaderViewStop = segmentedControl.frame.origin.y - navHeight - 8
-        offsetHeaderBackgroundViewStop = headerBackground.frame.size.height - navHeight
+        offsetHeaderBackgroundViewStop = (headerBackground.frame.size.height + headerBackground.frame.origin.y) - navHeight
         offsetNavLabelViewStop = navNameLabel.frame.origin.y - (navHeight / 2)
         
         headerBackground.clipsToBounds = true
