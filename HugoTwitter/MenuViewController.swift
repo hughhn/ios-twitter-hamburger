@@ -92,9 +92,9 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         hamburgerViewController.contentViewController = viewControllers[indexPath.row]
     }
     
-    let homeImage = UIImage(named: "icon_compose")
-    let mentionImage = UIImage(named: "icon_compose")
-    let profileImage = UIImage(named: "icon_compose")
+    let homeImage = UIImage(named: "icon_home")
+    let mentionImage = UIImage(named: "icon_mention")
+    let profileImage = UIImage(named: "icon_profile")
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("MenuCell", forIndexPath: indexPath) as! MenuCell
         
