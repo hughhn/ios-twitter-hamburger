@@ -30,7 +30,7 @@ The following **optional** features are implemented:
 
 The following **additional** features are implemented:
 
-- [X] Create container view in Profile page to include both Tweets stream and Likes stream (switch via UISegmentedControl)
+- [X] Create container view in Profile page to include both Tweets stream and Likes stream (UISegmentedControl switch)
 - [X] Core Animation transforms on: profile image, label text, background image, z index. exactly like the official app
 - [X] Make profile page and compose page reusable everywhere
 
