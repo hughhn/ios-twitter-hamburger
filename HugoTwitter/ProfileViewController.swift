@@ -264,7 +264,12 @@ class ProfileViewController: UIViewController, TweetsViewControllerDelegate, UIG
         }
         profileImageView.layer.transform = avatarTransform
         
-        blurredHeaderImageView.alpha = min(1.0, offset/offsetHeaderBackgroundViewStop)
+        if offset < 0 {
+            blurredHeaderImageView.alpha = min(1.0, fabs(offset/offsetHeaderBackgroundViewStop))
+        } else {
+            blurredHeaderImageView.alpha = min(1.0, (offset - offsetHeaderBackgroundViewStop) / offsetNavLabelViewStop)
+        }
+        
         
         if offset <= offsetHeaderBackgroundViewStop {
             if profileImageView.layer.zPosition < headerBackground.layer.zPosition{
