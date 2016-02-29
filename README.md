@@ -36,8 +36,8 @@ The following **additional** features are implemented:
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
-1.
-2.
+1. How to enable scroll on the header view and send it to the UITableView underneath? I tried using pan gesture on the header and send the translation to the UITableView but a) it seems to override the hamburger swipe gesture and 2) it does not handle pull to refresh
+2. How to handle dynamic sized content in UITableView? the tweets images' heights are not known in advance. I have a height constraint on the UIImageView that is set programmatically in the callback of setImageWithURL(). The problem with that is it seems to break the other cell constraints and some cells look messed up. I can get around it by downloading the images synchronously and set the height constraint immediately. But then the UI is really slow- and downloading images synchronously is a bad practice anyway. What's a good solution for this?
 
 
 ## Video Walkthrough
