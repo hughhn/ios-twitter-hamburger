@@ -83,16 +83,25 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         hamburgerViewController.contentViewController = viewControllers[indexPath.row]
     }
     
+    let homeImage = UIImage(named: "icon_compose")
+    let mentionImage = UIImage(named: "icon_compose")
+    let profileImage = UIImage(named: "icon_compose")
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("MenuCell", forIndexPath: indexPath) as! MenuCell
         
         switch indexPath.row {
         case 0:
             cell.menuItemLabel.text = "Home"
+            cell.menuItemImage.image = homeImage!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+            cell.menuItemImage.tintColor = twitterColor
         case 1:
             cell.menuItemLabel.text = "Mentions"
+            cell.menuItemImage.image = mentionImage!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+            cell.menuItemImage.tintColor = UIColor.redColor()
         case 2:
             cell.menuItemLabel.text = "Profile"
+            cell.menuItemImage.image = profileImage!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+            cell.menuItemImage.tintColor = UIColor.blueColor()
         default:
             cell.menuItemLabel.text = "NA"
         }
