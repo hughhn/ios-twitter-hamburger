@@ -226,6 +226,8 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         profileVC.profileEndpoint = TwitterClient.sharedInstance.userProfile
         profileVC.screenName = user?.screenname
         
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.Plain, target: nil, action: nil)
+        
         navigationController?.pushViewController(profileVC, animated: true)
     }
     

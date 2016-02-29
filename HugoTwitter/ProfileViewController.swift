@@ -134,6 +134,8 @@ class ProfileViewController: UIViewController, TweetsViewControllerDelegate, UIG
         navigationController!.navigationBar.translucent = true;
         navigationController!.view.backgroundColor = UIColor.clearColor()
         navigationController!.navigationBar.backgroundColor = UIColor.clearColor()
+        
+        setupNavigationForBackBtn()
     }
     
     func loadViewWithUser(user: User!) {
@@ -257,6 +259,31 @@ class ProfileViewController: UIViewController, TweetsViewControllerDelegate, UIG
                 headerBackground.layer.zPosition = profileImageView.layer.zPosition + 1
                 navNameLabel.layer.zPosition = headerBackground.layer.zPosition + 1
             }
+        }
+    }
+    
+    
+    func setupNavigationForBackBtn() {
+        if navigationController == nil {
+            return
+        }
+        
+        let stackCount = navigationController!.viewControllers.count - 2
+        if stackCount >= 0 {
+            navigationController!.navigationBar.tintColor = UIColor.whiteColor()
+            
+            let negativeSpacer = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FixedSpace, target: nil, action: nil)
+            negativeSpacer.width = -10
+            
+            let rightBtn = UIButton(type: .System)
+            rightBtn.frame = CGRectMake(0, 0, 30, 30);
+            let composeImage = UIImage(named: "icon_compose")
+            rightBtn.setImage(composeImage!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate), forState: UIControlState.Normal)
+            rightBtn.tintColor = UIColor.whiteColor()
+            rightBtn.addTarget(self, action: "onCompose", forControlEvents: UIControlEvents.TouchUpInside)
+            
+            let rightBarBtn = UIBarButtonItem(customView: rightBtn)
+            navigationItem.rightBarButtonItems = [negativeSpacer, rightBarBtn]
         }
     }
 
