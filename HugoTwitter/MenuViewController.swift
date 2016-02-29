@@ -110,7 +110,7 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         case 2:
             cell.menuItemLabel.text = "Profile"
             cell.menuItemImage.image = profileImage!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
-            cell.menuItemImage.tintColor = UIColor.blueColor()
+            cell.menuItemImage.tintColor = UIColor.greenColor()
         default:
             cell.menuItemLabel.text = ""
             cell.menuItemImage.image = nil

@@ -15,14 +15,14 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="VtW-GQ-LIu">
-                        <rect key="frame" x="12" y="11" width="36" height="36"/>
+                        <rect key="frame" x="12" y="14" width="30" height="30"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="36" id="6pK-1g-LRt"/>
-                            <constraint firstAttribute="height" constant="36" id="XvT-5y-okW"/>
+                            <constraint firstAttribute="width" constant="30" id="6pK-1g-LRt"/>
+                            <constraint firstAttribute="height" constant="30" id="XvT-5y-okW"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Menu Item" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IT3-Ah-JbR">
-                        <rect key="frame" x="60" y="18.5" width="81" height="20.5"/>
+                        <rect key="frame" x="54" y="18.5" width="81" height="20.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
