@@ -69,7 +69,7 @@ class HamburgerViewController: UIViewController {
     func toggleHamburger(open: Bool) {
         UIView.animateWithDuration(0.3) { () -> Void in
             if open {
-                self.leftMarginConstraint.constant = self.view.frame.size.width - 100
+                self.leftMarginConstraint.constant = self.view.frame.size.width - 200
             } else {
                 self.leftMarginConstraint.constant = 0
             }
