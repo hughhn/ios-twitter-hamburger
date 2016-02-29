@@ -239,9 +239,11 @@ class ProfileViewController: UIViewController, TweetsViewControllerDelegate, UIG
         var headerBackgroundTransform = CATransform3DIdentity
         if offset < 0 {
             let headerImageScaleFactor = (-offset) / headerBackground.bounds.height
-            let headerImageHeightChanged = headerImageScaleFactor * headerBackground.bounds.height
+            let headerImageHeightChanged = headerImageScaleFactor * headerBackground.bounds.height / 2.0
             headerBackgroundTransform = CATransform3DTranslate(headerBackgroundTransform, 0, headerImageHeightChanged, 0)
             headerBackgroundTransform = CATransform3DScale(headerBackgroundTransform, 1.0 + headerImageScaleFactor, 1.0 + headerImageScaleFactor, 0)
+            
+            //print ("scale delta = \(headerImageScaleFactor) ; height delta = \(headerImageHeightChanged)")
         } else {
             headerBackgroundTransform = CATransform3DTranslate(headerBackgroundTransform, 0, max(-offsetHeaderBackgroundViewStop, -offset), 0)
         }
