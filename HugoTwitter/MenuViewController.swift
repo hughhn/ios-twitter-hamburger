@@ -45,8 +45,8 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         let profile = storyboard.instantiateViewControllerWithIdentifier("ProfileViewController") as! ProfileViewController
         profile.profileEndpoint = TwitterClient.sharedInstance.userProfile
-        if User.currentUser != nil {
-            profile.screenName = User.currentUser?.screenname
+        if User.currentUser != nil && User.currentUser!.screenname != nil {
+            profile.screenName = User.currentUser!.screenname
         }
         let profileNav = UINavigationController(rootViewController: profile)
         
