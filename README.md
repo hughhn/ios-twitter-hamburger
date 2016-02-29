@@ -33,6 +33,7 @@ The following **additional** features are implemented:
 - [X] Create container view in Profile page to include both Tweets stream and Likes stream (UISegmentedControl switch)
 - [X] Core Animation transforms on: profile image, label text, background image, z index. exactly like the official app
 - [X] Prettify large numbers (e.g.: 1300 = 1.3K following; 2,100,000 = 2.1M followers)
+- [X] Turns out that setting border width and color does not completely remove the outline of the image from the edges. Had to create a UIBezierPath sub-layer to the profile image to fix this.
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
