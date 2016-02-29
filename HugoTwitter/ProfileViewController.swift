@@ -100,6 +100,12 @@ class ProfileViewController: UIViewController, TweetsViewControllerDelegate, UIG
         profileImageView.layer.borderWidth = 4.0
         profileImageTopMargin.constant = navHeight + 4.0
         profileImageView.layer.zPosition = 1
+        let border = CAShapeLayer()
+        let uiBezierPath = UIBezierPath.bezierPathByReversingPath(UIBezierPath(roundedRect: profileImageView.bounds, cornerRadius: self.profileImageView.layer.cornerRadius))
+        border.path = uiBezierPath().CGPath
+        border.strokeColor = UIColor.whiteColor().CGColor
+        border.fillColor = UIColor.clearColor().CGColor
+        profileImageView.layer.addSublayer(border)
         
         pan = UIPanGestureRecognizer(target: self, action: Selector("onPanGesture:"))
         pan.delegate = self
