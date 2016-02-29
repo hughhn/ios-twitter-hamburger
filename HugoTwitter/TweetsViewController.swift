@@ -239,6 +239,7 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         profileVC.screenName = user?.screenname
         
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.Plain, target: nil, action: nil)
+        navigationController?.navigationBar.topItem?.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
         
         navigationController?.pushViewController(profileVC, animated: true)
     }
