@@ -213,8 +213,19 @@ class TweetCell: UITableViewCell {
     }
     
     func refreshTweetData() {
-        retweetCountLabel.text = "\(tweet.retweetCount)"
-        favCountLabel.text = "\(tweet.favCount)"
+        if tweet.retweetCount > 0 {
+            retweetCountLabel.text = "\(tweet.retweetCount.prettify())"
+            retweetCountLabel.hidden = false
+        } else {
+            retweetCountLabel.hidden = true
+        }
+        
+        if tweet.favCount > 0 {
+            favCountLabel.text = "\(tweet.favCount.prettify())"
+            favCountLabel.hidden = false
+        } else {
+            favCountLabel.hidden = true
+        }
         
         if tweet.retweeted {
             retweetBtn.tintColor = retweetColor

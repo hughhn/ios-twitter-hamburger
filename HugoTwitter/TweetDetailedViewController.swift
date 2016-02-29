@@ -147,8 +147,19 @@ class TweetDetailedViewController: UIViewController {
     }
     
     func refreshTweetData() {
-        retweetCountLabel.text = "\(tweet.retweetCount)"
-        likeCountLabel.text = "\(tweet.favCount)"
+        if tweet.retweetCount > 0 {
+            retweetCountLabel.text = "\(tweet.retweetCount.prettify())"
+            retweetCountLabel.hidden = false
+        } else {
+            retweetCountLabel.hidden = true
+        }
+        
+        if tweet.favCount > 0 {
+            likeCountLabel.text = "\(tweet.favCount.prettify())"
+            likeCountLabel.hidden = false
+        } else {
+            likeCountLabel.hidden = true
+        }
         
         if tweet.retweeted {
             retweetBtn.tintColor = retweetColor

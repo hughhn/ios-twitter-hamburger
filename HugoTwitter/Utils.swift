@@ -8,6 +8,72 @@
 
 import UIKit
 
+extension Int {
+    func prettify() -> String {
+        func floatToString(val: Float) -> String {
+            var ret: NSString = NSString(format: "%.1f", val)
+            
+            let c = ret.characterAtIndex(ret.length - 1)
+            
+            if c == 46 {
+                ret = ret.substringToIndex(ret.length - 1)
+            }
+            
+            return ret as String
+        }
+        
+        var abbrevNum = ""
+        var num: Float = Float(self)
+        
+        if num >= 1000 {
+            var abbrev = ["K","M","B"]
+            
+            for var i = abbrev.count-1; i >= 0; i-- {
+                let sizeInt = pow(Double(10), Double((i+1)*3))
+                let size = Float(sizeInt)
+                
+                if size <= num {
+                    num = num/size
+                    var numStr: String = floatToString(num)
+                    if numStr.hasSuffix(".0") {
+                        let startIndex = numStr.startIndex.advancedBy(0)
+                        let endIndex = numStr.endIndex.advancedBy(-2)
+                        let range = startIndex..<endIndex
+                        numStr = numStr.substringWithRange( range )
+                    }
+                    
+                    let suffix = abbrev[i]
+                    abbrevNum = numStr+suffix
+                }
+            }
+        } else {
+            abbrevNum = "\(num)"
+            let startIndex = abbrevNum.startIndex.advancedBy(0)
+            let endIndex = abbrevNum.endIndex.advancedBy(-2)
+            let range = startIndex..<endIndex
+            abbrevNum = abbrevNum.substringWithRange( range )
+        }
+        
+        return abbrevNum
+    }
+}
+
+func floatToString(val: Float) -> NSString {
+    var ret = NSString(format: "%.1f", val)
+    var c = ret.characterAtIndex(ret.length - 1)
+    
+    while c == 48 {
+        ret = ret.substringToIndex(ret.length - 1)
+        c = ret.characterAtIndex(ret.length - 1)
+        
+        
+        if (c == 46) {
+            ret = ret.substringToIndex(ret.length - 1)
+        }
+    }
+    return ret
+}
+
 func fadeInImg(imageView: UIImageView, imageUrl: String, duration: NSTimeInterval) {
     let imageRequest = NSURLRequest(URL: NSURL(string: imageUrl)!)
     
