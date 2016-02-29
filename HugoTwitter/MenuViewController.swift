@@ -45,6 +45,7 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.separatorInset = UIEdgeInsetsZero
         tableView.registerNib(UINib(nibName: "MenuCell", bundle: nil), forCellReuseIdentifier: "MenuCell")
         
         let storyboard = UIStoryboard(name: "TweetsViewController", bundle: nil)
@@ -74,7 +75,15 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewControllers.count
+        return viewControllers.count + 1
+    }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        if indexPath.row == viewControllers.count {
+            let countDouble = CGFloat(viewControllers.count - 1)
+            return tableView.bounds.height - (tableView.rowHeight * countDouble)
+        }
+        return tableView.rowHeight
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -103,7 +112,9 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
             cell.menuItemImage.image = profileImage!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
             cell.menuItemImage.tintColor = UIColor.blueColor()
         default:
-            cell.menuItemLabel.text = "NA"
+            cell.menuItemLabel.text = ""
+            cell.menuItemImage.image = nil
+            cell.menuItemImage.tintColor = UIColor.clearColor()
         }
         
         return cell
