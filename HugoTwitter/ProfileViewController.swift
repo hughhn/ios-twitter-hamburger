@@ -97,8 +97,8 @@ class ProfileViewController: UIViewController, TweetsViewControllerDelegate, UIG
         profileImageView.layer.cornerRadius = 10
         profileImageView.clipsToBounds = true
         profileImageView.layer.borderColor = UIColor.whiteColor().CGColor
-        profileImageView.layer.borderWidth = 3.0
-        profileImageTopMargin.constant = navHeight + 3.0
+        profileImageView.layer.borderWidth = 4.0
+        profileImageTopMargin.constant = navHeight + 4.0
         profileImageView.layer.zPosition = 1
         
         pan = UIPanGestureRecognizer(target: self, action: Selector("onPanGesture:"))
