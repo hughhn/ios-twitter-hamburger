@@ -22,6 +22,10 @@ class User: NSObject {
     let profileBannerImage: String?
     let profileBackgroundImageUrl: String?
     let tagline: String?
+    let tweetsCount: Int?
+    let likesCount: Int?
+    let followingCount: Int?
+    let followersCount: Int?
     
     init(dictionary: NSDictionary) {
         self.dictionary = dictionary
@@ -32,6 +36,10 @@ class User: NSObject {
         var profileBackgroundImageUrl = ""
         var profileBannerImage = ""
         var tagline = ""
+        var tweetsCount: Int? = 0
+        var likesCount: Int? = 0
+        var followingCount: Int? = 0
+        var followersCount: Int? = 0
         
         if let nameStr = dictionary["name"] as? String {
             name = nameStr
@@ -58,6 +66,22 @@ class User: NSObject {
             tagline = taglineStr
         }
         
+        if let tweetsCountStr = dictionary["statuses_count"] as? Int {
+            tweetsCount = tweetsCountStr
+        }
+        
+        if let likesCountStr = dictionary["favourites_count"] as? Int {
+            likesCount = likesCountStr
+        }
+        
+        if let followingCountStr = dictionary["friends_count"] as? Int {
+            followingCount = followingCountStr
+        }
+        
+        if let followersCountStr = dictionary["followers_count"] as? Int {
+            followersCount = followersCountStr
+        }
+        
         self.name = name
         self.screenname = screenname
         self.profileImageLowResUrl = profileImageLowResUrl
@@ -65,6 +89,10 @@ class User: NSObject {
         self.profileBannerImage = profileBannerImage
         self.profileBackgroundImageUrl = profileBackgroundImageUrl
         self.tagline = tagline
+        self.tweetsCount = tweetsCount
+        self.likesCount = likesCount
+        self.followingCount = followingCount
+        self.followersCount = followersCount
     }
     
     func logout() {
@@ -81,12 +109,14 @@ class User: NSObject {
                 if data != nil {
                     do {
                         var dictionary = try NSJSONSerialization.JSONObjectWithData(data!, options: []) as! NSDictionary
+                        //print(dictionary)
                         _currentUser = User(dictionary: dictionary)
                     } catch {
         
                     }
                 }
             }
+        
             return _currentUser
         }
         set(user) {
