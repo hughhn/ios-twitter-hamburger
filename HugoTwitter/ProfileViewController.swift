@@ -224,11 +224,9 @@ class ProfileViewController: UIViewController, TweetsViewControllerDelegate, UIG
     }
     
     var initialOffset: CGFloat? = nil
-    var initialHeaderViewOffset: CGFloat? = nil
     func tweetsViewOnScroll(scrollView: UIScrollView) {
         if initialOffset == nil {
             initialOffset = scrollView.contentOffset.y
-            initialHeaderViewOffset = headerView.frame.origin.y
         }
         
         let offset = scrollView.contentOffset.y - initialOffset!
@@ -239,8 +237,22 @@ class ProfileViewController: UIViewController, TweetsViewControllerDelegate, UIG
         headerView.layer.transform = headerTransform
         
         var headerBackgroundTransform = CATransform3DIdentity
-        headerBackgroundTransform = CATransform3DTranslate(headerBackgroundTransform, 0, max(-offsetHeaderBackgroundViewStop, -offset), 0)
+        if offset < 0 {
+            let headerImageScaleFactor = (-offset) / headerBackground.bounds.height
+            let headerImageHeightChanged = headerImageScaleFactor * headerBackground.bounds.height
+            headerBackgroundTransform = CATransform3DTranslate(headerBackgroundTransform, 0, headerImageHeightChanged, 0)
+            headerBackgroundTransform = CATransform3DScale(headerBackgroundTransform, 1.0 + headerImageScaleFactor, 1.0 + headerImageScaleFactor, 0)
+        } else {
+            headerBackgroundTransform = CATransform3DTranslate(headerBackgroundTransform, 0, max(-offsetHeaderBackgroundViewStop, -offset), 0)
+        }
         headerBackground.layer.transform = headerBackgroundTransform
+        
+        if offset < 0 {
+            blurredHeaderImageView.alpha = min(1.0, fabs(offset/offsetHeaderBackgroundViewStop))
+        } else {
+            blurredHeaderImageView.alpha = min(1.0, (offset - offsetHeaderBackgroundViewStop) / offsetNavLabelViewStop)
+        }
+        
         
         let labelTransform = CATransform3DMakeTranslation(0, max(-offsetNavLabelViewStop, -offset), 0)
         navNameLabel.layer.transform = labelTransform
@@ -251,10 +263,10 @@ class ProfileViewController: UIViewController, TweetsViewControllerDelegate, UIG
             avatarTransform = CATransform3DTranslate(avatarTransform, 0, -offset, 0)
         } else {
             let avatarScaleFactor = (min(offsetHeaderBackgroundViewStop, offset)) / profileImageView.bounds.height / 1.4 // Slow down the animation
-            let avatarSizeVariation = profileImageView.bounds.height * avatarScaleFactor
+            let avatarHeightChanged = profileImageView.bounds.height * avatarScaleFactor
             avatarTransform = CATransform3DScale(avatarTransform, 1.0 - avatarScaleFactor, 1.0 - avatarScaleFactor, 0)
             
-            var avatarYTranslation = avatarSizeVariation
+            var avatarYTranslation = avatarHeightChanged
             if offset > offsetHeaderBackgroundViewStop {
                 avatarYTranslation += (offset - offsetHeaderBackgroundViewStop) * 1.5
             }
@@ -263,13 +275,7 @@ class ProfileViewController: UIViewController, TweetsViewControllerDelegate, UIG
             
         }
         profileImageView.layer.transform = avatarTransform
-        
-        if offset < 0 {
-            blurredHeaderImageView.alpha = min(1.0, fabs(offset/offsetHeaderBackgroundViewStop))
-        } else {
-            blurredHeaderImageView.alpha = min(1.0, (offset - offsetHeaderBackgroundViewStop) / offsetNavLabelViewStop)
-        }
-        
+
         
         if offset <= offsetHeaderBackgroundViewStop {
             if profileImageView.layer.zPosition < headerBackground.layer.zPosition{
