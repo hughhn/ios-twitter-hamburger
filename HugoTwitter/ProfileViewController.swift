@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ProfileViewController: UIViewController, TweetsViewControllerDelegate, UIGestureRecognizerDelegate {
+class ProfileViewController: UIViewController, TweetsViewControllerDelegate, UIGestureRecognizerDelegate, ComposeViewControllerDelegate {
 
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var contentView: UIView!
@@ -134,6 +134,19 @@ class ProfileViewController: UIViewController, TweetsViewControllerDelegate, UIG
         navigationController!.navigationBar.translucent = true;
         navigationController!.view.backgroundColor = UIColor.clearColor()
         navigationController!.navigationBar.backgroundColor = UIColor.clearColor()
+        
+        let negativeSpacer = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FixedSpace, target: nil, action: nil)
+        negativeSpacer.width = -10
+        
+        let rightBtn = UIButton(type: .System)
+        rightBtn.frame = CGRectMake(0, 0, 30, 30);
+        let composeImage = UIImage(named: "icon_compose")
+        rightBtn.setImage(composeImage!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate), forState: UIControlState.Normal)
+        rightBtn.tintColor = UIColor.whiteColor()
+        rightBtn.addTarget(self, action: "onCompose", forControlEvents: UIControlEvents.TouchUpInside)
+        
+        let rightBarBtn = UIBarButtonItem(customView: rightBtn)
+        navigationItem.rightBarButtonItems = [negativeSpacer, rightBarBtn]
         
         setupNavigationForBackBtn()
     }
@@ -271,22 +284,37 @@ class ProfileViewController: UIViewController, TweetsViewControllerDelegate, UIG
         let stackCount = navigationController!.viewControllers.count - 2
         if stackCount >= 0 {
             navigationController!.navigationBar.tintColor = UIColor.whiteColor()
-            
-            let negativeSpacer = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FixedSpace, target: nil, action: nil)
-            negativeSpacer.width = -10
-            
-            let rightBtn = UIButton(type: .System)
-            rightBtn.frame = CGRectMake(0, 0, 30, 30);
-            let composeImage = UIImage(named: "icon_compose")
-            rightBtn.setImage(composeImage!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate), forState: UIControlState.Normal)
-            rightBtn.tintColor = UIColor.whiteColor()
-            rightBtn.addTarget(self, action: "onCompose", forControlEvents: UIControlEvents.TouchUpInside)
-            
-            let rightBarBtn = UIBarButtonItem(customView: rightBtn)
-            navigationItem.rightBarButtonItems = [negativeSpacer, rightBarBtn]
         }
     }
+    
+    func onCompose() {
+        let composeVC = ComposeViewController()
+        composeVC.delegate = self
+        composeVC.user = User.currentUser
+        navigationController?.presentViewController(composeVC, animated: true, completion: nil)
+    }
 
+    func onComposeViewClosed(composeViewController: ComposeViewController, tweetStatus: String!) {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func onTweetSend(composeViewController: ComposeViewController, tweetStatus: String!, replyToTweet: Tweet?) {
+        dismissViewControllerAnimated(true, completion: nil)
+        
+        var params = ["status": tweetStatus]
+        if replyToTweet != nil {
+            params["in_reply_to_status_id"] = replyToTweet!.id!
+        }
+        
+        TwitterClient.sharedInstance.updateStatus(params as! NSDictionary) { (tweet, error) -> () in
+            
+            var tweetComposedInfo: [NSObject : AnyObject] = [:]
+            tweetComposedInfo[TweetComposeNotificationKey] = tweet
+            NSNotificationCenter.defaultCenter().postNotificationName(TweetComposeNotification, object: self, userInfo: tweetComposedInfo)
+            
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

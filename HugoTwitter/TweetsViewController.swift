@@ -14,6 +14,8 @@ import UIKit
 
 let ScrollNotification = "com.codepath.hugo.onScroll"
 let ScrollNotificationKey = "com.codepath.hugo.scrollY"
+let TweetComposeNotification = "com.codepath.hugo.tweetComposed"
+let TweetComposeNotificationKey = "com.codepath.hugo.tweet"
 
 class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ComposeViewControllerDelegate, TweetCellDelegate, UIScrollViewDelegate, TweetDetailedViewControllerDelegate {
 
@@ -122,6 +124,16 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
             if scrollY != nil {
                 self.tableView.setContentOffset(CGPoint(x: 0, y: scrollY!), animated: false)
                 //                self.tableView.contentOffset = CGPoint(x: 0, y: scrollY!)
+            }
+        }
+        
+        NSNotificationCenter.defaultCenter().addObserverForName(TweetComposeNotification, object: nil, queue: NSOperationQueue.mainQueue()) { (notification: NSNotification!) -> Void in
+            if self.isViewLoaded() && self.tableView != nil {
+                let tweetComposedInfo = notification?.userInfo
+                let tweet: Tweet? = tweetComposedInfo?[TweetComposeNotificationKey] as? Tweet
+                if tweet != nil {
+                    self.refreshControlAction(nil)
+                }
             }
         }
     }
