@@ -157,6 +157,8 @@ class ProfileViewController: UIViewController, TweetsViewControllerDelegate, UIG
         nameLabel.text = user.name!
         navNameLabel.text = user.name!
         screenNameLabel.text = "@\(user.screenname!)"
+        followingCountLabel.text = "@\(user.followingCount?.prettify())"
+        followerCountLabel.text = "@\(user.followersCount?.prettify())"
         
         loadLowResThenHighResImg(profileImageView, smallImageUrl: user.profileImageLowResUrl!, largeImageUrl: user.profileImageUrl!, duration: 1.0)
         //fadeInImg(headerImageView, imageUrl: user.profileBackgroundImageUrl!, duration: 1.0)
