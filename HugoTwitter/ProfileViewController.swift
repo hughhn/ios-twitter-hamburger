@@ -111,7 +111,7 @@ class ProfileViewController: UIViewController, TweetsViewControllerDelegate, UIG
         
         pan = UIPanGestureRecognizer(target: self, action: Selector("onPanGesture:"))
         pan.delegate = self
-        headerView.addGestureRecognizer(pan)
+        //headerView.addGestureRecognizer(pan)
         
         profileEndpoint?(screenName: screenName, userId: userId, params: nil, completion: { (user, error) -> () in
             if user != nil {
