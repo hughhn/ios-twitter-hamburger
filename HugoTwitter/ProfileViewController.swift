@@ -234,6 +234,7 @@ class ProfileViewController: UIViewController, TweetsViewControllerDelegate, UIG
             }
             avatarTransform = CATransform3DTranslate(avatarTransform, 0, -avatarYTranslation, 0)
             //print("-avatarYTranslation \(-avatarYTranslation) ; scaleFactor = \(avatarScaleFactor)")
+            
         }
         profileImageView.layer.transform = avatarTransform
         
