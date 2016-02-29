@@ -18,6 +18,7 @@ class ProfileViewController: UIViewController, TweetsViewControllerDelegate, UIG
     @IBOutlet weak var headerBackground: UIView!
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var navNameLabel: UILabel!
+    @IBOutlet weak var navSublabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var screenNameLabel: UILabel!
     @IBOutlet weak var followingCountLabel: UILabel!
@@ -92,7 +93,7 @@ class ProfileViewController: UIViewController, TweetsViewControllerDelegate, UIG
         navHeight = navigationController!.navigationBar.frame.size.height + navigationController!.navigationBar.frame.origin.y
         offsetHeaderViewStop = segmentedControl.frame.origin.y - navHeight - 8
         offsetHeaderBackgroundViewStop = (headerBackground.frame.size.height + headerBackground.frame.origin.y) - navHeight
-        offsetNavLabelViewStop = navNameLabel.frame.origin.y - (navHeight / 2)
+        offsetNavLabelViewStop = navNameLabel.frame.origin.y - (navHeight / 2) + 8
         
         headerBackground.clipsToBounds = true
         lineHeightConstraint.constant = 1 / UIScreen.mainScreen().scale
@@ -157,9 +158,12 @@ class ProfileViewController: UIViewController, TweetsViewControllerDelegate, UIG
         nameLabel.text = user.name!
         navNameLabel.text = user.name!
         screenNameLabel.text = "@\(user.screenname!)"
-        followingCountLabel.text = "@\(user.followingCount?.prettify())"
-        followerCountLabel.text = "@\(user.followersCount?.prettify())"
+        followingCountLabel.text = "\(user.followingCount!.prettify())"
+        followerCountLabel.text = "\(user.followersCount!.prettify())"
         
+        navSublabel.text = "\(user.tweetsCount!.prettify()) Tweets"
+        navSublabel.text = "\(user.likesCount!.prettify()) Likes"
+            
         loadLowResThenHighResImg(profileImageView, smallImageUrl: user.profileImageLowResUrl!, largeImageUrl: user.profileImageUrl!, duration: 1.0)
         //fadeInImg(headerImageView, imageUrl: user.profileBackgroundImageUrl!, duration: 1.0)
         
@@ -260,6 +264,7 @@ class ProfileViewController: UIViewController, TweetsViewControllerDelegate, UIG
         
         let labelTransform = CATransform3DMakeTranslation(0, max(-offsetNavLabelViewStop, -offset), 0)
         navNameLabel.layer.transform = labelTransform
+        navSublabel.layer.transform = labelTransform
         
         var avatarTransform = CATransform3DIdentity
         if offset < 0 {
@@ -285,11 +290,13 @@ class ProfileViewController: UIViewController, TweetsViewControllerDelegate, UIG
             if profileImageView.layer.zPosition < headerBackground.layer.zPosition{
                 headerBackground.layer.zPosition = profileImageView.layer.zPosition - 1
                 navNameLabel.layer.zPosition = headerBackground.layer.zPosition
+                navSublabel.layer.zPosition = headerBackground.layer.zPosition
             }
         } else {
             if profileImageView.layer.zPosition >= headerBackground.layer.zPosition{
                 headerBackground.layer.zPosition = profileImageView.layer.zPosition + 1
                 navNameLabel.layer.zPosition = headerBackground.layer.zPosition + 1
+                navSublabel.layer.zPosition = headerBackground.layer.zPosition + 1
             }
         }
     }
