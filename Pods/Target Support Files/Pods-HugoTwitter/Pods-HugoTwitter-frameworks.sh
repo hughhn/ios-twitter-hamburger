@@ -86,8 +86,10 @@ strip_invalid_archs() {
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-HugoTwitter/AFNetworking.framework"
   install_framework "Pods-HugoTwitter/BDBOAuth1Manager.framework"
+  install_framework "Pods-HugoTwitter/FXBlurView.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-HugoTwitter/AFNetworking.framework"
   install_framework "Pods-HugoTwitter/BDBOAuth1Manager.framework"
+  install_framework "Pods-HugoTwitter/FXBlurView.framework"
 fi

@@ -7,6 +7,7 @@ target 'HugoTwitter' do
 
 pod 'AFNetworking'
 pod 'BDBOAuth1Manager'
+pod ‘FXBlurView’
 
 end
 

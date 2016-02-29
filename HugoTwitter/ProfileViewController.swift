@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FXBlurView
 
 class ProfileViewController: UIViewController, TweetsViewControllerDelegate, UIGestureRecognizerDelegate, ComposeViewControllerDelegate {
 
@@ -162,8 +163,9 @@ class ProfileViewController: UIViewController, TweetsViewControllerDelegate, UIG
         
         headerImageView.setImageWithURLRequest(NSURLRequest(URL: NSURL(string: user.profileBackgroundImageUrl!)!), placeholderImage: nil, success: { (request, response, image) -> Void in
             
+            
             self.headerImageView.image = image
-            self.blurredHeaderImageView.image = image
+            self.blurredHeaderImageView.image = image.blurredImageWithRadius(10, iterations: 20, tintColor: UIColor.clearColor())
             self.blurredHeaderImageView.alpha = 0.0
             
             
@@ -262,6 +264,7 @@ class ProfileViewController: UIViewController, TweetsViewControllerDelegate, UIG
         }
         profileImageView.layer.transform = avatarTransform
         
+        blurredHeaderImageView.alpha = min(1.0, offset/offsetHeaderBackgroundViewStop)
         
         if offset <= offsetHeaderBackgroundViewStop {
             if profileImageView.layer.zPosition < headerBackground.layer.zPosition{
