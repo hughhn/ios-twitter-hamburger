@@ -126,6 +126,7 @@ class ProfileViewController: UIViewController, TweetsViewControllerDelegate, UIG
     
     override func viewWillDisappear(animated: Bool) {
         navigationController!.navigationBar.setBackgroundImage(nil, forBarMetrics: UIBarMetrics.Default)
+        navigationController!.navigationBar.tintColor = twitterColor
     }
     
     func setupNavBar() {
