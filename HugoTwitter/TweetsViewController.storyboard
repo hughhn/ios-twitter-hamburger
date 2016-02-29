@@ -225,7 +225,7 @@
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v0E-ey-J9N" userLabel="Header View">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="285"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="287.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nxc-Iy-wLR">
                                         <rect key="frame" x="8" y="162" width="47.5" height="19.5"/>
@@ -240,41 +240,41 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="351" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vp3-wy-X0h">
-                                        <rect key="frame" x="8" y="202" width="19" height="14.5"/>
+                                        <rect key="frame" x="8" y="205.5" width="19" height="14.5"/>
                                         <fontDescription key="fontDescription" name="GothamBook-Regular" family="Gotham Book" pointSize="12"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="713" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="veP-oP-oHe">
-                                        <rect key="frame" x="118" y="202" width="19" height="14.5"/>
+                                        <rect key="frame" x="118" y="205.5" width="19" height="14.5"/>
                                         <fontDescription key="fontDescription" name="GothamBook-Regular" family="Gotham Book" pointSize="12"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Following" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3RO-N4-Kdv">
-                                        <rect key="frame" x="29" y="202" width="59" height="14.5"/>
+                                        <rect key="frame" x="29" y="205.5" width="59" height="14.5"/>
                                         <fontDescription key="fontDescription" name="GothamBook-Regular" family="Gotham Book" pointSize="12"/>
                                         <color key="textColor" red="0.6705882352941176" green="0.6705882352941176" blue="0.6705882352941176" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Followers" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LDl-0x-3Et">
-                                        <rect key="frame" x="139" y="202" width="58" height="14.5"/>
+                                        <rect key="frame" x="139" y="205.5" width="58" height="14.5"/>
                                         <fontDescription key="fontDescription" name="GothamBook-Regular" family="Gotham Book" pointSize="12"/>
                                         <color key="textColor" red="0.6705882352941176" green="0.6705882352941176" blue="0.6705882352941176" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="8dL-S6-6hq">
-                                        <rect key="frame" x="8" y="248" width="304" height="29"/>
+                                        <rect key="frame" x="8" y="251.5" width="304" height="29"/>
                                         <segments>
                                             <segment title="First"/>
                                             <segment title="Second"/>
                                         </segments>
                                     </segmentedControl>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nta-ET-ENP">
-                                        <rect key="frame" x="0.0" y="284" width="320" height="1"/>
+                                        <rect key="frame" x="0.0" y="287.5" width="320" height="0.0"/>
                                         <color key="backgroundColor" red="0.6705882352941176" green="0.6705882352941176" blue="0.6705882352941176" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="1" id="6Ep-Qx-l5t"/>
+                                            <constraint firstAttribute="height" id="6Ep-Qx-l5t"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -287,7 +287,7 @@
                                     <constraint firstAttribute="bottom" secondItem="Nta-ET-ENP" secondAttribute="bottom" id="DZd-pQ-nZR"/>
                                     <constraint firstAttribute="trailing" secondItem="Nta-ET-ENP" secondAttribute="trailing" id="FKh-yY-Fky"/>
                                     <constraint firstItem="LDl-0x-3Et" firstAttribute="leading" secondItem="veP-oP-oHe" secondAttribute="trailing" constant="2" id="HEo-Dx-lVL"/>
-                                    <constraint firstItem="vp3-wy-X0h" firstAttribute="top" secondItem="P7M-3V-qCd" secondAttribute="bottom" constant="4" id="HP4-Gl-PbB"/>
+                                    <constraint firstItem="vp3-wy-X0h" firstAttribute="top" secondItem="P7M-3V-qCd" secondAttribute="bottom" constant="8" id="HP4-Gl-PbB"/>
                                     <constraint firstItem="Nxc-Iy-wLR" firstAttribute="leading" secondItem="v0E-ey-J9N" secondAttribute="leading" constant="8" id="MLZ-Xo-ox9"/>
                                     <constraint firstItem="3RO-N4-Kdv" firstAttribute="baseline" secondItem="vp3-wy-X0h" secondAttribute="baseline" id="P05-6W-nnm"/>
                                     <constraint firstItem="Nta-ET-ENP" firstAttribute="leading" secondItem="v0E-ey-J9N" secondAttribute="leading" id="adJ-6Y-eTX"/>
@@ -301,19 +301,19 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4id-si-vSJ" userLabel="Background">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
+                                <rect key="frame" x="0.0" y="-10" width="320" height="110"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="faz-xa-4fH">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="110"/>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fOt-ns-PE8">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="110"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="faz-xa-4fH" secondAttribute="bottom" id="68G-hf-dd0"/>
-                                    <constraint firstAttribute="height" constant="100" id="D9L-96-gO5"/>
+                                    <constraint firstAttribute="height" constant="110" id="D9L-96-gO5"/>
                                     <constraint firstAttribute="trailing" secondItem="fOt-ns-PE8" secondAttribute="trailing" id="FK0-0I-APo"/>
                                     <constraint firstItem="faz-xa-4fH" firstAttribute="top" secondItem="4id-si-vSJ" secondAttribute="top" id="GUb-Lw-5Dx"/>
                                     <constraint firstItem="fOt-ns-PE8" firstAttribute="leading" secondItem="4id-si-vSJ" secondAttribute="leading" id="QB1-a9-Tsh"/>
@@ -352,7 +352,7 @@
                             <constraint firstAttribute="trailing" secondItem="v0E-ey-J9N" secondAttribute="trailing" id="Wlx-4v-Rc7"/>
                             <constraint firstItem="PfB-rb-ruD" firstAttribute="top" secondItem="oRa-VF-y0e" secondAttribute="topMargin" id="Xgw-Ly-Dxt"/>
                             <constraint firstItem="4id-si-vSJ" firstAttribute="leading" secondItem="oRa-VF-y0e" secondAttribute="leading" id="bmX-HU-LYD"/>
-                            <constraint firstItem="4id-si-vSJ" firstAttribute="top" secondItem="oRa-VF-y0e" secondAttribute="top" id="l1l-ec-xIR"/>
+                            <constraint firstItem="4id-si-vSJ" firstAttribute="top" secondItem="oRa-VF-y0e" secondAttribute="top" constant="-10" id="l1l-ec-xIR"/>
                             <constraint firstItem="jhH-Qz-9N1" firstAttribute="centerX" secondItem="oRa-VF-y0e" secondAttribute="centerX" id="owS-Cz-kwS"/>
                             <constraint firstItem="PfB-rb-ruD" firstAttribute="leading" secondItem="oRa-VF-y0e" secondAttribute="leading" id="qNO-OE-Gxt"/>
                             <constraint firstItem="gbd-CY-QXM" firstAttribute="top" secondItem="PfB-rb-ruD" secondAttribute="bottom" id="rk2-au-0wb"/>
@@ -369,6 +369,7 @@
                         <outlet property="headerBackground" destination="4id-si-vSJ" id="6Pi-DP-V53"/>
                         <outlet property="headerImageView" destination="faz-xa-4fH" id="jai-Eq-Lew"/>
                         <outlet property="headerView" destination="v0E-ey-J9N" id="UXF-Le-M8C"/>
+                        <outlet property="lineHeightConstraint" destination="6Ep-Qx-l5t" id="bc4-oR-mQg"/>
                         <outlet property="nameLabel" destination="Nxc-Iy-wLR" id="YpN-do-Nmr"/>
                         <outlet property="navNameLabel" destination="jhH-Qz-9N1" id="me0-Wz-BDU"/>
                         <outlet property="profileImageTopMargin" destination="7vc-SI-IA3" id="v8x-Xt-HQO"/>

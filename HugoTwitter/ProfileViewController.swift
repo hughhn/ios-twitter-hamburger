@@ -28,6 +28,7 @@ class ProfileViewController: UIViewController, TweetsViewControllerDelegate, UIG
     @IBOutlet weak var profileImageTopMargin: NSLayoutConstraint!
     @IBOutlet weak var headerImageView:UIImageView!
     @IBOutlet weak var blurredHeaderImageView: UIImageView!
+    @IBOutlet weak var lineHeightConstraint: NSLayoutConstraint!
     
     var offsetHeaderViewStop: CGFloat!
     var offsetHeader: CGFloat?
@@ -93,6 +94,7 @@ class ProfileViewController: UIViewController, TweetsViewControllerDelegate, UIG
         offsetNavLabelViewStop = navNameLabel.frame.origin.y - (navHeight / 2)
         
         headerBackground.clipsToBounds = true
+        lineHeightConstraint.constant = 1 / UIScreen.mainScreen().scale
         
         profileImageView.layer.cornerRadius = 10
         profileImageView.clipsToBounds = true
