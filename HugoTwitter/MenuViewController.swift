@@ -22,6 +22,7 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.hamburgerViewController = hamburgerViewController!
         
         let menuNav = UINavigationController(rootViewController: self)
+        
         hamburgerViewController!.menuViewController = menuNav
     }
     
@@ -29,6 +30,19 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        let leftBtn = UIButton(type: .System)
+        leftBtn.frame = CGRectMake(0, 0, 30, 30);
+        let twitterImage = UIImage(named: "icon_twitter")
+        leftBtn.setImage(twitterImage!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate), forState: UIControlState.Normal)
+        leftBtn.tintColor = twitterColor
+        
+        let negativeSpacer = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FixedSpace, target: nil, action: nil)
+        negativeSpacer.width = -10
+        let leftBarBtn = UIBarButtonItem(customView: leftBtn)
+        navigationItem.leftBarButtonItems = [negativeSpacer, leftBarBtn]
+        
+        
         tableView.delegate = self
         tableView.dataSource = self
         tableView.registerNib(UINib(nibName: "MenuCell", bundle: nil), forCellReuseIdentifier: "MenuCell")
